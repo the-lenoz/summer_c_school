@@ -5,7 +5,7 @@
 const double eps = 1e-10;
 
 
-enum SquareSolverNumberOfRoots
+enum NumberOfEquationRoots
 {
     ZERO_ROOTS,
     INFINITE_ROOTS,
@@ -24,7 +24,7 @@ struct QuadraticEquationSolutionOutput
 {
     double x1;
     double x2;
-    SquareSolverNumberOfRoots number_of_roots;
+    NumberOfEquationRoots number_of_roots;
 };
 
 struct SolvedQuadraticEquation
@@ -35,7 +35,8 @@ struct SolvedQuadraticEquation
 
 
 void send_greeting(void);
-QuadraticEquationForm read_input(void);
+void send_try_again(void);
+int read_input(QuadraticEquationForm* equation_form);
 void print_result(SolvedQuadraticEquation equation);
 int are_doubles_equal(double a, double b);
 double solve_linear_equation(double k, double b);
@@ -43,9 +44,14 @@ QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm e
 
 int main(void)
 {
-
     send_greeting();
-    QuadraticEquationForm equation_form = read_input();
+    QuadraticEquationForm equation_form = {0};
+    
+    while (read_input(&equation_form) != 3)
+    {
+        getchar();
+        send_try_again();
+    }
 
     QuadraticEquationSolutionOutput result = solve_quadratic_equation(equation_form);
 
@@ -65,23 +71,30 @@ int main(void)
 //---------------------------------------------------------------
 void send_greeting(void)
 {
-    printf("# Решение квадратного уравнения с помощью дискриминанта\n");
+    printf("# Решение квадратного уравнения с помощью дискриминанта. (Нажмите Ctrl+C чтобы выйти)\n");
     printf("# Введите коэффиценты a, b, c для уравнения вида ax^2 + bx + c = 0 через пробел:\n");
 }
 
+
+//---------------------------------------------------------------
+//! void send_try_again(void)
+//! @brief Function sends try again message to user. 
+//---------------------------------------------------------------
+void send_try_again(void)
+{
+    printf("# Неверный формат! Введите коэффиценты a, b, c для уравнения вида ax^2 + bx + c = 0 через пробел:\n");
+}
 //---------------------------------------------------------------
 //! void read_input(void)
 //! @brief Function reads user input into a quadratic equation structure.
 //!
-//! @return equation form structure
+//! @param [out] equation_form - pointer to target structure 
+//!
+//! @return number of readed fields
 //---------------------------------------------------------------
-QuadraticEquationForm read_input(void)
+int read_input(QuadraticEquationForm* equation_form)
 {  
-    QuadraticEquationForm equation_form;
-
-    assert(scanf("%lg %lg %lg", &(equation_form.a), &(equation_form.b), &(equation_form.c)) == 3);
-
-    return equation_form;
+    return scanf("%lg %lg %lg", &equation_form->a, &equation_form->b, &equation_form->c);
 }
 
 //---------------------------------------------------------------
@@ -129,26 +142,32 @@ int are_doubles_equal(double a, double b)
 
 //---------------------------------------------------------------
 //! double solve_linear_equation(double k, double b)
-//! @brief Function solves linear equation
+//! @brief Function solves linear equation of kx + b = 0 form.
+//!
+//! @param [in] k - the first coefficent
+//! @param [in] k - the second coefficent
+//! @param [out] number_of_roots - number of equation roots
 //!
 //! @return root if exists, INF if anything is a root and NAN if a root doesn't exist.
 //---------------------------------------------------------------
-double solve_linear_equation(double k, double b)
+double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots)
 {
     if (are_doubles_equal(k, 0)) 
     {
         // Константа, не зависит от x
         if (are_doubles_equal(b, 0))
         {
-            return INFINITY; // КОРЕНЬ - любое число
+            *number_of_roots = INFINITE_ROOTS;
         }
         else 
         {
-            return NAN; // Корней нет
+            *number_of_roots = ZERO_ROOTS;
         }
+        return NAN;
     }
     else
     {
+        *number_of_roots = ONE_ROOT;
         return -b / k; // Корень найден
     }
     
@@ -172,26 +191,12 @@ QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm e
     assert(isfinite(equation_form.a));
     assert(isfinite(equation_form.b));
     assert(isfinite(equation_form.c));
-    assert(!isnan(equation_form.a));
-    assert(!isnan(equation_form.b));
-    assert(!isnan(equation_form.c));
 
     QuadraticEquationSolutionOutput result = {0, 0, TWO_ROOTS};
     
     if (are_doubles_equal(equation_form.a, 0)) // Линейное уравнение
     {
-        result.x1 = result.x2 = solve_linear_equation(equation_form.b, equation_form.c);
-        if (isnan(result.x1))
-        {
-            result.number_of_roots = ZERO_ROOTS;
-            return result;
-        }
-        else if (!isfinite(result.x1))
-        {
-            result.number_of_roots = INFINITE_ROOTS;
-            return result;
-        }
-        result.number_of_roots = ONE_ROOT;
+        result.x1 = result.x2 = solve_linear_equation(equation_form.b, equation_form.c, &result.number_of_roots);
         return result;
     }
     
