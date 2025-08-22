@@ -1,7 +1,7 @@
 #ifndef STRUCTURES_DECLARED
 #define STRUCTURES_DECLARED
 
-#include "enums.hpp"
+#include "solver_enums.hpp"
 
 struct QuadraticEquationForm
 {

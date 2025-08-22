@@ -1,6 +1,8 @@
 #ifndef DOUBLE_OPERATIONS_DECLARED
 #define DOUBLE_OPERATIONS_DECLARED
 
+const double eps = 1e-10;
+
 //---------------------------------------------------------------
 //! int are_doubles_equal(double a, double b)
 //! @brief Function compares two doubles with precision gap. 

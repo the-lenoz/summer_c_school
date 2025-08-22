@@ -1,6 +1,6 @@
 #include <math.h>
 
-const double eps = 1e-10;
+#include "double_operations.hpp"
 
 int are_doubles_equal(double a, double b)
 {

@@ -1,8 +1,8 @@
 #ifndef USER_INTERFACE_DECLARED
 #define USER_INTERFACE_DECLARED
 
-#include "structures.hpp"
-#include "enums.hpp"
+#include "square_equation_structures.hpp"
+#include "user_interface_enums.hpp"
 
 //---------------------------------------------------------------
 //! void send_greeting(void)

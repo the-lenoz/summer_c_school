@@ -1,7 +1,7 @@
 #ifndef MATH_FUNCTIONS_DECLARED
 #define MATH_FUNCTIONS_DECLARED
 
-#include "structures.hpp"
+#include "square_equation_structures.hpp"
 
 
 //---------------------------------------------------------------
@@ -14,7 +14,7 @@
 //!
 //! @return root if exists, INF if anything is a root and NAN if a root doesn't exist.
 //---------------------------------------------------------------
-double solve_linear_equation(double k, double b);
+double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots);
 
 
 //---------------------------------------------------------------

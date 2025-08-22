@@ -2,7 +2,7 @@
 #include <math.h>
 #include <assert.h>
 
-#include "structures.hpp"
+#include "square_equation_structures.hpp"
 
 #include "user_interface.hpp"
 #include "equation_solvers.hpp"

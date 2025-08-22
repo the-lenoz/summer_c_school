@@ -1,7 +1,10 @@
 #include <stdio.h>
 
-#include "structures.hpp"
-#include "enums.hpp"
+#include "square_equation_structures.hpp"
+#include "user_interface_enums.hpp"
+#include "solver_enums.hpp"
+
+#include "user_interface.hpp"
 
 
 const char ESCAPE_KEY = 27;

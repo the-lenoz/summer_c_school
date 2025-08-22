@@ -1,9 +1,11 @@
 #include <math.h>
 #include <assert.h>
 
-#include "structures.hpp"
-#include "enums.hpp"
+#include "square_equation_structures.hpp"
+#include "solver_enums.hpp"
 #include "double_operations.hpp"
+
+#include "equation_solvers.hpp"
 
 
 double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots)
