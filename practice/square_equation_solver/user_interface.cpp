@@ -6,9 +6,6 @@
 
 #include "user_interface.hpp"
 
-
-const char ESCAPE_KEY = 27;
-
 void send_greeting(void)
 {
     printf("# Решение квадратного уравнения с помощью дискриминанта. (Esc чтобы выйти)\n");

@@ -4,6 +4,8 @@
 #include "square_equation_structures.hpp"
 #include "user_interface_enums.hpp"
 
+const char ESCAPE_KEY = 27;
+
 //---------------------------------------------------------------
 //! void send_greeting(void)
 //! @brief Function sends greeting to user. 

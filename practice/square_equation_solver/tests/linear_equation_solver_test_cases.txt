@@ -1,0 +1,4 @@
+k: 0 b: 1 result: 0, number_of_roots: ZERO_ROOTS
+k: 0 b: 0 result: 0, number_of_roots: INFINITE_ROOTS
+k: 1 b: -1 result: 1, number_of_roots: ONE_ROOT
+k: 2 b: 1 result: -0.5, number_of_roots: ONE_ROOT
