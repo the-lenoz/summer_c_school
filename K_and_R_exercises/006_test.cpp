@@ -78,7 +78,7 @@ QuadraticEquationForm read_input(void)
 {  
     QuadraticEquationForm equation_form;
 
-    assert(scanf("%lg %lg %lg", &(equation_form.a), &(equation_form.b), &(equation_form.c)) < 3);
+    assert(scanf("%lg %lg %lg", &(equation_form.a), &(equation_form.b), &(equation_form.c)) == 3);
 
     return equation_form;
 }
