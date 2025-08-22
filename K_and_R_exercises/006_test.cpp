@@ -3,7 +3,7 @@
 #include <assert.h>
 
 const double eps = 1e-10;
-
+const char ESCAPE_KEY = 27;
 
 enum NumberOfEquationRoots
 {
@@ -36,6 +36,7 @@ struct SolvedQuadraticEquation
 
 void send_greeting(void);
 void send_try_again(void);
+int wait_for_newline_or_exit(void);
 int read_input(QuadraticEquationForm* equation_form);
 void print_result(SolvedQuadraticEquation equation);
 int are_doubles_equal(double a, double b);
@@ -44,23 +45,34 @@ QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm e
 
 int main(void)
 {
+    char c = 0;
+    int exit = 0;
     send_greeting();
     QuadraticEquationForm equation_form = {0};
+    QuadraticEquationSolutionOutput result = {0};
+    SolvedQuadraticEquation equation = {0};
     
-    while (read_input(&equation_form) != 3)
+    while (!exit)
     {
-        getchar();
-        send_try_again();
+        if (read_input(&equation_form) == 3) // read 3 doubles
+        {
+            result = solve_quadratic_equation(equation_form); // solve equation
+            equation = {
+                equation_form,
+                result
+            };
+
+            print_result(equation); // output result
+        }
+
+        exit = wait_for_newline_or_exit();        
+             
+        if (!exit) 
+        {
+            send_try_again(); // request new equation
+        }
     }
-
-    QuadraticEquationSolutionOutput result = solve_quadratic_equation(equation_form);
-
-    SolvedQuadraticEquation equation = {
-        equation_form,
-        result
-    };
-
-    print_result(equation);
+    
     
     return 0;
 }
@@ -71,7 +83,7 @@ int main(void)
 //---------------------------------------------------------------
 void send_greeting(void)
 {
-    printf("# Решение квадратного уравнения с помощью дискриминанта. (Нажмите Ctrl+C чтобы выйти)\n");
+    printf("# Решение квадратного уравнения с помощью дискриминанта. (Esc чтобы выйти)\n");
     printf("# Введите коэффиценты a, b, c для уравнения вида ax^2 + bx + c = 0 через пробел:\n");
 }
 
@@ -82,8 +94,30 @@ void send_greeting(void)
 //---------------------------------------------------------------
 void send_try_again(void)
 {
-    printf("# Неверный формат! Введите коэффиценты a, b, c для уравнения вида ax^2 + bx + c = 0 через пробел:\n");
+    printf("# Введите коэффиценты a, b, c для уравнения вида ax^2 + bx + c = 0 через пробел или Esc чтобы выйти\n");
 }
+
+//---------------------------------------------------------------
+//! int wait_for_newline_or_exit(void)
+//! @brief Function gets chars from stdin and waits for newline or exit.
+//! @return 0 if got newline else (if got Esc or EOF) 1
+//---------------------------------------------------------------
+int wait_for_newline_or_exit(void)
+{
+    int exit = 0;
+    char c = 0;
+
+    while ((c = getchar()) != '\n')
+    {
+        if (c == EOF || c == ESCAPE_KEY)
+        {
+            exit = 1;
+            break;
+        }
+    }
+    return exit;
+}
+
 //---------------------------------------------------------------
 //! void read_input(void)
 //! @brief Function reads user input into a quadratic equation structure.
@@ -136,8 +170,7 @@ void print_result(SolvedQuadraticEquation equation)
 //---------------------------------------------------------------
 int are_doubles_equal(double a, double b)
 {
-    if (a > b) return (a - b) < eps;
-    else return (b - a) < eps;
+    return fabs(a - b) < eps;
 }
 
 //---------------------------------------------------------------
