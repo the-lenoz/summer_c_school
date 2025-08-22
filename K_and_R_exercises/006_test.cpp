@@ -38,6 +38,7 @@ void send_greeting(void);
 QuadraticEquationForm read_input(void);
 void print_result(SolvedQuadraticEquation equation);
 int are_doubles_equal(double a, double b);
+double solve_linear_equation(double k, double b);
 QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm equation_form);
 
 int main(void)
@@ -127,6 +128,33 @@ int are_doubles_equal(double a, double b)
 }
 
 //---------------------------------------------------------------
+//! double solve_linear_equation(double k, double b)
+//! @brief Function solves linear equation
+//!
+//! @return root if exists, INF if anything is a root and NAN if a root doesn't exist.
+//---------------------------------------------------------------
+double solve_linear_equation(double k, double b)
+{
+    if (are_doubles_equal(k, 0)) 
+    {
+        // Константа, не зависит от x
+        if (are_doubles_equal(b, 0))
+        {
+            return INFINITY; // КОРЕНЬ - любое число
+        }
+        else 
+        {
+            return NAN; // Корней нет
+        }
+    }
+    else
+    {
+        return -b / k; // Корень найден
+    }
+    
+}
+
+//---------------------------------------------------------------
 //! int solve_quadratic_equation(double a, double b, double c, double* x1, double* x2)
 //! @brief Function solves quadratic equation. a*x^2 + b*x + c = 0. 
 //! It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code
@@ -144,30 +172,27 @@ QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm e
     assert(isfinite(equation_form.a));
     assert(isfinite(equation_form.b));
     assert(isfinite(equation_form.c));
+    assert(!isnan(equation_form.a));
+    assert(!isnan(equation_form.b));
+    assert(!isnan(equation_form.c));
 
     QuadraticEquationSolutionOutput result = {0, 0, TWO_ROOTS};
     
     if (are_doubles_equal(equation_form.a, 0)) // Линейное уравнение
     {
-        if (are_doubles_equal(equation_form.b, 0)) // Константа, не зависит от x
+        result.x1 = result.x2 = solve_linear_equation(equation_form.b, equation_form.c);
+        if (isnan(result.x1))
         {
-            if (are_doubles_equal(equation_form.c, 0))
-            {
-                result.number_of_roots = INFINITE_ROOTS; 
-                return result; // КОРЕНЬ - любое число
-            }
-            else 
-            {
-                result.number_of_roots = ZERO_ROOTS; 
-                return result; // ОШИБКА - корней нет
-            }
+            result.number_of_roots = ZERO_ROOTS;
+            return result;
         }
-        else
+        else if (!isfinite(result.x1))
         {
-            result.x1 = result.x2 = -equation_form.c / equation_form.b;
-            result.number_of_roots = ONE_ROOT;
-            return result; // Успех, но корень один
+            result.number_of_roots = INFINITE_ROOTS;
+            return result;
         }
+        result.number_of_roots = ONE_ROOT;
+        return result;
     }
     
     double D = equation_form.b * equation_form.b - 4 * equation_form.a * equation_form.c;
