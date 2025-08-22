@@ -1,14 +1,10 @@
 #include <math.h>
 #include <assert.h>
 
-#include "constants.hpp"
-#include "structures_and_enums.hpp"
+#include "structures.hpp"
+#include "enums.hpp"
+#include "double_operations.hpp"
 
-
-int are_doubles_equal(double a, double b)
-{
-    return fabs(a - b) < eps;
-}
 
 double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots)
 {

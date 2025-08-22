@@ -1,8 +1,7 @@
 #ifndef USER_INTERFACE_DECLARED
 #define USER_INTERFACE_DECLARED
 
-
-#include "structures_and_enums.hpp"
+#include "structures.hpp"
 
 //---------------------------------------------------------------
 //! void send_greeting(void)

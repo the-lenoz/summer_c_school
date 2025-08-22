@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-#include "constants.hpp"
-#include "structures_and_enums.hpp"
+#include "structures.hpp"
 
 
+const char ESCAPE_KEY = 27;
 
 void send_greeting(void)
 {

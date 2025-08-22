@@ -1,13 +1,7 @@
-#ifndef STRUCTURES_AND_ENUMS_DECLARED
-#define STRUCTURES_AND_ENUMS_DECLARED
+#ifndef STRUCTURES_DECLARED
+#define STRUCTURES_DECLARED
 
-enum NumberOfEquationRoots
-{
-    ZERO_ROOTS,
-    INFINITE_ROOTS,
-    ONE_ROOT,
-    TWO_ROOTS
-};
+#include "enums.hpp"
 
 struct QuadraticEquationForm
 {
