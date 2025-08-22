@@ -2,6 +2,7 @@
 #define USER_INTERFACE_DECLARED
 
 #include "structures.hpp"
+#include "enums.hpp"
 
 //---------------------------------------------------------------
 //! void send_greeting(void)
@@ -16,11 +17,11 @@ void send_greeting(void);
 void send_try_again(void);
 
 //---------------------------------------------------------------
-//! int wait_for_newline_or_exit(void)
+//! InputCharSignal wait_for_newline_or_exit(void)
 //! @brief Function gets chars from stdin and waits for newline or exit.
-//! @return 0 if got newline else (if got Esc or EOF) 1
+//! @return CORRECT_INPUT, INCORRECT_INPUT or EXIT_KEY
 //---------------------------------------------------------------
-int wait_for_newline_or_exit(void);
+InputCharSignal wait_for_newline_or_exit(void);
 
 //---------------------------------------------------------------
 //! void read_input(void)

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 #include "structures.hpp"
+#include "enums.hpp"
 
 
 const char ESCAPE_KEY = 27;
@@ -18,20 +19,24 @@ void send_try_again(void)
 }
 
 
-int wait_for_newline_or_exit(void)
+InputCharSignal wait_for_newline_or_exit(void)
 {
-    int exit = 0;
+    InputCharSignal result = CORRECT_INPUT;
     int c = 0;
 
     while ((c = getchar()) != '\n')
     {
         if (c == EOF || c == ESCAPE_KEY)
         {
-            exit = 1;
+            result = EXIT_KEY;
             break;
         }
+        else
+        {
+            result = INCORRECT_INPUT;
+        }
     }
-    return exit;
+    return result;
 }
 
 

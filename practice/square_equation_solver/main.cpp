@@ -10,15 +10,19 @@
 
 int main(void)
 {
-    int exit_program = 0;
-    send_greeting();
+    int input_length = 0;
+    InputCharSignal input_char_signal = CORRECT_INPUT;
     QuadraticEquationForm equation_form = {0};
     QuadraticEquationSolutionOutput result = {0};
     SolvedQuadraticEquation equation = {0};
     
-    while (!exit_program)
+    send_greeting();
+    do
     {
-        if (read_input(&equation_form) == 3) 
+        input_length = read_input(&equation_form);
+        input_char_signal = wait_for_newline_or_exit();
+
+        if (input_length == 3 and input_char_signal == CORRECT_INPUT) 
         {
             result = solve_quadratic_equation(equation_form); 
             equation = {
@@ -27,16 +31,16 @@ int main(void)
             };
 
             print_result(equation); 
-        }
-
-        exit_program = wait_for_newline_or_exit();        
+        }        
              
-        if (!exit_program) 
+        if (input_char_signal != EXIT_KEY) 
         {
             send_try_again(); 
         }
     }
-    printf("Выход!\ns");
+    while (input_char_signal != EXIT_KEY);
+
+    printf("Выход!\n");
     
     return 0;
 }

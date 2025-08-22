@@ -9,4 +9,11 @@ enum NumberOfEquationRoots
     TWO_ROOTS
 };
 
+enum InputCharSignal
+{
+    CORRECT_INPUT,
+    INCORRECT_INPUT,
+    EXIT_KEY
+};
+
 #endif
