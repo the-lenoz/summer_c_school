@@ -28,7 +28,7 @@ int test_are_doubles_equal(void)
         result = are_doubles_equal(test_case.a, test_case.b);
         if (result != test_case.result)
         {
-            printf(ANSI_COLOR_RED "TEST CASE FAILED! expexted: %d. got: %d\n" ANSI_COLOR_RESET, result, test_case.result);
+            printf(ANSI_COLOR_RED "TEST CASE FAILED! expexted: %d. got: %d\n" ANSI_COLOR_RESET, test_case.result, result);
             return 0;
         }
     }

@@ -1,3 +1,4 @@
+#define UNUSED(x) (void)(x)
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,16 +8,16 @@
 
 #include "equation_solvers.hpp"
 #include "user_interface.hpp"
-#include "cli.hpp"
 
-// -f / --file file_name
-// ./main -f -h
-// -t / --test
+#include "cli_structures.hpp"
+
+#include "cli.hpp"
 
 const int max_file_path_len = 512;
 
-void print_help(void)
+int print_help(const void* dummy_stub)
 {
+    UNUSED(dummy_stub);
     printf("Решатель квадратных уравнений. Вызов:\n");
     printf("main [-флаги] [аргументы]\n");
     printf("    --help, -h                  -   Показать подсказку\n");
@@ -24,9 +25,10 @@ void print_help(void)
     printf("    --test, -t                  -   Запустить юнит-тесты\n");
     printf("    [a b c]                     -   3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0\n");
     printf("                                -   Без аргументов - запустить в интерактивном режиме\n");
+    return 0;
 }
 
-int is_flag_set(int argc, char** argv, char* flag)
+int is_flag_set(int argc, const char** argv, const char* flag)
 {
     for (int i = 1; i < argc; ++i)
     {
@@ -38,14 +40,21 @@ int is_flag_set(int argc, char** argv, char* flag)
     return 0;
 }
 
-
-int run_cli_from_args(int argc, char** argv)
+// 82734382adbsbdabda
+int run_cli_from_args(int argc, const char** argv)
 {
-    if (argc == 4){
+    if (argc == 4)
+    {
         QuadraticEquationForm equation_form = {};
-        equation_form.a = strtod(argv[1], NULL);
-        equation_form.b = strtod(argv[2], NULL);
-        equation_form.c = strtod(argv[3], NULL);
+        
+        if (!sscanf(argv[1], "%lg", &equation_form.a) || 
+            !sscanf(argv[2], "%lg", &equation_form.b) || 
+            !sscanf(argv[3], "%lg\n", &equation_form.c))
+        {
+            print_help(NULL);
+            return 1;
+        }
+
         QuadraticEquationSolutionOutput result = solve_quadratic_equation(equation_form); 
 
         SolvedQuadraticEquation equation = {
@@ -56,14 +65,15 @@ int run_cli_from_args(int argc, char** argv)
     }
     else 
     {
-        print_help();
+        print_help(NULL);
         return 1;
     }
     return 0;
 }
 
-int run_cli_from_file(char* file_path)
+int run_cli_from_file(const void* file_path_input)
 {
+    const char* file_path = (const char*)file_path_input;
     FILE* file_ptr = NULL;
     QuadraticEquationForm equation_form = {};
     SolvedQuadraticEquation equation = {};
@@ -99,6 +109,7 @@ int run_cli_from_file(char* file_path)
             result
         };
         print_result(equation); 
+        printf("\n");
     }
 
     fclose(file_ptr);

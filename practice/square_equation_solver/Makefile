@@ -47,3 +47,10 @@ $(TEST_EXECUTABLE): $(TEST_OBJECTS) $(LIB_OBJECTS)
 .cpp.o:
 	$(CC) $(CFLAGS) $(INC_PARAMS) $< -c -o $@
 
+depend: .depend
+
+.depend: $(SRCS)
+        rm -f "$@"
+        $(CC) $(CFLAGS) -MM $^ -MF "$@"
+
+include .depend

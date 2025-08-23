@@ -1,3 +1,5 @@
+#define UNUSED(x) (void)(x)
+
 #include <stdio.h>
 
 #include "test_double_operations.hpp"
@@ -23,11 +25,12 @@ TestRunStructure test_runs[] = {
     }
 };
 
-const int test_runs_number = 3;
+const int test_runs_number = sizeof(test_runs) / sizeof(TestRunStructure);
 
 
-int run_all_tests(void)
+int run_all_tests(const void* dummy_stub)
 {
+    UNUSED(dummy_stub);
     printf(ANSI_COLOR_YELLOW "Starting tests...\n" ANSI_COLOR_RESET);
     for (int i = 0; i < test_runs_number; ++i)
     {

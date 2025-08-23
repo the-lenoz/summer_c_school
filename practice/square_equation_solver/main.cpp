@@ -6,10 +6,42 @@
 
 #include "user_interface.hpp"
 #include "cli.hpp"
+#include "cli_structures.hpp"
 
 #include "tests/all_tests.hpp"
 
-int main(int argc, char** argv)
+
+CLIFunctionWithFlag flag_runs[] = {
+    {
+        .CLI_run_function_ptr = print_help,
+        .flag = "-h",
+    },
+    {
+        .CLI_run_function_ptr = print_help,
+        .flag = "--help"
+    },
+    {
+        .CLI_run_function_ptr = run_cli_from_file,
+        .flag = "-f"
+    },
+    {
+        .CLI_run_function_ptr = run_cli_from_file,
+        .flag = "--file"
+    },
+    {
+        .CLI_run_function_ptr = run_all_tests,
+        .flag = "-t"
+    },
+    {
+        .CLI_run_function_ptr = run_all_tests,
+        .flag = "--test"
+    }
+};
+
+const int flag_runs_number = sizeof(flag_runs) / sizeof(CLIFunctionWithFlag);
+
+
+int main(int argc, const char** argv)
 {
     int file_flag_index = 0;
     if (argc == 1)
@@ -18,32 +50,23 @@ int main(int argc, char** argv)
     } 
     else
     {
-        if (is_flag_set(argc, argv, "-h") || is_flag_set(argc, argv, "--help"))
+        for (int i = 0; i < flag_runs_number; ++i)
         {
-            print_help();
-            return 0;
-        }
-        else if ((file_flag_index = is_flag_set(argc, argv, "-f")) || (file_flag_index = is_flag_set(argc, argv, "--file")))
-        {
-            return run_cli_from_file(argc > file_flag_index - 1 ? argv[file_flag_index + 1] : NULL);
-        }
-        else if (is_flag_set(argc, argv, "-t") || is_flag_set(argc, argv, "--test"))
-        {
-            return run_all_tests();
-        }
-        else
-        {
-            if (argc == 4)
+            if ((file_flag_index = is_flag_set(argc, argv, flag_runs[i].flag)))
             {
-                return run_cli_from_args(argc, argv); 
-            }
-            else
-            {
-                // Неверный формат вызова
-                print_help(); 
-                return 1;
+                return (*flag_runs[i].CLI_run_function_ptr)((const void*)(argc > file_flag_index - 1 ? argv[file_flag_index + 1] : NULL));
             }
         }
+    }
+    if (argc == 4)
+    {
+        return run_cli_from_args(argc, argv); 
+    }
+    else
+    {
+        // Неверный формат вызова
+        print_help(NULL); 
+        return 1;
     }
 }
 
