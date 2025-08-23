@@ -49,8 +49,8 @@ $(TEST_EXECUTABLE): $(TEST_OBJECTS) $(LIB_OBJECTS)
 
 depend: .depend
 
-.depend: $(SRCS)
-        rm -f "$@"
-        $(CC) $(CFLAGS) -MM $^ -MF "$@"
+.depend: $(LIB_SOURCES) $(EXECUTABLE_SOURCES)
+	rm -f "$@"
+	$(CC) $(CFLAGS) $(INC_PARAMS) -MM $^ -MF "$@"
 
 include .depend
