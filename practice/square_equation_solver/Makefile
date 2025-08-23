@@ -13,7 +13,7 @@ LDFLAGS=
 INC=tests .
 INC_PARAMS=$(foreach d, $(INC), -I$d)
 
-LIB_SOURCES=user_interface.cpp double_operations.cpp equation_solvers.cpp 
+LIB_SOURCES=user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp tests/all_tests.cpp tests/test_double_operations.cpp tests/test_equation_solvers.cpp 
 LIB_OBJECTS=$(LIB_SOURCES:.cpp=.o)
 
 EXECUTABLE_SOURCES=main.cpp
@@ -21,21 +21,23 @@ EXECUTABLE_OBJECTS=$(EXECUTABLE_SOURCES:.cpp=.o)
 EXECUTABLE=main
 
 
-TEST_SOURCES=tests/all_tests.cpp tests/test_double_operations.cpp tests/test_equation_solvers.cpp
+TEST_SOURCES=tests/main.cpp
 
 TEST_OBJECTS=$(TEST_SOURCES:.cpp=.o)
-TEST_EXECUTABLE=tests/all_tests
+TEST_EXECUTABLE=tests/main
 
 
-all: $(EXECUTABLE)
+all: $(EXECUTABLE) test
+
 test: $(TEST_EXECUTABLE)
 
 clean:
-	rm *.o
-	rm $(EXECUTABLE)
-	rm tests/*.o
-	rm $(TEST_EXECUTABLE)
-	
+	rm *.o || true
+	rm $(EXECUTABLE) || true
+	rm tests/*.o || true
+	rm $(TEST_EXECUTABLE) || true
+
+
 $(EXECUTABLE): $(EXECUTABLE_OBJECTS) $(LIB_OBJECTS)
 	$(CC) $(LDFLAGS) $(EXECUTABLE_OBJECTS) $(LIB_OBJECTS) -o $@
 

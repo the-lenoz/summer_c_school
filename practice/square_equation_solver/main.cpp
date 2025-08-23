@@ -1,47 +1,49 @@
 #include <stdio.h>
 #include <math.h>
-#include <assert.h>
+#include <string.h>
 
 #include "square_equation_structures.hpp"
 
 #include "user_interface.hpp"
-#include "equation_solvers.hpp"
+#include "cli.hpp"
 
+#include "tests/all_tests.hpp"
 
-int main(void)
+int main(int argc, char** argv)
 {
-    int input_length = 0;
-    InputCharSignal input_char_signal = CORRECT_INPUT;
-    QuadraticEquationForm equation_form = {0};
-    QuadraticEquationSolutionOutput result = {0};
-    SolvedQuadraticEquation equation = {0};
-    
-    send_greeting();
-    do
+    int file_flag_index = 0;
+    if (argc == 1)
     {
-        input_length = read_input(&equation_form);
-        input_char_signal = wait_for_newline_or_exit();
-
-        if (input_length == 3 and input_char_signal == CORRECT_INPUT) 
+        return run_user_loop();
+    } 
+    else
+    {
+        if (is_flag_set(argc, argv, "-h") || is_flag_set(argc, argv, "--help"))
         {
-            result = solve_quadratic_equation(equation_form); 
-            equation = {
-                equation_form,
-                result
-            };
-
-            print_result(equation); 
-        }        
-             
-        if (input_char_signal != EXIT_KEY) 
+            print_help();
+            return 0;
+        }
+        else if ((file_flag_index = is_flag_set(argc, argv, "-f")) || (file_flag_index = is_flag_set(argc, argv, "--file")))
         {
-            send_try_again(); 
+            return run_cli_from_file(argc > file_flag_index - 1 ? argv[file_flag_index + 1] : NULL);
+        }
+        else if (is_flag_set(argc, argv, "-t") || is_flag_set(argc, argv, "--test"))
+        {
+            return run_all_tests();
+        }
+        else
+        {
+            if (argc == 4)
+            {
+                return run_cli_from_args(argc, argv); 
+            }
+            else
+            {
+                // Неверный формат вызова
+                print_help(); 
+                return 1;
+            }
         }
     }
-    while (input_char_signal != EXIT_KEY);
-
-    printf("Выход!\n");
-    
-    return 0;
 }
 

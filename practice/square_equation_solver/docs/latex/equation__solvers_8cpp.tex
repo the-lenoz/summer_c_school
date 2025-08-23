@@ -1,0 +1,72 @@
+\doxysection{equation\+\_\+solvers.\+cpp File Reference}
+\hypertarget{equation__solvers_8cpp}{}\label{equation__solvers_8cpp}\index{equation\_solvers.cpp@{equation\_solvers.cpp}}
+{\ttfamily \#include $<$math.\+h$>$}\newline
+{\ttfamily \#include $<$assert.\+h$>$}\newline
+{\ttfamily \#include "{}square\+\_\+equation\+\_\+structures.\+hpp"{}}\newline
+{\ttfamily \#include "{}solver\+\_\+enums.\+hpp"{}}\newline
+{\ttfamily \#include "{}double\+\_\+operations.\+hpp"{}}\newline
+{\ttfamily \#include "{}equation\+\_\+solvers.\+hpp"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa}{solve\+\_\+linear\+\_\+equation}} (double k, double b, \mbox{\hyperlink{solver__enums_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}number\+\_\+of\+\_\+roots)
+\begin{DoxyCompactList}\small\item\em Function solves linear equation of kx + b = 0 form. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structQuadraticEquationSolutionOutput}{Quadratic\+Equation\+Solution\+Output}} \mbox{\hyperlink{equation__solvers_8cpp_a817773e2ebc73cbf95e63d20d6a7b3ea}{solve\+\_\+quadratic\+\_\+equation}} (\mbox{\hyperlink{structQuadraticEquationForm}{Quadratic\+Equation\+Form}} equation\+\_\+form)
+\begin{DoxyCompactList}\small\item\em Function solves quadratic equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{equation__solvers_8cpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa}\index{equation\_solvers.cpp@{equation\_solvers.cpp}!solve\_linear\_equation@{solve\_linear\_equation}}
+\index{solve\_linear\_equation@{solve\_linear\_equation}!equation\_solvers.cpp@{equation\_solvers.cpp}}
+\doxysubsubsection{\texorpdfstring{solve\_linear\_equation()}{solve\_linear\_equation()}}
+{\footnotesize\ttfamily \label{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa} 
+double solve\+\_\+linear\+\_\+equation (\begin{DoxyParamCaption}\item[{double}]{k}{, }\item[{double}]{b}{, }\item[{\mbox{\hyperlink{solver__enums_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}}]{number\+\_\+of\+\_\+roots}{}\end{DoxyParamCaption})}
+
+
+
+Function solves linear equation of kx + b = 0 form. 
+
+double solve\+\_\+linear\+\_\+equation(double k, double b) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em k} & -\/ the first coefficent \\
+\hline
+\mbox{\texttt{in}}  & {\em k} & -\/ the second coefficent \\
+\hline
+\mbox{\texttt{out}}  & {\em number\+\_\+of\+\_\+roots} & -\/ number of equation roots\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+root if exists, INF if anything is a root and NAN if a root doesn\textquotesingle{}t exist. 
+\end{DoxyReturn}
+\Hypertarget{equation__solvers_8cpp_a817773e2ebc73cbf95e63d20d6a7b3ea}\index{equation\_solvers.cpp@{equation\_solvers.cpp}!solve\_quadratic\_equation@{solve\_quadratic\_equation}}
+\index{solve\_quadratic\_equation@{solve\_quadratic\_equation}!equation\_solvers.cpp@{equation\_solvers.cpp}}
+\doxysubsubsection{\texorpdfstring{solve\_quadratic\_equation()}{solve\_quadratic\_equation()}}
+{\footnotesize\ttfamily \label{equation__solvers_8cpp_a817773e2ebc73cbf95e63d20d6a7b3ea} 
+\mbox{\hyperlink{structQuadraticEquationSolutionOutput}{Quadratic\+Equation\+Solution\+Output}} solve\+\_\+quadratic\+\_\+equation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQuadraticEquationForm}{Quadratic\+Equation\+Form}}}]{equation\+\_\+form}{}\end{DoxyParamCaption})}
+
+
+
+Function solves quadratic equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. 
+
+int solve\+\_\+quadratic\+\_\+equation(double a, double b, double c, double\texorpdfstring{$\ast$}{*} x1, double\texorpdfstring{$\ast$}{*} x2) 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em a} & -\/ the first coefficent \\
+\hline
+\mbox{\texttt{in}}  & {\em b} & -\/ the second coefficent \\
+\hline
+\mbox{\texttt{in}}  & {\em c} & -\/ the third coefficent \\
+\hline
+\mbox{\texttt{out}}  & {\em x1} & -\/ the first root \\
+\hline
+\mbox{\texttt{out}}  & {\em x2} & -\/ the second root\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+status code 
+\end{DoxyReturn}

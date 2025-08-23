@@ -7,6 +7,13 @@
 const char ESCAPE_KEY = 27;
 
 //---------------------------------------------------------------
+//! int run_user_cycle(void)
+//! @brief Function runs user loop
+//! @return process status code
+//---------------------------------------------------------------
+int run_user_loop(void);
+
+//---------------------------------------------------------------
 //! void send_greeting(void)
 //! @brief Function sends greeting to user. 
 //---------------------------------------------------------------

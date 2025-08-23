@@ -1,5 +1,4 @@
 #include <math.h>
-#include <assert.h>
 
 #include "square_equation_structures.hpp"
 #include "solver_enums.hpp"
@@ -10,6 +9,12 @@
 
 double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots)
 {
+    if (!isfinite(k) || !isfinite(b))
+    {
+        *number_of_roots = ZERO_ROOTS;
+        return NAN;
+    }
+
     if (are_doubles_equal(k, 0)) 
     {
         // Константа, не зависит от x
@@ -33,11 +38,13 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
 
 QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm equation_form)
 {
-    assert(isfinite(equation_form.a));
-    assert(isfinite(equation_form.b));
-    assert(isfinite(equation_form.c));
-
     QuadraticEquationSolutionOutput result = {0, 0, TWO_ROOTS};
+
+    if (!isfinite(equation_form.a) || !isfinite(equation_form.b) || !isfinite(equation_form.c))
+    {
+        result.number_of_roots = ZERO_ROOTS;
+        return result;
+    }
     
     if (are_doubles_equal(equation_form.a, 0)) // Линейное уравнение
     {
