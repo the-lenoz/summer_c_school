@@ -3,28 +3,30 @@
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{cli_8hpp_a402ea961bfc2ffeee61e3a7c330b1559}{print\+\_\+help}} (void)
+int \mbox{\hyperlink{cli_8hpp_a525e211f7d78a5b6d5bb713e75bab3e0}{print\+\_\+help}} (const void \texorpdfstring{$\ast$}{*}dummy\+\_\+stub)
 \begin{DoxyCompactList}\small\item\em Function prints help to user. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{cli_8hpp_a24fffec7b80e9eb41aefdcb050fbf840}{is\+\_\+flag\+\_\+set}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, char \texorpdfstring{$\ast$}{*}flag)
+int \mbox{\hyperlink{cli_8hpp_a8b67fac5590a5b5de401b4a40aecfc70}{is\+\_\+flag\+\_\+set}} (int argc, const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv, const char \texorpdfstring{$\ast$}{*}flag)
 \begin{DoxyCompactList}\small\item\em Function checks is cli flag set. \end{DoxyCompactList}\item 
-int \mbox{\hyperlink{cli_8hpp_a47e99ec7d8d53a3576707b47b1544b5b}{run\+\_\+cli}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
-\begin{DoxyCompactList}\small\item\em Function runs calculation based on values from arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+int \mbox{\hyperlink{cli_8hpp_a8e311d514cbc8c136fbf95dddc7b6382}{run\+\_\+cli\+\_\+from\+\_\+args}} (int argc, const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\begin{DoxyCompactList}\small\item\em Function runs calculation based on values from arguments. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{cli_8hpp_a0073e76447ab75e0ba805438791e59a8}{run\+\_\+cli\+\_\+from\+\_\+file}} (const void \texorpdfstring{$\ast$}{*}run\+\_\+cli\+\_\+from\+\_\+file\+\_\+structure)
+\begin{DoxyCompactList}\small\item\em Function runs calculation based on values from file in format {\ttfamily a b c} \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \label{doc-func-members}
 \Hypertarget{cli_8hpp_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{cli_8hpp_a24fffec7b80e9eb41aefdcb050fbf840}\index{cli.hpp@{cli.hpp}!is\_flag\_set@{is\_flag\_set}}
+\Hypertarget{cli_8hpp_a8b67fac5590a5b5de401b4a40aecfc70}\index{cli.hpp@{cli.hpp}!is\_flag\_set@{is\_flag\_set}}
 \index{is\_flag\_set@{is\_flag\_set}!cli.hpp@{cli.hpp}}
 \doxysubsubsection{\texorpdfstring{is\_flag\_set()}{is\_flag\_set()}}
-{\footnotesize\ttfamily \label{cli_8hpp_a24fffec7b80e9eb41aefdcb050fbf840} 
-int is\+\_\+flag\+\_\+set (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{flag}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{cli_8hpp_a8b67fac5590a5b5de401b4a40aecfc70} 
+int is\+\_\+flag\+\_\+set (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{flag}{}\end{DoxyParamCaption})}
 
 
 
 Function checks is cli flag set. 
 
-int \doxylink{cli_8hpp_a24fffec7b80e9eb41aefdcb050fbf840}{is\+\_\+flag\+\_\+set(int argc, char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} argv, char\texorpdfstring{$\ast$}{*} flag)} 
+int is\+\_\+flag\+\_\+set(int argc, char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} argv, char\texorpdfstring{$\ast$}{*} flag) 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\texttt{in}}  & {\em argc} & -\/ number of CLI arguments \\
 \hline
@@ -36,31 +38,54 @@ int \doxylink{cli_8hpp_a24fffec7b80e9eb41aefdcb050fbf840}{is\+\_\+flag\+\_\+set(
 \begin{DoxyReturn}{Returns}
 flag index in argv array if flag set else 0 
 \end{DoxyReturn}
-\Hypertarget{cli_8hpp_a402ea961bfc2ffeee61e3a7c330b1559}\index{cli.hpp@{cli.hpp}!print\_help@{print\_help}}
+\Hypertarget{cli_8hpp_a525e211f7d78a5b6d5bb713e75bab3e0}\index{cli.hpp@{cli.hpp}!print\_help@{print\_help}}
 \index{print\_help@{print\_help}!cli.hpp@{cli.hpp}}
 \doxysubsubsection{\texorpdfstring{print\_help()}{print\_help()}}
-{\footnotesize\ttfamily \label{cli_8hpp_a402ea961bfc2ffeee61e3a7c330b1559} 
-void print\+\_\+help (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{cli_8hpp_a525e211f7d78a5b6d5bb713e75bab3e0} 
+int print\+\_\+help (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{dummy\+\_\+stub}{}\end{DoxyParamCaption})}
 
 
 
 Function prints help to user. 
 
-void \doxylink{cli_8hpp_a402ea961bfc2ffeee61e3a7c330b1559}{print\+\_\+help(void)} \Hypertarget{cli_8hpp_a47e99ec7d8d53a3576707b47b1544b5b}\index{cli.hpp@{cli.hpp}!run\_cli@{run\_cli}}
-\index{run\_cli@{run\_cli}!cli.hpp@{cli.hpp}}
-\doxysubsubsection{\texorpdfstring{run\_cli()}{run\_cli()}}
-{\footnotesize\ttfamily \label{cli_8hpp_a47e99ec7d8d53a3576707b47b1544b5b} 
-int run\+\_\+cli (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+int print\+\_\+help(void) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em dummy\+\_\+stub} & -\/ stub parameter to unify functions input format \\
+\hline
+\end{DoxyParams}
+\Hypertarget{cli_8hpp_a8e311d514cbc8c136fbf95dddc7b6382}\index{cli.hpp@{cli.hpp}!run\_cli\_from\_args@{run\_cli\_from\_args}}
+\index{run\_cli\_from\_args@{run\_cli\_from\_args}!cli.hpp@{cli.hpp}}
+\doxysubsubsection{\texorpdfstring{run\_cli\_from\_args()}{run\_cli\_from\_args()}}
+{\footnotesize\ttfamily \label{cli_8hpp_a8e311d514cbc8c136fbf95dddc7b6382} 
+int run\+\_\+cli\+\_\+from\+\_\+args (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{const char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
 
 
 
 Function runs calculation based on values from arguments. 
 
-int \doxylink{cli_8hpp_a47e99ec7d8d53a3576707b47b1544b5b}{run\+\_\+cli(int argc, char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} argv)} 
+int run\+\_\+cli\+\_\+from\+\_\+args(int argc, char\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} argv) 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\texttt{in}}  & {\em argc} & -\/ number of CLI arguments \\
+\mbox{\texttt{in}}  & {\em argc} & -\/ args count \\
 \hline
-\mbox{\texttt{in}}  & {\em argv} & -\/ CLI arguments \\
+\mbox{\texttt{in}}  & {\em argv} & -\/ args array \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+process status code 
+\end{DoxyReturn}
+\Hypertarget{cli_8hpp_a0073e76447ab75e0ba805438791e59a8}\index{cli.hpp@{cli.hpp}!run\_cli\_from\_file@{run\_cli\_from\_file}}
+\index{run\_cli\_from\_file@{run\_cli\_from\_file}!cli.hpp@{cli.hpp}}
+\doxysubsubsection{\texorpdfstring{run\_cli\_from\_file()}{run\_cli\_from\_file()}}
+{\footnotesize\ttfamily \label{cli_8hpp_a0073e76447ab75e0ba805438791e59a8} 
+int run\+\_\+cli\+\_\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{run\+\_\+cli\+\_\+from\+\_\+file\+\_\+structure}{}\end{DoxyParamCaption})}
+
+
+
+Function runs calculation based on values from file in format {\ttfamily a b c} 
+
+int run\+\_\+cli\+\_\+from\+\_\+file(char\texorpdfstring{$\ast$}{*} file\+\_\+path) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em run\+\_\+cli\+\_\+from\+\_\+file\+\_\+structure} & -\/ Run\+Cli\+From\+File structure containing file path \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}

@@ -1,7 +1,6 @@
 #include <math.h>
 
-#include "square_equation_structures.hpp"
-#include "solver_enums.hpp"
+#include "square_equation_types.hpp"
 #include "double_operations.hpp"
 
 #include "equation_solvers.hpp"

@@ -1,15 +1,13 @@
 \doxysection{equation\+\_\+solvers.\+cpp File Reference}
 \hypertarget{equation__solvers_8cpp}{}\label{equation__solvers_8cpp}\index{equation\_solvers.cpp@{equation\_solvers.cpp}}
 {\ttfamily \#include $<$math.\+h$>$}\newline
-{\ttfamily \#include $<$assert.\+h$>$}\newline
-{\ttfamily \#include "{}square\+\_\+equation\+\_\+structures.\+hpp"{}}\newline
-{\ttfamily \#include "{}solver\+\_\+enums.\+hpp"{}}\newline
+{\ttfamily \#include "{}square\+\_\+equation\+\_\+types.\+hpp"{}}\newline
 {\ttfamily \#include "{}double\+\_\+operations.\+hpp"{}}\newline
 {\ttfamily \#include "{}equation\+\_\+solvers.\+hpp"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-double \mbox{\hyperlink{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa}{solve\+\_\+linear\+\_\+equation}} (double k, double b, \mbox{\hyperlink{solver__enums_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}number\+\_\+of\+\_\+roots)
+double \mbox{\hyperlink{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa}{solve\+\_\+linear\+\_\+equation}} (double k, double b, \mbox{\hyperlink{square__equation__types_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}number\+\_\+of\+\_\+roots)
 \begin{DoxyCompactList}\small\item\em Function solves linear equation of kx + b = 0 form. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{structQuadraticEquationSolutionOutput}{Quadratic\+Equation\+Solution\+Output}} \mbox{\hyperlink{equation__solvers_8cpp_a817773e2ebc73cbf95e63d20d6a7b3ea}{solve\+\_\+quadratic\+\_\+equation}} (\mbox{\hyperlink{structQuadraticEquationForm}{Quadratic\+Equation\+Form}} equation\+\_\+form)
 \begin{DoxyCompactList}\small\item\em Function solves quadratic equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -22,7 +20,7 @@ double \mbox{\hyperlink{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa
 \index{solve\_linear\_equation@{solve\_linear\_equation}!equation\_solvers.cpp@{equation\_solvers.cpp}}
 \doxysubsubsection{\texorpdfstring{solve\_linear\_equation()}{solve\_linear\_equation()}}
 {\footnotesize\ttfamily \label{equation__solvers_8cpp_aa4b0dbd14e93be724a8dbc0257f158fa} 
-double solve\+\_\+linear\+\_\+equation (\begin{DoxyParamCaption}\item[{double}]{k}{, }\item[{double}]{b}{, }\item[{\mbox{\hyperlink{solver__enums_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}}]{number\+\_\+of\+\_\+roots}{}\end{DoxyParamCaption})}
+double solve\+\_\+linear\+\_\+equation (\begin{DoxyParamCaption}\item[{double}]{k}{, }\item[{double}]{b}{, }\item[{\mbox{\hyperlink{square__equation__types_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}}]{number\+\_\+of\+\_\+roots}{}\end{DoxyParamCaption})}
 
 
 

@@ -22,13 +22,13 @@ int test_are_doubles_equal(void)
 
     while (fscanf(test_cases_file_pointer, "a: %lg b: %lg result: %d\n", &test_case.a, &test_case.b, &test_case.result) == 3)
     {
-        printf(ANSI_COLOR_YELLOW "Tesing case a: %lg, b: %lg, expected result: %d\n" ANSI_COLOR_RESET, 
+        printf_yellow("Tesing case a: %lg, b: %lg, expected result: %d\n", 
             test_case.a, test_case.b, test_case.result);
         
         result = are_doubles_equal(test_case.a, test_case.b);
         if (result != test_case.result)
         {
-            printf(ANSI_COLOR_RED "TEST CASE FAILED! expexted: %d. got: %d\n" ANSI_COLOR_RESET, test_case.result, result);
+            printf_red("TEST CASE FAILED! expexted: %d. got: %d\n", test_case.result, result);
             return 0;
         }
     }

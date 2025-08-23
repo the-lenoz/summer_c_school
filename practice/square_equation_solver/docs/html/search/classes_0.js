@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['doublesequalitytestdata_0',['DoublesEqualityTestData',['../structDoublesEqualityTestData.html',1,'']]]
+  ['clifunctionwithflag_0',['CLIFunctionWithFlag',['../structCLIFunctionWithFlag.html',1,'']]]
 ];

@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['incorrect_5finput_0',['INCORRECT_INPUT',['../user__interface__enums_8hpp.html#ae0a1ae6e25a79ad284b66a8a6299a955aa0813ae740a896d6bd0ef36f7fe3dba3',1,'user_interface_enums.hpp']]],
-  ['infinite_5froots_1',['INFINITE_ROOTS',['../solver__enums_8hpp.html#acbe02258bce62ef34e026dad280774a4aa8e8d18b2a4bb297be3e39d332e146bb',1,'solver_enums.hpp']]],
-  ['inputcharsignal_2',['InputCharSignal',['../user__interface__enums_8hpp.html#ae0a1ae6e25a79ad284b66a8a6299a955',1,'user_interface_enums.hpp']]],
-  ['is_5fflag_5fset_3',['is_flag_set',['../cli_8cpp.html#a24fffec7b80e9eb41aefdcb050fbf840',1,'is_flag_set(int argc, char **argv, char *flag):&#160;cli.cpp'],['../cli_8hpp.html#a24fffec7b80e9eb41aefdcb050fbf840',1,'is_flag_set(int argc, char **argv, char *flag):&#160;cli.cpp']]]
+  ['get_5fequation_5froots_5fnumber_5fenum_5fby_5fstr_0',['get_equation_roots_number_enum_by_str',['../number__of__equation__roots__str__enum_8cpp.html#a81dd268ad3bb33575abdd61942baa399',1,'get_equation_roots_number_enum_by_str(const char *number_of_roots_str):&#160;number_of_equation_roots_str_enum.cpp'],['../number__of__equation__roots__str__enum_8hpp.html#a81dd268ad3bb33575abdd61942baa399',1,'get_equation_roots_number_enum_by_str(const char *number_of_roots_str):&#160;number_of_equation_roots_str_enum.cpp']]],
+  ['get_5fequation_5froots_5fnumber_5fstr_5fby_5fenum_1',['get_equation_roots_number_str_by_enum',['../number__of__equation__roots__str__enum_8cpp.html#aa57ccdbabd6ae131cf2a40ac95c6d23a',1,'get_equation_roots_number_str_by_enum(NumberOfEquationRoots number_of_roots):&#160;number_of_equation_roots_str_enum.cpp'],['../number__of__equation__roots__str__enum_8hpp.html#aa57ccdbabd6ae131cf2a40ac95c6d23a',1,'get_equation_roots_number_str_by_enum(NumberOfEquationRoots number_of_roots):&#160;number_of_equation_roots_str_enum.cpp']]]
 ];

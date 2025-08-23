@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linearequationsolvertestdata_0',['LinearEquationSolverTestData',['../structLinearEquationSolverTestData.html',1,'']]]
+  ['doublesequalitytestdata_0',['DoublesEqualityTestData',['../structDoublesEqualityTestData.html',1,'']]]
 ];

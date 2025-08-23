@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.14.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>SquareEquationSolver: tests/colors.hpp Source File</title>
+<title>SquareEquationSolver: colors.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -100,14 +100,35 @@ $(function(){initNavTree('colors_8hpp_source.html','',''); });
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="colors_8hpp.html#a92a364c2b863dde1a024a77eac2a5b3b">    8</a></span><span class="preprocessor">#define ANSI_COLOR_RESET   &quot;\x1b[0m&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keywordtype">int</span> <a class="code hl_function" href="colors_8hpp.html#aa34b420e1dba428509030af1c5d9257a">vprintf_color</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* color, <span class="keyword">const</span> <span class="keywordtype">char</span>* format, va_list ap);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keywordtype">int</span> <a class="code hl_function" href="colors_8hpp.html#abc033b8207c285f42462029fab142125">printf_red</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> <a class="code hl_function" href="colors_8hpp.html#a4f5117b46edb71205389c9b82e4cd506">printf_green</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...);</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//----------------------------------------------------------------------------</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">int</span> <a class="code hl_function" href="colors_8hpp.html#ab2a15f475debdacf79d30caccddc0d53">printf_yellow</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* format, ...);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="acolors_8hpp_html_a4f5117b46edb71205389c9b82e4cd506"><div class="ttname"><a href="colors_8hpp.html#a4f5117b46edb71205389c9b82e4cd506">printf_green</a></div><div class="ttdeci">int printf_green(const char *format,...)</div><div class="ttdoc">int printf_green(char* format, ...) This function works like standard printf but prints all in red co...</div><div class="ttdef"><b>Definition</b> colors.cpp:38</div></div>
+<div class="ttc" id="acolors_8hpp_html_aa34b420e1dba428509030af1c5d9257a"><div class="ttname"><a href="colors_8hpp.html#aa34b420e1dba428509030af1c5d9257a">vprintf_color</a></div><div class="ttdeci">int vprintf_color(const char *color, const char *format, va_list ap)</div><div class="ttdoc">int printf_red(char* format, ...) This function works like standard printf but prints all in red colo...</div><div class="ttdef"><b>Definition</b> colors.cpp:8</div></div>
+<div class="ttc" id="acolors_8hpp_html_ab2a15f475debdacf79d30caccddc0d53"><div class="ttname"><a href="colors_8hpp.html#ab2a15f475debdacf79d30caccddc0d53">printf_yellow</a></div><div class="ttdeci">int printf_yellow(const char *format,...)</div><div class="ttdoc">int printf_red(char* format, ...) This function works like standard printf but prints all in red colo...</div><div class="ttdef"><b>Definition</b> colors.cpp:46</div></div>
+<div class="ttc" id="acolors_8hpp_html_abc033b8207c285f42462029fab142125"><div class="ttname"><a href="colors_8hpp.html#abc033b8207c285f42462029fab142125">printf_red</a></div><div class="ttdeci">int printf_red(const char *format,...)</div><div class="ttdoc">int printf_red(char* format, ...) This function works like standard printf but prints all in red colo...</div><div class="ttdef"><b>Definition</b> colors.cpp:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_59425e443f801f1f2fd8bbe4959a3ccf.html">tests</a></li><li class="navelem"><a href="colors_8hpp.html">colors.hpp</a></li>
+    <li class="navelem"><a href="colors_8hpp.html">colors.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>

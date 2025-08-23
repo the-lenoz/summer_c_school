@@ -98,19 +98,42 @@ $(function(){initNavTree('all__tests_8cpp.html','',''); });
 <code>#include &quot;<a class="el" href="test__structures_8hpp_source.html">test_structures.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="all__tests_8hpp_source.html">all_tests.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a86d500a34c624c2cae56bc25a31b12f3" id="r_a86d500a34c624c2cae56bc25a31b12f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a>(x)</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a5d17768b1ecbffe756dbf22167d2b91b" id="r_a5d17768b1ecbffe756dbf22167d2b91b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5d17768b1ecbffe756dbf22167d2b91b">run_all_tests</a> (void)</td></tr>
-<tr class="memdesc:a5d17768b1ecbffe756dbf22167d2b91b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function runs all unit tests.  <br /></td></tr>
+<tr class="memitem:ae1640bbea635d532bac1221b599fbd19" id="r_ae1640bbea635d532bac1221b599fbd19"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae1640bbea635d532bac1221b599fbd19">run_all_tests</a> (const void *dummy_stub)</td></tr>
+<tr class="memdesc:ae1640bbea635d532bac1221b599fbd19"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function runs all unit tests.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:a2863819a31225bf03d48e7b4d6c1121c" id="r_a2863819a31225bf03d48e7b4d6c1121c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structTestRunStructure.html">TestRunStructure</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2863819a31225bf03d48e7b4d6c1121c">test_runs</a> []</td></tr>
-<tr class="memitem:a528b85f504987c51aed7bcfdb5ce260f" id="r_a528b85f504987c51aed7bcfdb5ce260f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a528b85f504987c51aed7bcfdb5ce260f">test_runs_number</a> = 3</td></tr>
+<tr class="memitem:a528b85f504987c51aed7bcfdb5ce260f" id="r_a528b85f504987c51aed7bcfdb5ce260f"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a528b85f504987c51aed7bcfdb5ce260f">test_runs_number</a> = sizeof(<a class="el" href="#a2863819a31225bf03d48e7b4d6c1121c">test_runs</a>) / sizeof(<a class="el" href="structTestRunStructure.html">TestRunStructure</a>)</td></tr>
 </table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="a86d500a34c624c2cae56bc25a31b12f3" name="a86d500a34c624c2cae56bc25a31b12f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d500a34c624c2cae56bc25a31b12f3">&#9670;&#160;</a></span>UNUSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UNUSED</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(void)(x)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a5d17768b1ecbffe756dbf22167d2b91b" name="a5d17768b1ecbffe756dbf22167d2b91b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d17768b1ecbffe756dbf22167d2b91b">&#9670;&#160;</a></span>run_all_tests()</h2>
+<a id="ae1640bbea635d532bac1221b599fbd19" name="ae1640bbea635d532bac1221b599fbd19"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1640bbea635d532bac1221b599fbd19">&#9670;&#160;</a></span>run_all_tests()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -118,14 +141,20 @@ Variables</h2></td></tr>
         <tr>
           <td class="memname">int run_all_tests </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>dummy_stub</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function runs all unit tests. </p>
-<p>int <a class="el" href="all__tests_8hpp.html#a5d17768b1ecbffe756dbf22167d2b91b" title="Function runs all unit tests.">run_all_tests(void)</a> </p><dl class="section return"><dt>Returns</dt><dd>process status code </dd></dl>
+<p>int run_all_tests(void) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dummy_stub</td><td>- stub to unify function tuns </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>process status code </dd></dl>
 
 </div>
 </div>
@@ -155,9 +184,9 @@ Variables</h2></td></tr>
 <div class="line">        .test_name = <span class="stringliteral">&quot;solve_square_equation&quot;</span></div>
 <div class="line">    }</div>
 <div class="line">}</div>
-<div class="ttc" id="atest__double__operations_8cpp_html_aa3b07201c9182fed6fda292d7f315082"><div class="ttname"><a href="test__double__operations_8cpp.html#aa3b07201c9182fed6fda292d7f315082">test_are_doubles_equal</a></div><div class="ttdeci">int test_are_doubles_equal(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_double_operations.cpp:12</div></div>
-<div class="ttc" id="atest__equation__solvers_8cpp_html_a49886d0ec9c7684a5d796e90b020cad1"><div class="ttname"><a href="test__equation__solvers_8cpp.html#a49886d0ec9c7684a5d796e90b020cad1">test_solve_square_equation</a></div><div class="ttdeci">int test_solve_square_equation(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_equation_solvers.cpp:74</div></div>
-<div class="ttc" id="atest__equation__solvers_8cpp_html_a8c6f290960d608f91701318c1e2d5364"><div class="ttname"><a href="test__equation__solvers_8cpp.html#a8c6f290960d608f91701318c1e2d5364">test_solve_linear_equation</a></div><div class="ttdeci">int test_solve_linear_equation(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_equation_solvers.cpp:19</div></div>
+<div class="ttc" id="atest__double__operations_8cpp_html_aa3b07201c9182fed6fda292d7f315082"><div class="ttname"><a href="test__double__operations_8cpp.html#aa3b07201c9182fed6fda292d7f315082">test_are_doubles_equal</a></div><div class="ttdeci">int test_are_doubles_equal(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_double_operations.cpp:11</div></div>
+<div class="ttc" id="atest__equation__solvers_8cpp_html_a49886d0ec9c7684a5d796e90b020cad1"><div class="ttname"><a href="test__equation__solvers_8cpp.html#a49886d0ec9c7684a5d796e90b020cad1">test_solve_square_equation</a></div><div class="ttdeci">int test_solve_square_equation(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_equation_solvers.cpp:60</div></div>
+<div class="ttc" id="atest__equation__solvers_8cpp_html_a8c6f290960d608f91701318c1e2d5364"><div class="ttname"><a href="test__equation__solvers_8cpp.html#a8c6f290960d608f91701318c1e2d5364">test_solve_linear_equation</a></div><div class="ttdeci">int test_solve_linear_equation(void)</div><div class="ttdoc">Function to test are_doubles_equal function.</div><div class="ttdef"><b>Definition</b> test_equation_solvers.cpp:17</div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -168,7 +197,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const int test_runs_number = 3</td>
+          <td class="memname">const int test_runs_number = sizeof(<a class="el" href="#a2863819a31225bf03d48e7b4d6c1121c">test_runs</a>) / sizeof(<a class="el" href="structTestRunStructure.html">TestRunStructure</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,3 +1,0 @@
-main.o: main.cpp square_equation_structures.hpp solver_enums.hpp \
- user_interface.hpp user_interface_enums.hpp cli.hpp cli_structures.hpp \
- tests/all_tests.hpp

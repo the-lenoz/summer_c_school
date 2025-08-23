@@ -4,9 +4,17 @@
 
 int are_doubles_equal(double a, double b)
 {
+    if (isnan(a) || isnan(b)) 
+    {
+        return 0;
+    }
     if (!isfinite(a) && !isfinite(b))
     {
-        return 1;
+        if (a * b > 0)
+        {
+            return 1;
+        } 
+        return 0;
     } 
     else if (!isfinite(a))
     {

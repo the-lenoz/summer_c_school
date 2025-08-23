@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['print_5fhelp_0',['print_help',['../cli_8cpp.html#a402ea961bfc2ffeee61e3a7c330b1559',1,'print_help(void):&#160;cli.cpp'],['../cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559',1,'print_help(void):&#160;cli.cpp']]],
-  ['print_5fresult_1',['print_result',['../user__interface_8cpp.html#a8d755af6a94df4486b411780756f9f6f',1,'print_result(SolvedQuadraticEquation equation):&#160;user_interface.cpp'],['../user__interface_8hpp.html#a8d755af6a94df4486b411780756f9f6f',1,'print_result(SolvedQuadraticEquation equation):&#160;user_interface.cpp']]]
+  ['main_0',['main',['../main_8cpp.html#a217dbf8b442f20279ea00b898af96f52',1,'main(int argc, const char **argv):&#160;main.cpp'],['../tests_2main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.cpp']]]
 ];

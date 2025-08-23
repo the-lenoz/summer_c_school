@@ -91,23 +91,32 @@ $(function(){initNavTree('cli_8hpp_source.html','',''); });
   <div class="headertitle"><div class="title">cli.hpp</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="cli_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keywordtype">void</span> <a class="code hl_function" href="cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559">print_help</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a24fffec7b80e9eb41aefdcb050fbf840">is_flag_set</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv, <span class="keywordtype">char</span>* flag);</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="comment">//---------------------------------------------------------------</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a47e99ec7d8d53a3576707b47b1544b5b">run_cli</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>** argv);</div>
-<div class="ttc" id="acli_8hpp_html_a24fffec7b80e9eb41aefdcb050fbf840"><div class="ttname"><a href="cli_8hpp.html#a24fffec7b80e9eb41aefdcb050fbf840">is_flag_set</a></div><div class="ttdeci">int is_flag_set(int argc, char **argv, char *flag)</div><div class="ttdoc">Function checks is cli flag set.</div><div class="ttdef"><b>Definition</b> cli.cpp:25</div></div>
-<div class="ttc" id="acli_8hpp_html_a402ea961bfc2ffeee61e3a7c330b1559"><div class="ttname"><a href="cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559">print_help</a></div><div class="ttdeci">void print_help(void)</div><div class="ttdoc">Function prints help to user.</div><div class="ttdef"><b>Definition</b> cli.cpp:16</div></div>
-<div class="ttc" id="acli_8hpp_html_a47e99ec7d8d53a3576707b47b1544b5b"><div class="ttname"><a href="cli_8hpp.html#a47e99ec7d8d53a3576707b47b1544b5b">run_cli</a></div><div class="ttdeci">int run_cli(int argc, char **argv)</div><div class="ttdoc">Function runs calculation based on values from arguments.</div><div class="ttdef"><b>Definition</b> cli.cpp:38</div></div>
+<a href="cli_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef CLI_FUNCTIONS_DECLARED</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define CLI_FUNCTIONS_DECLARED</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* dummy_stub);</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a8b67fac5590a5b5de401b4a40aecfc70">is_flag_set</a>(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>** argv, <span class="keyword">const</span> <span class="keywordtype">char</span>* flag);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">//----------------------------------------  -----------------------</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a8e311d514cbc8c136fbf95dddc7b6382">run_cli_from_args</a>(<span class="keywordtype">int</span> argc, <span class="keyword">const</span> <span class="keywordtype">char</span>** argv);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="comment">//---------------------------------------------------------------</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">//----------------------------------------  -----------------------</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="keywordtype">int</span> <a class="code hl_function" href="cli_8hpp.html#a0073e76447ab75e0ba805438791e59a8">run_cli_from_file</a>(<span class="keyword">const</span> <span class="keywordtype">void</span>* run_cli_from_file_structure);</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="preprocessor">#endif </span><span class="comment">// CLI_FUNCTIONS_DECLARED</span></div>
+<div class="ttc" id="acli_8hpp_html_a0073e76447ab75e0ba805438791e59a8"><div class="ttname"><a href="cli_8hpp.html#a0073e76447ab75e0ba805438791e59a8">run_cli_from_file</a></div><div class="ttdeci">int run_cli_from_file(const void *run_cli_from_file_structure)</div><div class="ttdoc">Function runs calculation based on values from file in format a b c</div><div class="ttdef"><b>Definition</b> cli.cpp:76</div></div>
+<div class="ttc" id="acli_8hpp_html_a525e211f7d78a5b6d5bb713e75bab3e0"><div class="ttname"><a href="cli_8hpp.html#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a></div><div class="ttdeci">int print_help(const void *dummy_stub)</div><div class="ttdoc">Function prints help to user.</div><div class="ttdef"><b>Definition</b> cli.cpp:17</div></div>
+<div class="ttc" id="acli_8hpp_html_a8b67fac5590a5b5de401b4a40aecfc70"><div class="ttname"><a href="cli_8hpp.html#a8b67fac5590a5b5de401b4a40aecfc70">is_flag_set</a></div><div class="ttdeci">int is_flag_set(int argc, const char **argv, const char *flag)</div><div class="ttdoc">Function checks is cli flag set.</div><div class="ttdef"><b>Definition</b> cli.cpp:32</div></div>
+<div class="ttc" id="acli_8hpp_html_a8e311d514cbc8c136fbf95dddc7b6382"><div class="ttname"><a href="cli_8hpp.html#a8e311d514cbc8c136fbf95dddc7b6382">run_cli_from_args</a></div><div class="ttdeci">int run_cli_from_args(int argc, const char **argv)</div><div class="ttdoc">Function runs calculation based on values from arguments.</div><div class="ttdef"><b>Definition</b> cli.cpp:45</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->

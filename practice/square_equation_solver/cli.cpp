@@ -3,8 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "square_equation_structures.hpp"
-#include "solver_enums.hpp"
+#include "square_equation_types.hpp"
 
 #include "equation_solvers.hpp"
 #include "user_interface.hpp"
@@ -22,7 +21,9 @@ int print_help(const void* dummy_stub)
     printf("main [-флаги] [аргументы]\n");
     printf("    --help, -h                  -   Показать подсказку\n");
     printf("    --file [путь], -f [путь]    -   Считать коэффиценты из файла\n");
+#ifdef TEST_MODE
     printf("    --test, -t                  -   Запустить юнит-тесты\n");
+#endif // TEST_MODE
     printf("    [a b c]                     -   3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0\n");
     printf("                                -   Без аргументов - запустить в интерактивном режиме\n");
     return 0;
@@ -46,10 +47,11 @@ int run_cli_from_args(int argc, const char** argv)
     if (argc == 4)
     {
         QuadraticEquationForm equation_form = {};
-        
-        if (!sscanf(argv[1], "%lg", &equation_form.a) || 
-            !sscanf(argv[2], "%lg", &equation_form.b) || 
-            !sscanf(argv[3], "%lg\n", &equation_form.c))
+        char wrong = 0;
+        if (!sscanf(argv[1], "%lg%c", &equation_form.a, &wrong) || 
+            !sscanf(argv[2], "%lg%c", &equation_form.b, &wrong) || 
+            !sscanf(argv[3], "%lg%c", &equation_form.c, &wrong) ||
+            wrong)
         {
             print_help(NULL);
             return 1;
@@ -95,7 +97,7 @@ int run_cli_from_file(const void* file_path_input)
         file_ptr = fopen(file_path, "r+");
     }
 
-    
+    // __FILE__, __LINE__, __func__
     if (file_ptr == NULL)
     {
         printf("Ошибка: не могу открыть файл!\n");

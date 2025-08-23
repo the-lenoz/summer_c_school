@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['number_5fof_5froots_0',['number_of_roots',['../structQuadraticEquationSolutionOutput.html#a3f7fbed94a2a7da15ce9f3e64f8a24ed',1,'QuadraticEquationSolutionOutput::number_of_roots'],['../structLinearEquationSolverTestData.html#a87f531f05345508136422fa26ae4611a',1,'LinearEquationSolverTestData::number_of_roots'],['../structSquareEquationSolverTestData.html#a73cc59810f34265cd925ef0e024aefea',1,'SquareEquationSolverTestData::number_of_roots']]],
-  ['number_5fof_5froots_5fstr_1',['number_of_roots_str',['../structLinearEquationSolverTestData.html#adc8050f591820af9f9a14134c358c7ec',1,'LinearEquationSolverTestData::number_of_roots_str'],['../structSquareEquationSolverTestData.html#a088768fce7cf43efeb75e9a39e163fc7',1,'SquareEquationSolverTestData::number_of_roots_str']]],
-  ['numberofequationroots_2',['NumberOfEquationRoots',['../solver__enums_8hpp.html#acbe02258bce62ef34e026dad280774a4',1,'solver_enums.hpp']]]
+  ['main_0',['main',['../main_8cpp.html#a217dbf8b442f20279ea00b898af96f52',1,'main(int argc, const char **argv):&#160;main.cpp'],['../tests_2main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.cpp']]],
+  ['main_2ecpp_1',['main.cpp',['../main_8cpp.html',1,'(Global Namespace)'],['../tests_2main_8cpp.html',1,'(Global Namespace)']]],
+  ['main_2ed_2',['main.d',['../main_8d.html',1,'']]],
+  ['max_5ffile_5fpath_5flen_3',['max_file_path_len',['../cli_8cpp.html#a762edfb39126091b945dc4e559f1bfc9',1,'cli.cpp']]]
 ];

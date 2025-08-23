@@ -1,6 +1,7 @@
 var cli_8hpp =
 [
-    [ "is_flag_set", "cli_8hpp.html#a24fffec7b80e9eb41aefdcb050fbf840", null ],
-    [ "print_help", "cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559", null ],
-    [ "run_cli", "cli_8hpp.html#a47e99ec7d8d53a3576707b47b1544b5b", null ]
+    [ "is_flag_set", "cli_8hpp.html#a8b67fac5590a5b5de401b4a40aecfc70", null ],
+    [ "print_help", "cli_8hpp.html#a525e211f7d78a5b6d5bb713e75bab3e0", null ],
+    [ "run_cli_from_args", "cli_8hpp.html#a8e311d514cbc8c136fbf95dddc7b6382", null ],
+    [ "run_cli_from_file", "cli_8hpp.html#a0073e76447ab75e0ba805438791e59a8", null ]
 ];

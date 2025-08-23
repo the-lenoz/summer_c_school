@@ -7,50 +7,47 @@ CFLAGS=-D _DEBUG -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-loop-
 -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef \
 -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers \
 -Wno-narrowing -Wno-old-style-cast -Wno-varargs -Wstack-protector -fcheck-new -fsized-deallocation -fstack-protector \
--fstrict-overflow -flto-odr-type-merging -fno-omit-frame-pointer -Wlarger-than=8192 -Wstack-usage=8192 -pie -fPIE -Werror=vla
-LDFLAGS=
+-fstrict-overflow -flto-odr-type-merging -fno-omit-frame-pointer -Wlarger-than=8192 -Wstack-usage=8192 -pie -fPIE -Werror=vla -MMD
 
 INC=tests .
 INC_PARAMS=$(foreach d, $(INC), -I$d)
 
-LIB_SOURCES=user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp tests/all_tests.cpp tests/test_double_operations.cpp tests/test_equation_solvers.cpp 
-LIB_OBJECTS=$(LIB_SOURCES:.cpp=.o)
+MAIN_SOURCES=colors.cpp user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp main.cpp number_of_equation_roots_str_enum.cpp
+MAIN_OBJECTS=$(MAIN_SOURCES:.cpp=.o)
 
-EXECUTABLE_SOURCES=main.cpp
-EXECUTABLE_OBJECTS=$(EXECUTABLE_SOURCES:.cpp=.o)
-EXECUTABLE=main
-
-
-TEST_SOURCES=tests/main.cpp
-
+TEST_SOURCES=tests/all_tests.cpp tests/test_double_operations.cpp tests/test_equation_solvers.cpp
 TEST_OBJECTS=$(TEST_SOURCES:.cpp=.o)
+
+MAIN_EXECUTABLE=main
+MAIN_EXECUTABLE_TEST_MODE=main_test
+
 TEST_EXECUTABLE=tests/main
 
+.PHONY: debug
 
-all: $(EXECUTABLE) test
+all: $(MAIN_EXECUTABLE)
 
-test: $(TEST_EXECUTABLE)
+test_mode: CDEBUG=-DTEST_MODE
+test_mode: $(TEST_EXECUTABLE) $(MAIN_EXECUTABLE_TEST_MODE) 
 
 clean:
 	rm *.o || true
-	rm $(EXECUTABLE) || true
+	rm $(MAIN_EXECUTABLE) || true
 	rm tests/*.o || true
 	rm $(TEST_EXECUTABLE) || true
+	rm *.d || true
+	rm tests/*.d || true
 
 
-$(EXECUTABLE): $(EXECUTABLE_OBJECTS) $(LIB_OBJECTS)
-	$(CC) $(LDFLAGS) $(EXECUTABLE_OBJECTS) $(LIB_OBJECTS) -o $@
+$(TEST_EXECUTABLE): $(TEST_OBJECTS) $(MAIN_OBJECTS)
+	$(CC) $(TEST_OBJECTS) $(MAIN_OBJECTS) -o $@
 
-$(TEST_EXECUTABLE): $(TEST_OBJECTS) $(LIB_OBJECTS)
-	$(CC) $(LDFLAGS) $(TEST_OBJECTS) $(LIB_OBJECTS) -o $@
+$(MAIN_EXECUTABLE): $(MAIN_EXECUTABLE_OBJECTS) $(MAIN_OBJECTS)
+	$(CC) $(MAIN_EXECUTABLE_OBJECTS) $(MAIN_OBJECTS) -o $@
 
+$(MAIN_EXECUTABLE_TEST_MODE): $(MAIN_EXECUTABLE_OBJECTS) $(MAIN_OBJECTS) $(TEST_OBJECTS)
+	$(CC) $(MAIN_EXECUTABLE_OBJECTS) $(MAIN_OBJECTS) $(TEST_OBJECTS) -o $@
 .cpp.o:
-	$(CC) $(CFLAGS) $(INC_PARAMS) $< -c -o $@
+	$(CC) $(CFLAGS) $(CDEBUG) $(INC_PARAMS) $< -c -o $@
 
-depend: .depend
-
-.depend: $(LIB_SOURCES) $(EXECUTABLE_SOURCES)
-	rm -f "$@"
-	$(CC) $(CFLAGS) $(INC_PARAMS) -MM $^ -MF "$@"
-
-include .depend
+-include *.d, */*.d

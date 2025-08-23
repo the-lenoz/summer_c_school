@@ -93,20 +93,24 @@ $(function(){initNavTree('main_8cpp.html','',''); });
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;math.h&gt;</code><br />
-<code>#include &lt;assert.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="square__equation__structures_8hpp_source.html">square_equation_structures.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="square__equation__types_8hpp_source.html">square_equation_types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="user__interface_8hpp_source.html">user_interface.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cli_8hpp_source.html">cli.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="all__tests_8hpp_source.html">tests/all_tests.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cli__structures_8hpp_source.html">cli_structures.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627" id="r_a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="memitem:a217dbf8b442f20279ea00b898af96f52" id="r_a217dbf8b442f20279ea00b898af96f52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a217dbf8b442f20279ea00b898af96f52">main</a> (int argc, const char **argv)</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a0e40a85d3068a6bd38e96a015e57bc79" id="r_a0e40a85d3068a6bd38e96a015e57bc79"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structCLIFunctionWithFlag.html">CLIFunctionWithFlag</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0e40a85d3068a6bd38e96a015e57bc79">flag_runs</a> []</td></tr>
+<tr class="memitem:ab3e3afb4a56e769ca6a8fe5a13eeeb62" id="r_ab3e3afb4a56e769ca6a8fe5a13eeeb62"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab3e3afb4a56e769ca6a8fe5a13eeeb62">flag_runs_number</a> = sizeof(<a class="el" href="#a0e40a85d3068a6bd38e96a015e57bc79">flag_runs</a>) / sizeof(<a class="el" href="structCLIFunctionWithFlag.html">CLIFunctionWithFlag</a>)</td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a3c04138a5bfe5d72780bb7e82a18e627" name="a3c04138a5bfe5d72780bb7e82a18e627"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c04138a5bfe5d72780bb7e82a18e627">&#9670;&#160;</a></span>main()</h2>
+<a id="a217dbf8b442f20279ea00b898af96f52" name="a217dbf8b442f20279ea00b898af96f52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a217dbf8b442f20279ea00b898af96f52">&#9670;&#160;</a></span>main()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -119,7 +123,67 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
+          <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a0e40a85d3068a6bd38e96a015e57bc79" name="a0e40a85d3068a6bd38e96a015e57bc79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e40a85d3068a6bd38e96a015e57bc79">&#9670;&#160;</a></span>flag_runs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structCLIFunctionWithFlag.html">CLIFunctionWithFlag</a> flag_runs[]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div>
+<div class="line">    {</div>
+<div class="line">        .CLI_run_function_ptr = <a class="code hl_function" href="cli_8cpp.html#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a>,</div>
+<div class="line">        .flag = <span class="stringliteral">&quot;-h&quot;</span>,</div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">        .CLI_run_function_ptr = <a class="code hl_function" href="cli_8cpp.html#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a>,</div>
+<div class="line">        .flag = <span class="stringliteral">&quot;--help&quot;</span></div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">        .CLI_run_function_ptr = <a class="code hl_function" href="cli_8cpp.html#ae40449d5d4b935e6c887b87fd1fa2424">run_cli_from_file</a>,</div>
+<div class="line">        .flag = <span class="stringliteral">&quot;-f&quot;</span></div>
+<div class="line">    },</div>
+<div class="line">    {</div>
+<div class="line">        .CLI_run_function_ptr = <a class="code hl_function" href="cli_8cpp.html#ae40449d5d4b935e6c887b87fd1fa2424">run_cli_from_file</a>,</div>
+<div class="line">        .flag = <span class="stringliteral">&quot;--file&quot;</span></div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">}</div>
+<div class="ttc" id="acli_8cpp_html_a525e211f7d78a5b6d5bb713e75bab3e0"><div class="ttname"><a href="cli_8cpp.html#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a></div><div class="ttdeci">int print_help(const void *dummy_stub)</div><div class="ttdoc">Function prints help to user.</div><div class="ttdef"><b>Definition</b> cli.cpp:17</div></div>
+<div class="ttc" id="acli_8cpp_html_ae40449d5d4b935e6c887b87fd1fa2424"><div class="ttname"><a href="cli_8cpp.html#ae40449d5d4b935e6c887b87fd1fa2424">run_cli_from_file</a></div><div class="ttdeci">int run_cli_from_file(const void *file_path_input)</div><div class="ttdoc">Function runs calculation based on values from file in format a b c</div><div class="ttdef"><b>Definition</b> cli.cpp:76</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab3e3afb4a56e769ca6a8fe5a13eeeb62" name="ab3e3afb4a56e769ca6a8fe5a13eeeb62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e3afb4a56e769ca6a8fe5a13eeeb62">&#9670;&#160;</a></span>flag_runs_number</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int flag_runs_number = sizeof(<a class="el" href="#a0e40a85d3068a6bd38e96a015e57bc79">flag_runs</a>) / sizeof(<a class="el" href="structCLIFunctionWithFlag.html">CLIFunctionWithFlag</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">

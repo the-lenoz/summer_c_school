@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['print_5fhelp_0',['print_help',['../cli_8cpp.html#a402ea961bfc2ffeee61e3a7c330b1559',1,'print_help(void):&#160;cli.cpp'],['../cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559',1,'print_help(void):&#160;cli.cpp']]],
-  ['print_5fresult_1',['print_result',['../user__interface_8cpp.html#a8d755af6a94df4486b411780756f9f6f',1,'print_result(SolvedQuadraticEquation equation):&#160;user_interface.cpp'],['../user__interface_8hpp.html#a8d755af6a94df4486b411780756f9f6f',1,'print_result(SolvedQuadraticEquation equation):&#160;user_interface.cpp']]]
+  ['one_5froot_0',['ONE_ROOT',['../square__equation__types_8hpp.html#acbe02258bce62ef34e026dad280774a4a6700c0f6efd23571cb22aefd2510b1cf',1,'square_equation_types.hpp']]]
 ];

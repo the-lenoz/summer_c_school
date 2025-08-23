@@ -1,7 +1,14 @@
 #ifndef STRUCTURES_DECLARED
 #define STRUCTURES_DECLARED
 
-#include "solver_enums.hpp"
+
+enum NumberOfEquationRoots
+{
+    ZERO_ROOTS,
+    INFINITE_ROOTS,
+    ONE_ROOT,
+    TWO_ROOTS
+};
 
 struct QuadraticEquationForm
 {

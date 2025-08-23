@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;main.cpp'],['../tests_2main_8cpp.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main(void):&#160;main.cpp']]]
+  ['is_5fflag_5fset_0',['is_flag_set',['../cli_8cpp.html#a8b67fac5590a5b5de401b4a40aecfc70',1,'is_flag_set(int argc, const char **argv, const char *flag):&#160;cli.cpp'],['../cli_8hpp.html#a8b67fac5590a5b5de401b4a40aecfc70',1,'is_flag_set(int argc, const char **argv, const char *flag):&#160;cli.cpp']]]
 ];

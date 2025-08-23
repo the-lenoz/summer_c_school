@@ -6,34 +6,60 @@
 {\ttfamily \#include "{}colors.\+hpp"{}}\newline
 {\ttfamily \#include "{}test\+\_\+structures.\+hpp"{}}\newline
 {\ttfamily \#include "{}all\+\_\+tests.\+hpp"{}}\newline
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{all__tests_8cpp_a86d500a34c624c2cae56bc25a31b12f3}{UNUSED}}(x)
+\end{DoxyCompactItemize}
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \mbox{\hyperlink{all__tests_8cpp_a5d17768b1ecbffe756dbf22167d2b91b}{run\+\_\+all\+\_\+tests}} (void)
+int \mbox{\hyperlink{all__tests_8cpp_ae1640bbea635d532bac1221b599fbd19}{run\+\_\+all\+\_\+tests}} (const void \texorpdfstring{$\ast$}{*}dummy\+\_\+stub)
 \begin{DoxyCompactList}\small\item\em Function runs all unit tests. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{structTestRunStructure}{Test\+Run\+Structure}} \mbox{\hyperlink{all__tests_8cpp_a2863819a31225bf03d48e7b4d6c1121c}{test\+\_\+runs}} \mbox{[}$\,$\mbox{]}
 \item 
-const int \mbox{\hyperlink{all__tests_8cpp_a528b85f504987c51aed7bcfdb5ce260f}{test\+\_\+runs\+\_\+number}} = 3
+const int \mbox{\hyperlink{all__tests_8cpp_a528b85f504987c51aed7bcfdb5ce260f}{test\+\_\+runs\+\_\+number}} = sizeof(\mbox{\hyperlink{all__tests_8cpp_a2863819a31225bf03d48e7b4d6c1121c}{test\+\_\+runs}}) / sizeof(\mbox{\hyperlink{structTestRunStructure}{Test\+Run\+Structure}})
 \end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{all__tests_8cpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{all__tests_8cpp_a86d500a34c624c2cae56bc25a31b12f3}\index{all\_tests.cpp@{all\_tests.cpp}!UNUSED@{UNUSED}}
+\index{UNUSED@{UNUSED}!all\_tests.cpp@{all\_tests.cpp}}
+\doxysubsubsection{\texorpdfstring{UNUSED}{UNUSED}}
+{\footnotesize\ttfamily \label{all__tests_8cpp_a86d500a34c624c2cae56bc25a31b12f3} 
+\#define UNUSED(\begin{DoxyParamCaption}\item[{}]{x}{}\end{DoxyParamCaption})}
+
+{\bfseries Value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(void)(x)}
+
+\end{DoxyCode}
 
 
 \label{doc-func-members}
 \Hypertarget{all__tests_8cpp_doc-func-members}
 \doxysubsection{Function Documentation}
-\Hypertarget{all__tests_8cpp_a5d17768b1ecbffe756dbf22167d2b91b}\index{all\_tests.cpp@{all\_tests.cpp}!run\_all\_tests@{run\_all\_tests}}
+\Hypertarget{all__tests_8cpp_ae1640bbea635d532bac1221b599fbd19}\index{all\_tests.cpp@{all\_tests.cpp}!run\_all\_tests@{run\_all\_tests}}
 \index{run\_all\_tests@{run\_all\_tests}!all\_tests.cpp@{all\_tests.cpp}}
 \doxysubsubsection{\texorpdfstring{run\_all\_tests()}{run\_all\_tests()}}
-{\footnotesize\ttfamily \label{all__tests_8cpp_a5d17768b1ecbffe756dbf22167d2b91b} 
-int run\+\_\+all\+\_\+tests (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{all__tests_8cpp_ae1640bbea635d532bac1221b599fbd19} 
+int run\+\_\+all\+\_\+tests (\begin{DoxyParamCaption}\item[{const void \texorpdfstring{$\ast$}{*}}]{dummy\+\_\+stub}{}\end{DoxyParamCaption})}
 
 
 
 Function runs all unit tests. 
 
-int \doxylink{all__tests_8hpp_a5d17768b1ecbffe756dbf22167d2b91b}{run\+\_\+all\+\_\+tests(void)} \begin{DoxyReturn}{Returns}
+int run\+\_\+all\+\_\+tests(void) 
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{in}}  & {\em dummy\+\_\+stub} & -\/ stub to unify function tuns \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
 process status code 
 \end{DoxyReturn}
 
@@ -69,5 +95,5 @@ process status code
 \index{test\_runs\_number@{test\_runs\_number}!all\_tests.cpp@{all\_tests.cpp}}
 \doxysubsubsection{\texorpdfstring{test\_runs\_number}{test\_runs\_number}}
 {\footnotesize\ttfamily \label{all__tests_8cpp_a528b85f504987c51aed7bcfdb5ce260f} 
-const int test\+\_\+runs\+\_\+number = 3}
+const int test\+\_\+runs\+\_\+number = sizeof(\mbox{\hyperlink{all__tests_8cpp_a2863819a31225bf03d48e7b4d6c1121c}{test\+\_\+runs}}) / sizeof(\mbox{\hyperlink{structTestRunStructure}{Test\+Run\+Structure}})}
 

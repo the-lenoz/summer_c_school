@@ -1,7 +1,7 @@
 #ifndef USER_INTERFACE_DECLARED
 #define USER_INTERFACE_DECLARED
 
-#include "square_equation_structures.hpp"
+#include "square_equation_types.hpp"
 #include "user_interface_enums.hpp"
 
 const char ESCAPE_KEY = 27;

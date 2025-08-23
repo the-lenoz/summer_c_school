@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['x1_0',['x1',['../structQuadraticEquationSolutionOutput.html#aa5b9137bc651ca657a2a055d16408c99',1,'QuadraticEquationSolutionOutput::x1'],['../structSquareEquationSolverTestData.html#a823795484db73e71182d885aee018a00',1,'SquareEquationSolverTestData::x1']]],
-  ['x2_1',['x2',['../structQuadraticEquationSolutionOutput.html#a5eb877bd9aff01ef12d3e75f57fc8e2b',1,'QuadraticEquationSolutionOutput::x2'],['../structSquareEquationSolverTestData.html#a870355509662934299bded82dd48fe7d',1,'SquareEquationSolverTestData::x2']]]
+  ['test_5ffunction_5fptr_0',['test_function_ptr',['../structTestRunStructure.html#a1486913d9998bf7ec0a13b70c9110385',1,'TestRunStructure']]],
+  ['test_5fname_1',['test_name',['../structTestRunStructure.html#a612138e661c5bbb0e2bb890ac01f859c',1,'TestRunStructure']]],
+  ['test_5fruns_2',['test_runs',['../all__tests_8cpp.html#a2863819a31225bf03d48e7b4d6c1121c',1,'all_tests.cpp']]],
+  ['test_5fruns_5fnumber_3',['test_runs_number',['../all__tests_8cpp.html#a528b85f504987c51aed7bcfdb5ce260f',1,'all_tests.cpp']]]
 ];

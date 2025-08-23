@@ -2,14 +2,15 @@
 #include <math.h>
 #include <string.h>
 
-#include "square_equation_structures.hpp"
+#include "square_equation_types.hpp"
 
 #include "user_interface.hpp"
 #include "cli.hpp"
 #include "cli_structures.hpp"
 
+#ifdef TEST_MODE
 #include "tests/all_tests.hpp"
-
+#endif // TEST_MODE
 
 CLIFunctionWithFlag flag_runs[] = {
     {
@@ -27,7 +28,9 @@ CLIFunctionWithFlag flag_runs[] = {
     {
         .CLI_run_function_ptr = run_cli_from_file,
         .flag = "--file"
-    },
+    }
+#ifdef TEST_MODE    
+    ,
     {
         .CLI_run_function_ptr = run_all_tests,
         .flag = "-t"
@@ -36,6 +39,7 @@ CLIFunctionWithFlag flag_runs[] = {
         .CLI_run_function_ptr = run_all_tests,
         .flag = "--test"
     }
+#endif // TEST_MODE
 };
 
 const int flag_runs_number = sizeof(flag_runs) / sizeof(CLIFunctionWithFlag);

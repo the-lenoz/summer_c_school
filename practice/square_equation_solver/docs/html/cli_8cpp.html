@@ -94,24 +94,53 @@ $(function(){initNavTree('cli_8cpp.html','',''); });
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="square__equation__structures_8hpp_source.html">square_equation_structures.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="solver__enums_8hpp_source.html">solver_enums.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="square__equation__types_8hpp_source.html">square_equation_types.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="equation__solvers_8hpp_source.html">equation_solvers.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="user__interface_8hpp_source.html">user_interface.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cli__structures_8hpp_source.html">cli_structures.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cli_8hpp_source.html">cli.hpp</a>&quot;</code><br />
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a86d500a34c624c2cae56bc25a31b12f3" id="r_a86d500a34c624c2cae56bc25a31b12f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a86d500a34c624c2cae56bc25a31b12f3">UNUSED</a>(x)</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a402ea961bfc2ffeee61e3a7c330b1559" id="r_a402ea961bfc2ffeee61e3a7c330b1559"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a402ea961bfc2ffeee61e3a7c330b1559">print_help</a> (void)</td></tr>
-<tr class="memdesc:a402ea961bfc2ffeee61e3a7c330b1559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function prints help to user.  <br /></td></tr>
-<tr class="memitem:a24fffec7b80e9eb41aefdcb050fbf840" id="r_a24fffec7b80e9eb41aefdcb050fbf840"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a24fffec7b80e9eb41aefdcb050fbf840">is_flag_set</a> (int argc, char **argv, char *flag)</td></tr>
-<tr class="memdesc:a24fffec7b80e9eb41aefdcb050fbf840"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function checks is cli flag set.  <br /></td></tr>
-<tr class="memitem:a47e99ec7d8d53a3576707b47b1544b5b" id="r_a47e99ec7d8d53a3576707b47b1544b5b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a47e99ec7d8d53a3576707b47b1544b5b">run_cli</a> (int argc, char **argv)</td></tr>
-<tr class="memdesc:a47e99ec7d8d53a3576707b47b1544b5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function runs calculation based on values from arguments.  <br /></td></tr>
+<tr class="memitem:a525e211f7d78a5b6d5bb713e75bab3e0" id="r_a525e211f7d78a5b6d5bb713e75bab3e0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a525e211f7d78a5b6d5bb713e75bab3e0">print_help</a> (const void *dummy_stub)</td></tr>
+<tr class="memdesc:a525e211f7d78a5b6d5bb713e75bab3e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function prints help to user.  <br /></td></tr>
+<tr class="memitem:a8b67fac5590a5b5de401b4a40aecfc70" id="r_a8b67fac5590a5b5de401b4a40aecfc70"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8b67fac5590a5b5de401b4a40aecfc70">is_flag_set</a> (int argc, const char **argv, const char *flag)</td></tr>
+<tr class="memdesc:a8b67fac5590a5b5de401b4a40aecfc70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function checks is cli flag set.  <br /></td></tr>
+<tr class="memitem:a8e311d514cbc8c136fbf95dddc7b6382" id="r_a8e311d514cbc8c136fbf95dddc7b6382"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8e311d514cbc8c136fbf95dddc7b6382">run_cli_from_args</a> (int argc, const char **argv)</td></tr>
+<tr class="memdesc:a8e311d514cbc8c136fbf95dddc7b6382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function runs calculation based on values from arguments.  <br /></td></tr>
+<tr class="memitem:ae40449d5d4b935e6c887b87fd1fa2424" id="r_ae40449d5d4b935e6c887b87fd1fa2424"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae40449d5d4b935e6c887b87fd1fa2424">run_cli_from_file</a> (const void *file_path_input)</td></tr>
+<tr class="memdesc:ae40449d5d4b935e6c887b87fd1fa2424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function runs calculation based on values from file in format <span class="tt">a b c</span>  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-var-members" class="groupheader"><a id="var-members" name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a762edfb39126091b945dc4e559f1bfc9" id="r_a762edfb39126091b945dc4e559f1bfc9"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a762edfb39126091b945dc4e559f1bfc9">max_file_path_len</a> = 512</td></tr>
 </table>
+<a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Macro Definition Documentation</h2>
+<a id="a86d500a34c624c2cae56bc25a31b12f3" name="a86d500a34c624c2cae56bc25a31b12f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86d500a34c624c2cae56bc25a31b12f3">&#9670;&#160;</a></span>UNUSED</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define UNUSED</td>
+          <td>(</td>
+          <td class="paramtype"></td>          <td class="paramname"><span class="paramname"><em>x</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Value:</b><div class="fragment"><div class="line">(void)(x)</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
-<a id="a24fffec7b80e9eb41aefdcb050fbf840" name="a24fffec7b80e9eb41aefdcb050fbf840"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24fffec7b80e9eb41aefdcb050fbf840">&#9670;&#160;</a></span>is_flag_set()</h2>
+<a id="a8b67fac5590a5b5de401b4a40aecfc70" name="a8b67fac5590a5b5de401b4a40aecfc70"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8b67fac5590a5b5de401b4a40aecfc70">&#9670;&#160;</a></span>is_flag_set()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -124,18 +153,18 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>, </td>
+          <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>flag</em></span>&#160;)</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>flag</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function checks is cli flag set. </p>
-<p>int <a class="el" href="cli_8hpp.html#a24fffec7b80e9eb41aefdcb050fbf840" title="Function checks is cli flag set.">is_flag_set(int argc, char** argv, char* flag)</a> </p><dl class="params"><dt>Parameters</dt><dd>
+<p>int is_flag_set(int argc, char** argv, char* flag) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>- number of CLI arguments </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>- CLI arguments </td></tr>
@@ -147,54 +176,100 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a402ea961bfc2ffeee61e3a7c330b1559" name="a402ea961bfc2ffeee61e3a7c330b1559"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a402ea961bfc2ffeee61e3a7c330b1559">&#9670;&#160;</a></span>print_help()</h2>
+<a id="a525e211f7d78a5b6d5bb713e75bab3e0" name="a525e211f7d78a5b6d5bb713e75bab3e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a525e211f7d78a5b6d5bb713e75bab3e0">&#9670;&#160;</a></span>print_help()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void print_help </td>
+          <td class="memname">int print_help </td>
           <td>(</td>
-          <td class="paramtype">void</td>          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>dummy_stub</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function prints help to user. </p>
-<p>void <a class="el" href="cli_8hpp.html#a402ea961bfc2ffeee61e3a7c330b1559" title="Function prints help to user.">print_help(void)</a> </p>
+<p>int print_help(void) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">dummy_stub</td><td>- stub parameter to unify functions input format </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<a id="a47e99ec7d8d53a3576707b47b1544b5b" name="a47e99ec7d8d53a3576707b47b1544b5b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47e99ec7d8d53a3576707b47b1544b5b">&#9670;&#160;</a></span>run_cli()</h2>
+<a id="a8e311d514cbc8c136fbf95dddc7b6382" name="a8e311d514cbc8c136fbf95dddc7b6382"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e311d514cbc8c136fbf95dddc7b6382">&#9670;&#160;</a></span>run_cli_from_args()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int run_cli </td>
+          <td class="memname">int run_cli_from_args </td>
           <td>(</td>
           <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>argc</em></span>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
+          <td class="paramtype">const char **</td>          <td class="paramname"><span class="paramname"><em>argv</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Function runs calculation based on values from arguments. </p>
-<p>int <a class="el" href="cli_8hpp.html#a47e99ec7d8d53a3576707b47b1544b5b" title="Function runs calculation based on values from arguments.">run_cli(int argc, char** argv)</a> </p><dl class="params"><dt>Parameters</dt><dd>
+<p>int run_cli_from_args(int argc, char** argv) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>- number of CLI arguments </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>- CLI arguments </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argc</td><td>- args count </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">argv</td><td>- args array </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>process status code </dd></dl>
+
+</div>
+</div>
+<a id="ae40449d5d4b935e6c887b87fd1fa2424" name="ae40449d5d4b935e6c887b87fd1fa2424"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae40449d5d4b935e6c887b87fd1fa2424">&#9670;&#160;</a></span>run_cli_from_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int run_cli_from_file </td>
+          <td>(</td>
+          <td class="paramtype">const void *</td>          <td class="paramname"><span class="paramname"><em>run_cli_from_file_structure</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Function runs calculation based on values from file in format <span class="tt">a b c</span> </p>
+<p>int run_cli_from_file(char* file_path) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">run_cli_from_file_structure</td><td>- RunCliFromFile structure containing file path </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>process status code </dd></dl>
+
+</div>
+</div>
+<a name="doc-var-members" id="doc-var-members"></a><h2 id="header-doc-var-members" class="groupheader">Variable Documentation</h2>
+<a id="a762edfb39126091b945dc4e559f1bfc9" name="a762edfb39126091b945dc4e559f1bfc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a762edfb39126091b945dc4e559f1bfc9">&#9670;&#160;</a></span>max_file_path_len</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int max_file_path_len = 512</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

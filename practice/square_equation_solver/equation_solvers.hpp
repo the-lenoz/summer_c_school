@@ -1,7 +1,7 @@
 #ifndef MATH_FUNCTIONS_DECLARED
 #define MATH_FUNCTIONS_DECLARED
 
-#include "square_equation_structures.hpp"
+#include "square_equation_types.hpp"
 
 
 //---------------------------------------------------------------

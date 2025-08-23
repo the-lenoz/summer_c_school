@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['result_0',['result',['../structLinearEquationSolverTestData.html#a985b5b00510fadc874d17ef95190f63c',1,'LinearEquationSolverTestData::result'],['../structDoublesEqualityTestData.html#a286cca58858f89ec44dbbe203ce94672',1,'DoublesEqualityTestData::result']]]
+  ['number_5fof_5froots_0',['number_of_roots',['../structNumberOfRootsStrEnum.html#a93f2dd6a19b80b3493d725a5d280349d',1,'NumberOfRootsStrEnum::number_of_roots'],['../structQuadraticEquationSolutionOutput.html#a3f7fbed94a2a7da15ce9f3e64f8a24ed',1,'QuadraticEquationSolutionOutput::number_of_roots'],['../structLinearEquationSolverTestData.html#a87f531f05345508136422fa26ae4611a',1,'LinearEquationSolverTestData::number_of_roots'],['../structSquareEquationSolverTestData.html#a73cc59810f34265cd925ef0e024aefea',1,'SquareEquationSolverTestData::number_of_roots']]],
+  ['number_5fof_5froots_5fenum_5farray_1',['number_of_roots_enum_array',['../number__of__equation__roots__str__enum_8cpp.html#a36054ced0d35e61563f2bf2b7347c679',1,'number_of_equation_roots_str_enum.cpp']]],
+  ['number_5fof_5froots_5fstr_2',['number_of_roots_str',['../structNumberOfRootsStrEnum.html#ac5914f5e869ae015f50e57249db5d788',1,'NumberOfRootsStrEnum::number_of_roots_str'],['../structLinearEquationSolverTestData.html#a6e9fa2b79ddd321dd3a6be55a81ceb9d',1,'LinearEquationSolverTestData::number_of_roots_str'],['../structSquareEquationSolverTestData.html#a2884956c2aeee073d993734f5093f4c2',1,'SquareEquationSolverTestData::number_of_roots_str']]]
 ];

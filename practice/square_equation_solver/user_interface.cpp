@@ -1,8 +1,7 @@
 #include <stdio.h>
 
-#include "square_equation_structures.hpp"
+#include "square_equation_types.hpp"
 #include "user_interface_enums.hpp"
-#include "solver_enums.hpp"
 
 #include "equation_solvers.hpp"
 
