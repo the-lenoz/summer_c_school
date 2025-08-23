@@ -5,6 +5,13 @@
 #include "square_equation_structures.hpp"
 
 
+struct TestRunStructure
+{
+    int (*test_function_ptr)(void);
+    char test_name[128];
+};
+
+
 struct LinearEquationSolverTestData 
 {
     double k;
