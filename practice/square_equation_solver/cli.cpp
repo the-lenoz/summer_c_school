@@ -37,6 +37,8 @@ int is_flag_set(int argc, const char** argv, const char* flag)
 
     for (int i = 1; i < argc; ++i)
     {
+        assert(argv[i] != NULL);
+
         if (strcmp(flag, argv[i]) == 0)
         {
             return i;
