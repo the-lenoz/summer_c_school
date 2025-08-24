@@ -10,23 +10,24 @@
 
 #include "cli_structures.hpp"
 
+#include "errors.hpp"
+
 #include "cli.hpp"
 
 const int max_file_path_len = 512;
 
-int print_help(const void* dummy_stub)
+StatusData print_help(const void* dummy_stub)
 {
     UNUSED(dummy_stub);
     printf("Решатель квадратных уравнений. Вызов:\n");
     printf("main [-флаги] [аргументы]\n");
-    printf("    --help, -h                  -   Показать подсказку\n");
-    printf("    --file [путь], -f [путь]    -   Считать коэффиценты из файла\n");
-#ifdef TEST_MODE
-    printf("    --test, -t                  -   Запустить юнит-тесты\n");
-#endif // TEST_MODE
-    printf("    [a b c]                     -   3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0\n");
-    printf("                                -   Без аргументов - запустить в интерактивном режиме\n");
-    return 0;
+    for (int i = 0; i < flag_runs_number; ++i)
+    {
+        printf("\t%s, %-64s%s\n", flag_runs[i].short_flag, flag_runs[i].long_flag, flag_runs[i].description);
+    }
+    printf("\t%-68s%s\n", "[a b c]", "3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0");
+    printf("\t%-68s%s\n","","Без аргументов - запустить в интерактивном режиме");
+    return MAKE_SUCCESS_STRUCT();
 }
 
 int is_flag_set(int argc, const char** argv, const char* flag)
@@ -41,7 +42,6 @@ int is_flag_set(int argc, const char** argv, const char* flag)
     return 0;
 }
 
-// 82734382adbsbdabda
 int run_cli_from_args(int argc, const char** argv)
 {
     if (argc == 4)
@@ -73,7 +73,7 @@ int run_cli_from_args(int argc, const char** argv)
     return 0;
 }
 
-int run_cli_from_file(const void* file_path_input)
+StatusData run_cli_from_file(const void* file_path_input)
 {
     const char* file_path = (const char*)file_path_input;
     FILE* file_ptr = NULL;
@@ -97,11 +97,9 @@ int run_cli_from_file(const void* file_path_input)
         file_ptr = fopen(file_path, "r+");
     }
 
-    // __FILE__, __LINE__, __func__
     if (file_ptr == NULL)
     {
-        printf("Ошибка: не могу открыть файл!\n");
-        return 1;
+        return MAKE_ERROR_STRUCT(CANNOT_OPEN_FILE_ERROR);
     }
     while (fscanf(file_ptr, "%lg %lg %lg\n", &equation_form.a, &equation_form.b, &equation_form.c) == 3)
     {
@@ -115,5 +113,5 @@ int run_cli_from_file(const void* file_path_input)
     }
 
     fclose(file_ptr);
-    return 0;
+    return MAKE_SUCCESS_STRUCT();
 }

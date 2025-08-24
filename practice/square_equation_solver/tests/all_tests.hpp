@@ -1,12 +1,14 @@
 #ifndef ALL_TESTS_RUN_DECLARED
 #define ALL_TESTS_RUN_DECLARED
 
+#include "errors.hpp"
+
 //---------------------------------------------------------------
 //! int run_all_tests(void)
 //! @brief Function runs all unit tests
 //! @param [in] dummy_stub - stub to unify function tuns
-//! @return process status code
+//! @return status of execution
 //---------------------------------------------------------------
-int run_all_tests(const void* dummy_stub);
+StatusData run_all_tests(const void* dummy_stub);
 
 #endif

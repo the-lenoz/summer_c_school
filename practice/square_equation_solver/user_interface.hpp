@@ -2,9 +2,15 @@
 #define USER_INTERFACE_DECLARED
 
 #include "square_equation_types.hpp"
-#include "user_interface_enums.hpp"
 
 const char ESCAPE_KEY = 27;
+
+enum InputCharSignal
+{
+    CORRECT_INPUT,
+    INCORRECT_INPUT,
+    EXIT_KEY
+};
 
 //---------------------------------------------------------------
 //! int run_user_cycle(void)

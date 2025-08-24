@@ -8,6 +8,8 @@
 #include "colors.hpp"
 #include "test_structures.hpp"
 
+#include "errors.hpp"
+
 #include "all_tests.hpp"
 
 TestRunStructure test_runs[] = {
@@ -28,24 +30,24 @@ TestRunStructure test_runs[] = {
 const int test_runs_number = sizeof(test_runs) / sizeof(TestRunStructure);
 
 
-int run_all_tests(const void* dummy_stub)
+StatusData run_all_tests(const void* dummy_stub)
 {
     UNUSED(dummy_stub);
-    printf(ANSI_COLOR_YELLOW "Starting tests...\n" ANSI_COLOR_RESET);
+    printf_red("Starting tests...\n");
     for (int i = 0; i < test_runs_number; ++i)
     {
-        printf(ANSI_COLOR_YELLOW "Testing %s\n" ANSI_COLOR_RESET, test_runs[i].test_name);
+        printf_yellow("Testing %s\n", test_runs[i].test_name);
         if (!(*test_runs[i].test_function_ptr)()) 
         {
             // Test failed
-            printf(ANSI_COLOR_RED "ABORT!\n" ANSI_COLOR_RESET);
-            return 1;
+            printf_red("ABORT!\n");
+            return MAKE_ERROR_STRUCT(TEST_FAILED_ERROR);
         }
-        printf(ANSI_COLOR_GREEN "PASSED!\n" ANSI_COLOR_RESET);
+        printf_green("PASSED!\n");
     }
     
-    printf(ANSI_COLOR_GREEN "All tests PASSED!\n" ANSI_COLOR_RESET);
-    return 0;
+    printf_green("All tests PASSED!\n");
+    return MAKE_SUCCESS_STRUCT();
 }
 
 

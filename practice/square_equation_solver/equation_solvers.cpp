@@ -16,7 +16,7 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
 
     if (are_doubles_equal(k, 0)) 
     {
-        // Константа, не зависит от x
+        // line is parallel with oX
         if (are_doubles_equal(b, 0))
         {
             *number_of_roots = INFINITE_ROOTS;
@@ -30,9 +30,8 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
     else
     {
         *number_of_roots = ONE_ROOT;
-        return -b / k; // Корень найден
+        return -b / k; 
     }
-    
 }
 
 SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_form)
@@ -45,7 +44,7 @@ SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_f
         return result;
     }
     
-    if (are_doubles_equal(equation_form.a, 0)) // Линейное уравнение
+    if (are_doubles_equal(equation_form.a, 0))
     {
         result.x1 = result.x2 = solve_linear_equation(equation_form.b, equation_form.c, &result.number_of_roots);
         return result;
@@ -58,13 +57,13 @@ SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_f
         result.x1 = (-equation_form.b) / (2 * equation_form.a);
         result.x2 = (-equation_form.b) / (2 * equation_form.a);
         result.number_of_roots = ONE_ROOT;
-        return result; // Успех, но корень один
+        return result; 
     } 
 
     if (D < 0) 
     {
         result.number_of_roots = ZERO_ROOTS; 
-        return result; // ОШИБКА - корней нет
+        return result;
     } 
 
     double D_sqrt = sqrt(D);
@@ -72,5 +71,5 @@ SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_f
     result.x1 = (-equation_form.b + D_sqrt) / (2 * equation_form.a);
     result.x2 = (-equation_form.b - D_sqrt) / (2 * equation_form.a);
     result.number_of_roots = TWO_ROOTS;
-    return result; // Успех
+    return result;
 }

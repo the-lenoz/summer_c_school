@@ -8,21 +8,11 @@
 int vprintf_color(const char* color, const char* format, va_list ap)
 {
     int result = 0;
-    char* new_format_ptr = NULL;
 
-    size_t color_len = strlen(color);
-    size_t color_reset_len = strlen(ANSI_COLOR_RESET);
-    size_t format_len = strlen(format);
-    
-    new_format_ptr = (char*) calloc(format_len + color_len + color_reset_len + 1, sizeof(char));
+    printf("%s", color);
+    result = vprintf(format, ap);
+    printf("%s", ANSI_COLOR_RESET);
 
-    strcpy(new_format_ptr, color);
-    strcat(new_format_ptr, format);
-    strcat(new_format_ptr, ANSI_COLOR_RESET);
-
-    result = vprintf(new_format_ptr, ap);
-
-    free(new_format_ptr);
     return result;
 }
 
