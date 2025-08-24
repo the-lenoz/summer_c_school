@@ -1,5 +1,0 @@
-var searchData=
-[
-  ['get_5fequation_5froots_5fnumber_5fenum_5fby_5fstr_0',['get_equation_roots_number_enum_by_str',['../number__of__equation__roots__str__enum_8cpp.html#a81dd268ad3bb33575abdd61942baa399',1,'get_equation_roots_number_enum_by_str(const char *number_of_roots_str):&#160;number_of_equation_roots_str_enum.cpp'],['../number__of__equation__roots__str__enum_8hpp.html#a81dd268ad3bb33575abdd61942baa399',1,'get_equation_roots_number_enum_by_str(const char *number_of_roots_str):&#160;number_of_equation_roots_str_enum.cpp']]],
-  ['get_5fequation_5froots_5fnumber_5fstr_5fby_5fenum_1',['get_equation_roots_number_str_by_enum',['../number__of__equation__roots__str__enum_8cpp.html#aa57ccdbabd6ae131cf2a40ac95c6d23a',1,'get_equation_roots_number_str_by_enum(NumberOfEquationRoots number_of_roots):&#160;number_of_equation_roots_str_enum.cpp'],['../number__of__equation__roots__str__enum_8hpp.html#aa57ccdbabd6ae131cf2a40ac95c6d23a',1,'get_equation_roots_number_str_by_enum(NumberOfEquationRoots number_of_roots):&#160;number_of_equation_roots_str_enum.cpp']]]
-];
