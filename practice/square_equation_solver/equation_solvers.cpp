@@ -1,4 +1,5 @@
 #include <math.h>
+#include <assert.h>
 
 #include "square_equation_types.hpp"
 #include "double_operations.hpp"
@@ -8,6 +9,8 @@
 
 double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_of_roots)
 {
+    assert(number_of_roots != NULL);
+
     if (!isfinite(k) || !isfinite(b))
     {
         *number_of_roots = ZERO_ROOTS;

@@ -50,7 +50,7 @@ int main(int argc, const char** argv)
 
                 if (function_call_status_data.status_code != SUCCESS)
                 {
-                    log_error(function_call_status_data);
+                    print_error(function_call_status_data);
                     return 1;
                 }
                 return 0;

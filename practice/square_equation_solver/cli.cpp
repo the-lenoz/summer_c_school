@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "square_equation_types.hpp"
 
@@ -32,6 +33,8 @@ StatusData print_help(const void* dummy_stub)
 
 int is_flag_set(int argc, const char** argv, const char* flag)
 {
+    assert(argv != NULL);
+
     for (int i = 1; i < argc; ++i)
     {
         if (strcmp(flag, argv[i]) == 0)
@@ -44,6 +47,8 @@ int is_flag_set(int argc, const char** argv, const char* flag)
 
 int run_cli_from_args(int argc, const char** argv)
 {
+    assert(argv != NULL);
+
     if (argc == 4)
     {
         SquareEquationForm equation_form = {};

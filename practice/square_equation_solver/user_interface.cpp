@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <assert.h>
 
 #include "square_equation_types.hpp"
 
@@ -80,6 +81,8 @@ InputCharSignal wait_for_newline_or_exit(void)
 
 int read_input(SquareEquationForm* equation_form)
 {  
+    assert(equation_form != NULL);
+
     return scanf("%lg %lg %lg", &equation_form->a, &equation_form->b, &equation_form->c);
 }
 

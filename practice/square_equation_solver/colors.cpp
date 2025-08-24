@@ -2,11 +2,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <assert.h>
 
 #include "colors.hpp"
 
 int vprintf_color(const char* color, const char* format, va_list ap)
 {
+    assert(color != NULL);
+    assert(format != NULL);
+
     int result = 0;
 
     printf("%s", color);
@@ -19,6 +23,8 @@ int vprintf_color(const char* color, const char* format, va_list ap)
 
 int printf_red(const char* format, ...)
 {
+    assert(format != NULL);
+
     va_list ap;
     va_start(ap, format);
     return vprintf_color(ANSI_COLOR_RED, format, ap);
@@ -27,6 +33,8 @@ int printf_red(const char* format, ...)
 
 int printf_green(const char* format, ...)
 {
+    assert(format != NULL);
+
     va_list ap;
     va_start(ap, format);
     return vprintf_color(ANSI_COLOR_GREEN, format, ap);
@@ -35,6 +43,8 @@ int printf_green(const char* format, ...)
 
 int printf_yellow(const char* format, ...)
 {
+    assert(format != NULL);
+
     va_list ap;
     va_start(ap, format);
     return vprintf_color(ANSI_COLOR_YELLOW, format, ap);

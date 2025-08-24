@@ -1,4 +1,5 @@
 #include <string.h>
+#include <assert.h>
 
 #include "square_equation_types.hpp"
 #include "number_of_equation_roots_str_enum.hpp"
@@ -25,6 +26,8 @@ NumberOfRootsStrEnum number_of_roots_enum_array[] = {
 
 NumberOfEquationRoots get_equation_roots_number_enum_by_str(const char* number_of_roots_str)
 {
+    assert(number_of_roots_str != NULL);
+
     if (strcmp(number_of_roots_str, "ZERO_ROOTS") == 0)
     {
         return ZERO_ROOTS;

@@ -5,7 +5,7 @@
 #include "colors.hpp"
 
 
-void log_error(StatusData error)
+void print_error(StatusData error)
 {
     const char* error_code_string = NULL;
     switch(error.status_code)
@@ -15,6 +15,12 @@ void log_error(StatusData error)
             break;
         case TEST_FAILED_ERROR:
             error_code_string = "тест провален";
+            break;
+        case LOG_TARGET_EMPTY_ERROR:
+            error_code_string = "старт логгера без цели";
+            break;
+        case LOG_WRITE_ERROR:
+            error_code_string = "ошибка записи лога";
             break;
         case SUCCESS:
             error_code_string = "ошибки нет";

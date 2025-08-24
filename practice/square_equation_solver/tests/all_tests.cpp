@@ -33,7 +33,7 @@ const int test_runs_number = sizeof(test_runs) / sizeof(TestRunStructure);
 StatusData run_all_tests(const void* dummy_stub)
 {
     UNUSED(dummy_stub);
-    printf_red("Starting tests...\n");
+    printf_yellow("Starting tests...\n");
     for (int i = 0; i < test_runs_number; ++i)
     {
         printf_yellow("Testing %s\n", test_runs[i].test_name);

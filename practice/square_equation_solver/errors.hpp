@@ -15,7 +15,9 @@ enum StatusCode
 {
     SUCCESS,
     CANNOT_OPEN_FILE_ERROR,
-    TEST_FAILED_ERROR
+    TEST_FAILED_ERROR,
+    LOG_TARGET_EMPTY_ERROR,
+    LOG_WRITE_ERROR
 };
 
 
@@ -25,14 +27,15 @@ struct StatusData
     const char* filename;
     const char* func_name;
     int line_number;
+    const char* error_description;
 };
 
 //------------------------------------------------------------------------
-//! @brief void log_error(StatusData error)
+//! @brief void print_error(StatusData error)
 //! Function pretty prints error by its ERRNO
 //! @param [in] error - ERRNO
 //------------------------------------------------------------------------
-void log_error(StatusData error);
+void print_error(StatusData error);
 
 
 #endif // ERRORS_DECLARED

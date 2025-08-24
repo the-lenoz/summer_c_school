@@ -10,6 +10,10 @@
 #define ANSI_COLOR_RESET   "\x1b[0m"
 
 
+const int ANSI_COLOR_LEN = sizeof(ANSI_COLOR_RED);
+const int ANSI_COLOR_RESET_LEN = sizeof(ANSI_COLOR_RESET);
+
+
 //----------------------------------------------------------------------------
 //! @brief int vprintf_color(const char* color, const char* format, va_list ap)
 //! This function works like standard vprintf but prints all in color
