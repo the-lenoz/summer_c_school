@@ -6,8 +6,8 @@
 \item 
 double \mbox{\hyperlink{equation__solvers_8hpp_aa4b0dbd14e93be724a8dbc0257f158fa}{solve\+\_\+linear\+\_\+equation}} (double k, double b, \mbox{\hyperlink{square__equation__types_8hpp_acbe02258bce62ef34e026dad280774a4}{Number\+Of\+Equation\+Roots}} \texorpdfstring{$\ast$}{*}number\+\_\+of\+\_\+roots)
 \begin{DoxyCompactList}\small\item\em Function solves linear equation of kx + b = 0 form. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{structQuadraticEquationSolutionOutput}{Quadratic\+Equation\+Solution\+Output}} \mbox{\hyperlink{equation__solvers_8hpp_a817773e2ebc73cbf95e63d20d6a7b3ea}{solve\+\_\+quadratic\+\_\+equation}} (\mbox{\hyperlink{structQuadraticEquationForm}{Quadratic\+Equation\+Form}} equation\+\_\+form)
-\begin{DoxyCompactList}\small\item\em Function solves quadratic equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\mbox{\hyperlink{structSquareEquationSolutionOutput}{Square\+Equation\+Solution\+Output}} \mbox{\hyperlink{equation__solvers_8hpp_a817773e2ebc73cbf95e63d20d6a7b3ea}{solve\+\_\+square\+\_\+equation}} (\mbox{\hyperlink{structSquareEquationForm}{Square\+Equation\+Form}} equation\+\_\+form)
+\begin{DoxyCompactList}\small\item\em Function solves square equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \label{doc-func-members}
@@ -37,17 +37,17 @@ double solve\+\_\+linear\+\_\+equation(double k, double b)
 \begin{DoxyReturn}{Returns}
 root if exists, INF if anything is a root and NAN if a root doesn\textquotesingle{}t exist. 
 \end{DoxyReturn}
-\Hypertarget{equation__solvers_8hpp_a817773e2ebc73cbf95e63d20d6a7b3ea}\index{equation\_solvers.hpp@{equation\_solvers.hpp}!solve\_quadratic\_equation@{solve\_quadratic\_equation}}
-\index{solve\_quadratic\_equation@{solve\_quadratic\_equation}!equation\_solvers.hpp@{equation\_solvers.hpp}}
-\doxysubsubsection{\texorpdfstring{solve\_quadratic\_equation()}{solve\_quadratic\_equation()}}
+\Hypertarget{equation__solvers_8hpp_a817773e2ebc73cbf95e63d20d6a7b3ea}\index{equation\_solvers.hpp@{equation\_solvers.hpp}!solve\_square\_equation@{solve\_square\_equation}}
+\index{solve\_square\_equation@{solve\_square\_equation}!equation\_solvers.hpp@{equation\_solvers.hpp}}
+\doxysubsubsection{\texorpdfstring{solve\_square\_equation()}{solve\_square\_equation()}}
 {\footnotesize\ttfamily \label{equation__solvers_8hpp_a817773e2ebc73cbf95e63d20d6a7b3ea} 
-\mbox{\hyperlink{structQuadraticEquationSolutionOutput}{Quadratic\+Equation\+Solution\+Output}} solve\+\_\+quadratic\+\_\+equation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structQuadraticEquationForm}{Quadratic\+Equation\+Form}}}]{equation\+\_\+form}{}\end{DoxyParamCaption})}
+\mbox{\hyperlink{structSquareEquationSolutionOutput}{Square\+Equation\+Solution\+Output}} solve\+\_\+square\+\_\+equation (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSquareEquationForm}{Square\+Equation\+Form}}}]{equation\+\_\+form}{}\end{DoxyParamCaption})}
 
 
 
-Function solves quadratic equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. 
+Function solves square equation. a\texorpdfstring{$\ast$}{*}x\texorpdfstring{$^\wedge$}{\string^}2 + b\texorpdfstring{$\ast$}{*}x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. 
 
-int solve\+\_\+quadratic\+\_\+equation(double a, double b, double c, double\texorpdfstring{$\ast$}{*} x1, double\texorpdfstring{$\ast$}{*} x2) 
+int solve\+\_\+square\+\_\+equation(double a, double b, double c, double\texorpdfstring{$\ast$}{*} x1, double\texorpdfstring{$\ast$}{*} x2) 
 
 
 \begin{DoxyParams}[1]{Parameters}

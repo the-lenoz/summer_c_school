@@ -35,9 +35,9 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
     
 }
 
-QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm equation_form)
+SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_form)
 {
-    QuadraticEquationSolutionOutput result = {0, 0, TWO_ROOTS};
+    SquareEquationSolutionOutput result = {0, 0, TWO_ROOTS};
 
     if (!isfinite(equation_form.a) || !isfinite(equation_form.b) || !isfinite(equation_form.c))
     {

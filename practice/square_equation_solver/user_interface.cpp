@@ -11,9 +11,9 @@ int run_user_loop(void)
 {
     int input_length = 0;
     InputCharSignal input_char_signal = CORRECT_INPUT;
-    QuadraticEquationForm equation_form = {0};
-    QuadraticEquationSolutionOutput result = {0};
-    SolvedQuadraticEquation equation = {0};
+    SquareEquationForm equation_form = {0};
+    SquareEquationSolutionOutput result = {0};
+    SolvedSquareEquation equation = {0};
     
     send_greeting();
     do
@@ -23,7 +23,7 @@ int run_user_loop(void)
 
         if (input_length == 3 && input_char_signal == CORRECT_INPUT) 
         {
-            result = solve_quadratic_equation(equation_form); 
+            result = solve_square_equation(equation_form); 
             equation = {
                 equation_form,
                 result
@@ -79,13 +79,13 @@ InputCharSignal wait_for_newline_or_exit(void)
 }
 
 
-int read_input(QuadraticEquationForm* equation_form)
+int read_input(SquareEquationForm* equation_form)
 {  
     return scanf("%lg %lg %lg", &equation_form->a, &equation_form->b, &equation_form->c);
 }
 
 
-void print_result(SolvedQuadraticEquation equation)
+void print_result(SolvedSquareEquation equation)
 {
     printf("Уравнение %lg*x^2 + %lg*x + %lg = 0:\n", equation.form.a, equation.form.b, equation.form.c);
     switch (equation.solution_output.number_of_roots)

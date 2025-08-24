@@ -18,8 +18,8 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
 
 
 //---------------------------------------------------------------
-//! int solve_quadratic_equation(double a, double b, double c, double* x1, double* x2)
-//! @brief Function solves quadratic equation. a*x^2 + b*x + c = 0. 
+//! int solve_square_equation(double a, double b, double c, double* x1, double* x2)
+//! @brief Function solves square equation. a*x^2 + b*x + c = 0. 
 //! It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code
 //!
 //! @param [in] a - the first coefficent
@@ -30,6 +30,6 @@ double solve_linear_equation(double k, double b, NumberOfEquationRoots* number_o
 //!
 //! @return status code
 //---------------------------------------------------------------
-QuadraticEquationSolutionOutput solve_quadratic_equation(QuadraticEquationForm equation_form);
+SquareEquationSolutionOutput solve_square_equation(SquareEquationForm equation_form);
 
 #endif

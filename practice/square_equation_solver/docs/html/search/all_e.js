@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['quadraticequationform_0',['QuadraticEquationForm',['../structQuadraticEquationForm.html',1,'']]],
-  ['quadraticequationsolutionoutput_1',['QuadraticEquationSolutionOutput',['../structQuadraticEquationSolutionOutput.html',1,'']]]
+  ['squareequationform_0',['SquareEquationForm',['../structSquareEquationForm.html',1,'']]],
+  ['squareequationsolutionoutput_1',['SquareEquationSolutionOutput',['../structSquareEquationSolutionOutput.html',1,'']]]
 ];

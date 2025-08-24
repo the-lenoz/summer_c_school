@@ -9,8 +9,8 @@
 
 
 //----------------------------------------------------------------------------
-//! @brief int printf_red(char* format, ...)
-//! This function works like standard printf but prints all in red color
+//! @brief int vprintf_color(const char* color, const char* format, va_list ap)
+//! This function works like standard vprintf but prints all in color
 //----------------------------------------------------------------------------
 int vprintf_color(const char* color, const char* format, va_list ap);
 

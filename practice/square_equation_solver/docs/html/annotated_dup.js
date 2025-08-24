@@ -4,9 +4,9 @@ var annotated_dup =
     [ "DoublesEqualityTestData", "structDoublesEqualityTestData.html", "structDoublesEqualityTestData" ],
     [ "LinearEquationSolverTestData", "structLinearEquationSolverTestData.html", "structLinearEquationSolverTestData" ],
     [ "NumberOfRootsStrEnum", "structNumberOfRootsStrEnum.html", "structNumberOfRootsStrEnum" ],
-    [ "QuadraticEquationForm", "structQuadraticEquationForm.html", "structQuadraticEquationForm" ],
-    [ "QuadraticEquationSolutionOutput", "structQuadraticEquationSolutionOutput.html", "structQuadraticEquationSolutionOutput" ],
-    [ "SolvedQuadraticEquation", "structSolvedQuadraticEquation.html", "structSolvedQuadraticEquation" ],
+    [ "SquareEquationForm", "structSquareEquationForm.html", "structSquareEquationForm" ],
+    [ "SquareEquationSolutionOutput", "structSquareEquationSolutionOutput.html", "structSquareEquationSolutionOutput" ],
+    [ "SolvedSquareEquation", "structSolvedSquareEquation.html", "structSolvedSquareEquation" ],
     [ "SquareEquationSolverTestData", "structSquareEquationSolverTestData.html", "structSquareEquationSolverTestData" ],
     [ "TestRunStructure", "structTestRunStructure.html", "structTestRunStructure" ]
 ];

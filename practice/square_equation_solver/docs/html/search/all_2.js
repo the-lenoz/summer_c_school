@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['c_0',['c',['../structQuadraticEquationForm.html#a1a6d8222797a28d4faf847e7c36b0f54',1,'QuadraticEquationForm']]],
+  ['c_0',['c',['../structSquareEquationForm.html#a1a6d8222797a28d4faf847e7c36b0f54',1,'SquareEquationForm']]],
   ['cli_2ecpp_1',['cli.cpp',['../cli_8cpp.html',1,'']]],
   ['cli_2ed_2',['cli.d',['../cli_8d.html',1,'']]],
   ['cli_2ehpp_3',['cli.hpp',['../cli_8hpp.html',1,'']]],

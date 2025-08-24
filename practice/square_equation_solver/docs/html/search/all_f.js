@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['read_5finput_0',['read_input',['../user__interface_8cpp.html#afcfd09c98e7fadec88e81e38de7b9209',1,'read_input(QuadraticEquationForm *equation_form):&#160;user_interface.cpp'],['../user__interface_8hpp.html#afcfd09c98e7fadec88e81e38de7b9209',1,'read_input(QuadraticEquationForm *equation_form):&#160;user_interface.cpp']]],
+  ['read_5finput_0',['read_input',['../user__interface_8cpp.html#afcfd09c98e7fadec88e81e38de7b9209',1,'read_input(SquareEquationForm *equation_form):&#160;user_interface.cpp'],['../user__interface_8hpp.html#afcfd09c98e7fadec88e81e38de7b9209',1,'read_input(SquareEquationForm *equation_form):&#160;user_interface.cpp']]],
   ['result_1',['result',['../structLinearEquationSolverTestData.html#a985b5b00510fadc874d17ef95190f63c',1,'LinearEquationSolverTestData::result'],['../structDoublesEqualityTestData.html#a286cca58858f89ec44dbbe203ce94672',1,'DoublesEqualityTestData::result']]],
   ['run_5fall_5ftests_2',['run_all_tests',['../all__tests_8cpp.html#ae1640bbea635d532bac1221b599fbd19',1,'run_all_tests(const void *dummy_stub):&#160;all_tests.cpp'],['../all__tests_8hpp.html#ae1640bbea635d532bac1221b599fbd19',1,'run_all_tests(const void *dummy_stub):&#160;all_tests.cpp']]],
   ['run_5fcli_5ffrom_5fargs_3',['run_cli_from_args',['../cli_8cpp.html#a8e311d514cbc8c136fbf95dddc7b6382',1,'run_cli_from_args(int argc, const char **argv):&#160;cli.cpp'],['../cli_8hpp.html#a8e311d514cbc8c136fbf95dddc7b6382',1,'run_cli_from_args(int argc, const char **argv):&#160;cli.cpp']]],

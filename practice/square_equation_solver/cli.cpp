@@ -46,7 +46,7 @@ int run_cli_from_args(int argc, const char** argv)
 {
     if (argc == 4)
     {
-        QuadraticEquationForm equation_form = {};
+        SquareEquationForm equation_form = {};
         char wrong = 0;
         if (!sscanf(argv[1], "%lg%c", &equation_form.a, &wrong) || 
             !sscanf(argv[2], "%lg%c", &equation_form.b, &wrong) || 
@@ -57,9 +57,9 @@ int run_cli_from_args(int argc, const char** argv)
             return 1;
         }
 
-        QuadraticEquationSolutionOutput result = solve_quadratic_equation(equation_form); 
+        SquareEquationSolutionOutput result = solve_square_equation(equation_form); 
 
-        SolvedQuadraticEquation equation = {
+        SolvedSquareEquation equation = {
             equation_form,
             result
         };
@@ -77,9 +77,9 @@ int run_cli_from_file(const void* file_path_input)
 {
     const char* file_path = (const char*)file_path_input;
     FILE* file_ptr = NULL;
-    QuadraticEquationForm equation_form = {};
-    SolvedQuadraticEquation equation = {};
-    QuadraticEquationSolutionOutput result = {};
+    SquareEquationForm equation_form = {};
+    SolvedSquareEquation equation = {};
+    SquareEquationSolutionOutput result = {};
     char entered_file_path[max_file_path_len] = {0};
 
     if (file_path == NULL)
@@ -105,7 +105,7 @@ int run_cli_from_file(const void* file_path_input)
     }
     while (fscanf(file_ptr, "%lg %lg %lg\n", &equation_form.a, &equation_form.b, &equation_form.c) == 3)
     {
-        result = solve_quadratic_equation(equation_form); 
+        result = solve_square_equation(equation_form); 
         equation = {
             equation_form,
             result

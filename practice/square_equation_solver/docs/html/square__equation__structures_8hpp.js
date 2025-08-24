@@ -1,6 +1,6 @@
 var square__equation__structures_8hpp =
 [
-    [ "QuadraticEquationForm", "structQuadraticEquationForm.html", "structQuadraticEquationForm" ],
-    [ "QuadraticEquationSolutionOutput", "structQuadraticEquationSolutionOutput.html", "structQuadraticEquationSolutionOutput" ],
-    [ "SolvedQuadraticEquation", "structSolvedQuadraticEquation.html", "structSolvedQuadraticEquation" ]
+    [ "SquareEquationForm", "structSquareEquationForm.html", "structSquareEquationForm" ],
+    [ "SquareEquationSolutionOutput", "structSquareEquationSolutionOutput.html", "structSquareEquationSolutionOutput" ],
+    [ "SolvedSquareEquation", "structSolvedSquareEquation.html", "structSolvedSquareEquation" ]
 ];

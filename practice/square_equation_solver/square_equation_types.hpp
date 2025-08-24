@@ -10,24 +10,24 @@ enum NumberOfEquationRoots
     TWO_ROOTS
 };
 
-struct QuadraticEquationForm
+struct SquareEquationForm
 {
     double a;
     double b;
     double c;
 };
 
-struct QuadraticEquationSolutionOutput
+struct SquareEquationSolutionOutput
 {
     double x1;
     double x2;
     NumberOfEquationRoots number_of_roots;
 };
 
-struct SolvedQuadraticEquation
+struct SolvedSquareEquation
 {
-    QuadraticEquationForm form;
-    QuadraticEquationSolutionOutput solution_output;
+    SquareEquationForm form;
+    SquareEquationSolutionOutput solution_output;
 };
 
 #endif

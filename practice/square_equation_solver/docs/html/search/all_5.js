@@ -4,5 +4,5 @@ var searchData=
   ['flag_1',['flag',['../structCLIFunctionWithFlag.html#aab3e29ac0ecbf47a80ba42a89420f842',1,'CLIFunctionWithFlag']]],
   ['flag_5fruns_2',['flag_runs',['../main_8cpp.html#a0e40a85d3068a6bd38e96a015e57bc79',1,'main.cpp']]],
   ['flag_5fruns_5fnumber_3',['flag_runs_number',['../main_8cpp.html#ab3e3afb4a56e769ca6a8fe5a13eeeb62',1,'main.cpp']]],
-  ['form_4',['form',['../structSolvedQuadraticEquation.html#a5f3ea799e4796349fff11b2098bd47c0',1,'SolvedQuadraticEquation']]]
+  ['form_4',['form',['../structSolvedSquareEquation.html#a5f3ea799e4796349fff11b2098bd47c0',1,'SolvedSquareEquation']]]
 ];

@@ -25,7 +25,7 @@ struct LinearEquationSolverTestData
 
 struct SquareEquationSolverTestData 
 {
-    QuadraticEquationForm equation_form;
+    SquareEquationForm equation_form;
     double x1;
     double x2;
     char number_of_roots_str[NUMBER_OF_ROOTS_STRING_MAX_LEN];

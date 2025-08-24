@@ -11,7 +11,7 @@ int test_solve_linear_equation(void);
 
 
 //---------------------------------------------------------------
-//! int solve_quadratic_equation(void);
+//! int solve_square_equation(void);
 //! @brief Function to test are_doubles_equal function
 //!
 //! @return 1 if test passed else 0

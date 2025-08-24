@@ -34,20 +34,20 @@ InputCharSignal wait_for_newline_or_exit(void);
 
 //---------------------------------------------------------------
 //! void read_input(void)
-//! @brief Function reads user input into a quadratic equation structure.
+//! @brief Function reads user input into a square equation structure.
 //!
 //! @param [out] equation_form - pointer to target structure 
 //!
 //! @return number of readed fields
 //---------------------------------------------------------------
-int read_input(QuadraticEquationForm* equation_form);
+int read_input(SquareEquationForm* equation_form);
 
 //---------------------------------------------------------------
-//! void print_result(SolvedQuadraticEquation equation)
-//! @brief Function prints results or quadratic equation solving.
+//! void print_result(SolvedSquareEquation equation)
+//! @brief Function prints results or square equation solving.
 //!
 //! @param [in] equation - structure of solved equation to show
 //---------------------------------------------------------------
-void print_result(SolvedQuadraticEquation equation);
+void print_result(SolvedSquareEquation equation);
 
 #endif

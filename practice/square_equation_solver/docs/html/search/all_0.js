@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['a_0',['a',['../structQuadraticEquationForm.html#a94972f088730e96bd9ce890cf0caec15',1,'QuadraticEquationForm::a'],['../structDoublesEqualityTestData.html#adbc6725ed97501d1e53947bc20ab373c',1,'DoublesEqualityTestData::a']]],
+  ['a_0',['a',['../structSquareEquationForm.html#a94972f088730e96bd9ce890cf0caec15',1,'SquareEquationForm::a'],['../structDoublesEqualityTestData.html#adbc6725ed97501d1e53947bc20ab373c',1,'DoublesEqualityTestData::a']]],
   ['all_5ftests_2ecpp_1',['all_tests.cpp',['../all__tests_8cpp.html',1,'']]],
   ['all_5ftests_2ed_2',['all_tests.d',['../all__tests_8d.html',1,'']]],
   ['all_5ftests_2ehpp_3',['all_tests.hpp',['../all__tests_8hpp.html',1,'']]],

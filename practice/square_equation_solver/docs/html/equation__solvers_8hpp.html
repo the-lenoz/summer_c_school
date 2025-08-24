@@ -99,8 +99,8 @@ $(function(){initNavTree('equation__solvers_8hpp.html','',''); });
 Functions</h2></td></tr>
 <tr class="memitem:aa4b0dbd14e93be724a8dbc0257f158fa" id="r_aa4b0dbd14e93be724a8dbc0257f158fa"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa4b0dbd14e93be724a8dbc0257f158fa">solve_linear_equation</a> (double k, double b, <a class="el" href="square__equation__types_8hpp.html#acbe02258bce62ef34e026dad280774a4">NumberOfEquationRoots</a> *number_of_roots)</td></tr>
 <tr class="memdesc:aa4b0dbd14e93be724a8dbc0257f158fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function solves linear equation of kx + b = 0 form.  <br /></td></tr>
-<tr class="memitem:a817773e2ebc73cbf95e63d20d6a7b3ea" id="r_a817773e2ebc73cbf95e63d20d6a7b3ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structQuadraticEquationSolutionOutput.html">QuadraticEquationSolutionOutput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a817773e2ebc73cbf95e63d20d6a7b3ea">solve_quadratic_equation</a> (<a class="el" href="structQuadraticEquationForm.html">QuadraticEquationForm</a> equation_form)</td></tr>
-<tr class="memdesc:a817773e2ebc73cbf95e63d20d6a7b3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function solves quadratic equation. a*x^2 + b*x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code.  <br /></td></tr>
+<tr class="memitem:a817773e2ebc73cbf95e63d20d6a7b3ea" id="r_a817773e2ebc73cbf95e63d20d6a7b3ea"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structSquareEquationSolutionOutput.html">SquareEquationSolutionOutput</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a817773e2ebc73cbf95e63d20d6a7b3ea">solve_square_equation</a> (<a class="el" href="structSquareEquationForm.html">SquareEquationForm</a> equation_form)</td></tr>
+<tr class="memdesc:a817773e2ebc73cbf95e63d20d6a7b3ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function solves square equation. a*x^2 + b*x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code.  <br /></td></tr>
 </table>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
 <a id="aa4b0dbd14e93be724a8dbc0257f158fa" name="aa4b0dbd14e93be724a8dbc0257f158fa"></a>
@@ -142,22 +142,22 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a817773e2ebc73cbf95e63d20d6a7b3ea" name="a817773e2ebc73cbf95e63d20d6a7b3ea"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a817773e2ebc73cbf95e63d20d6a7b3ea">&#9670;&#160;</a></span>solve_quadratic_equation()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a817773e2ebc73cbf95e63d20d6a7b3ea">&#9670;&#160;</a></span>solve_square_equation()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structQuadraticEquationSolutionOutput.html">QuadraticEquationSolutionOutput</a> solve_quadratic_equation </td>
+          <td class="memname"><a class="el" href="structSquareEquationSolutionOutput.html">SquareEquationSolutionOutput</a> solve_square_equation </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structQuadraticEquationForm.html">QuadraticEquationForm</a></td>          <td class="paramname"><span class="paramname"><em>equation_form</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="structSquareEquationForm.html">SquareEquationForm</a></td>          <td class="paramname"><span class="paramname"><em>equation_form</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Function solves quadratic equation. a*x^2 + b*x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. </p>
-<p>int solve_quadratic_equation(double a, double b, double c, double* x1, double* x2) </p>
+<p>Function solves square equation. a*x^2 + b*x + c = 0. It receives 3 coefficents (a, b, c) and outputs 2 roots. Returns status code. </p>
+<p>int solve_square_equation(double a, double b, double c, double* x1, double* x2) </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">a</td><td>- the first coefficent </td></tr>

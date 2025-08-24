@@ -61,7 +61,7 @@ int test_solve_square_equation(void)
 {
     FILE* test_cases_file_pointer = fopen("tests/square_equation_solver_test_cases.txt", "r+");
     SquareEquationSolverTestData test_case = {};
-    QuadraticEquationSolutionOutput result = {};
+    SquareEquationSolutionOutput result = {};
 
     if (test_cases_file_pointer == NULL)
     {
@@ -94,7 +94,7 @@ int test_solve_square_equation(void)
             test_case.number_of_roots = ZERO_ROOTS;
         }
 
-        result = solve_quadratic_equation(test_case.equation_form);
+        result = solve_square_equation(test_case.equation_form);
         printf_yellow("Tesing case a: %lg b: %lg c: %lg x1: %lg x2: %lg, number_of_roots: %s\n", 
             test_case.equation_form.a, test_case.equation_form.b, test_case.equation_form.c, 
             test_case.x1, test_case.x2, test_case.number_of_roots_str);
