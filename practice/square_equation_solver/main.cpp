@@ -2,6 +2,7 @@
 #include <math.h>
 #include <string.h>
 #include <signal.h>
+#include <assert.h>
 
 #include "user_interface.hpp"
 #include "cli.hpp"
@@ -11,29 +12,16 @@
 
 #include "errors.hpp"
 
+#include "logger.hpp"
+
 int main(int argc, const char** argv)
 {
     signal(SIGWINCH, wc_detect);
 
-    //LOG_START(argv[0]);
+    assert(argv != NULL);
+    assert(argv[0] != NULL);
 
-    // atexit
-    // 
-    // HTML 
-    // backtrace
-    //
-    // --loger name_fale 
-    // FILE* 
-    // open()
-    // fileno()open
-    // write
-    // close
-
-    // LOG()
-    // LOG_ERR(...)
-    // LOG()
-
-    int file_flag_index = 0;
+    LOG_START(argv[0], NULL, 1);
 
     StatusData function_call_status_data = {};
     
@@ -45,15 +33,14 @@ int main(int argc, const char** argv)
     {
         for (size_t i = 0; i < global_flag_runs_number; ++i)
         {
-            if ((file_flag_index = is_flag_set(argc, argv, global_flag_runs[i].short_flag)) ||
-                (file_flag_index = is_flag_set(argc, argv, global_flag_runs[i].long_flag)))
+            if (is_flag_set(argc, argv, global_flag_runs[i]))
             {
-                function_call_status_data = (*global_flag_runs[i].CLI_run_function_ptr)((const void*)(argc > file_flag_index - 1 ? 
-                    argv[file_flag_index + 1] : NULL));
+                function_call_status_data = 
+                    (*global_flag_runs[i].CLI_run_function_ptr)((const void*)(get_flag_value(argc, argv, global_flag_runs[i])));
 
                 if (function_call_status_data.status_code != SUCCESS)
                 {
-                    print_error(function_call_status_data);
+                    LOG_ERROR(function_call_status_data);
                     return 1;
                 }
                 return 0;

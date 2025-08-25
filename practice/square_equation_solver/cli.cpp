@@ -15,7 +15,9 @@
 
 #include "cli.hpp"
 
+
 const int max_file_path_len = 512;
+
 
 StatusData print_help(const void* dummy_stub)
 {
@@ -24,27 +26,64 @@ StatusData print_help(const void* dummy_stub)
     printf("main [-флаги] [аргументы]\n");
     for (size_t i = 0; i < global_flag_runs_number; ++i)
     {
-        printf("\t%s, %-64s%s\n", global_flag_runs[i].short_flag, global_flag_runs[i].long_flag, global_flag_runs[i].description);
+        printf("\t%s, %-64s%s\n", global_flag_runs[i].short_flag, 
+            global_flag_runs[i].long_flag, global_flag_runs[i].description);
     }
     printf("\t%-68s%s\n", "[a b c]", "3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0");
     printf("\t%-68s%s\n","","Без аргументов - запустить в интерактивном режиме");
     return MAKE_SUCCESS_STRUCT();
 }
 
-int is_flag_set(int argc, const char** argv, const char* flag)
+int get_flag_index(int argc, const char** argv, CLIFlagStructure flag)
 {
     assert(argv != NULL);
+    assert(flag.short_flag != NULL);
+    assert(flag.long_flag != NULL);
 
     for (int i = 1; i < argc; ++i)
     {
         assert(argv[i] != NULL);
 
-        if (strcmp(flag, argv[i]) == 0)
+        if (strcmp(flag.short_flag, argv[i]) == 0 || strcmp(flag.long_flag, argv[i]) == 0)
         {
             return i;
         }
     }
     return 0;
+}
+
+int is_flag_set(int argc, const char** argv, CLIFlagStructure flag)
+{
+    return !!get_flag_index(argc, argv, flag);
+}
+
+const char* get_flag_value(int argc, const char** argv, CLIFlagStructure flag)
+{
+    assert(argv != NULL);
+
+    int flag_index = get_flag_index(argc, argv, flag);
+
+    if (!flag_index) 
+    {
+        return NULL;
+    }
+    else if (flag_index == argc - 1)
+    {
+        return NULL;
+    }
+    else 
+    {
+        assert(argv[flag_index + 1] != NULL);
+
+        if (*(argv[flag_index + 1]) == '-')
+        {
+            return NULL;
+        }
+        else
+        {
+            return argv[flag_index + 1];
+        }
+    }
 }
 
 int run_cli_from_args(int argc, const char** argv)
@@ -53,6 +92,10 @@ int run_cli_from_args(int argc, const char** argv)
 
     if (argc == 4)
     {
+        assert(argv[1] != NULL);
+        assert(argv[2] != NULL);
+        assert(argv[3] != NULL);
+
         SquareEquationForm equation_form = {};
         char wrong = 0;
         if (!sscanf(argv[1], "%lg%c", &equation_form.a, &wrong) || 
@@ -122,3 +165,5 @@ StatusData run_cli_from_file(const void* file_path_input)
     fclose(file_ptr);
     return MAKE_SUCCESS_STRUCT();
 }
+
+

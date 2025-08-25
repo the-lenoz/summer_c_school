@@ -8,6 +8,7 @@
             __func__,\
             __LINE__\
         }
+        
 #define MAKE_SUCCESS_STRUCT() {SUCCESS}
 
 
@@ -17,7 +18,9 @@ enum StatusCode
     CANNOT_OPEN_FILE_ERROR,
     TEST_FAILED_ERROR,
     LOG_TARGET_EMPTY_ERROR,
-    LOG_WRITE_ERROR
+    LOG_WRITE_ERROR,
+    LOGGER_OFF_WRITE_ERROR,
+    LOG_START_ERROR
 };
 
 
@@ -37,5 +40,12 @@ struct StatusData
 //------------------------------------------------------------------------
 void print_error(StatusData error);
 
+//------------------------------------------------------------------------
+//! @brief void print_error(StatusData error)
+//! Function to get error description by its code
+//! @param [in] status_code
+//! @return error description
+//------------------------------------------------------------------------
+const char* get_error_description(StatusCode status_code);
 
 #endif // ERRORS_DECLARED
