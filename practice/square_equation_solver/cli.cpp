@@ -22,9 +22,9 @@ StatusData print_help(const void* dummy_stub)
     UNUSED(dummy_stub);
     printf("Решатель квадратных уравнений. Вызов:\n");
     printf("main [-флаги] [аргументы]\n");
-    for (int i = 0; i < flag_runs_number; ++i)
+    for (size_t i = 0; i < global_flag_runs_number; ++i)
     {
-        printf("\t%s, %-64s%s\n", flag_runs[i].short_flag, flag_runs[i].long_flag, flag_runs[i].description);
+        printf("\t%s, %-64s%s\n", global_flag_runs[i].short_flag, global_flag_runs[i].long_flag, global_flag_runs[i].description);
     }
     printf("\t%-68s%s\n", "[a b c]", "3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0");
     printf("\t%-68s%s\n","","Без аргументов - запустить в интерактивном режиме");

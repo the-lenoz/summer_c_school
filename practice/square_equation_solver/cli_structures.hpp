@@ -14,7 +14,7 @@ struct CLIFRunModeStructure
     const char* description;
 };
 
-const CLIFRunModeStructure flag_runs[] = {
+const CLIFRunModeStructure global_flag_runs[] = {
     {
         .CLI_run_function_ptr = &print_help,
         .short_flag = "-h",
@@ -37,6 +37,6 @@ const CLIFRunModeStructure flag_runs[] = {
 #endif // TEST_MODE
 };
 
-const int flag_runs_number = sizeof(flag_runs) / sizeof(CLIFRunModeStructure);
+const size_t global_flag_runs_number = sizeof(global_flag_runs) / sizeof(global_flag_runs[0]);
 
 #endif // CLI_STRUCTURES_DECLARED

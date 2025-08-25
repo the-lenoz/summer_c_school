@@ -1,17 +1,20 @@
 #include <stdio.h>
 #include <math.h>
 #include <string.h>
-
-#include "square_equation_types.hpp"
+#include <signal.h>
 
 #include "user_interface.hpp"
 #include "cli.hpp"
-#include "cli_structures.hpp" // flag_runs array defined here
+#include "cli_structures.hpp" // global_flag_runs array defined here
+
+#include "signal_handlers.hpp"
 
 #include "errors.hpp"
 
 int main(int argc, const char** argv)
 {
+    signal(SIGWINCH, wc_detect);
+
     //LOG_START(argv[0]);
 
     // atexit
@@ -40,12 +43,12 @@ int main(int argc, const char** argv)
     } 
     else
     {
-        for (int i = 0; i < flag_runs_number; ++i)
+        for (size_t i = 0; i < global_flag_runs_number; ++i)
         {
-            if ((file_flag_index = is_flag_set(argc, argv, flag_runs[i].short_flag)) ||
-                (file_flag_index = is_flag_set(argc, argv, flag_runs[i].long_flag)))
+            if ((file_flag_index = is_flag_set(argc, argv, global_flag_runs[i].short_flag)) ||
+                (file_flag_index = is_flag_set(argc, argv, global_flag_runs[i].long_flag)))
             {
-                function_call_status_data = (*flag_runs[i].CLI_run_function_ptr)((const void*)(argc > file_flag_index - 1 ? 
+                function_call_status_data = (*global_flag_runs[i].CLI_run_function_ptr)((const void*)(argc > file_flag_index - 1 ? 
                     argv[file_flag_index + 1] : NULL));
 
                 if (function_call_status_data.status_code != SUCCESS)

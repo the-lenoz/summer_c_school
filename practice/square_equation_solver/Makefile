@@ -16,7 +16,7 @@ TEST_DIR=tests
 INC=tests ./
 INC_PARAMS=$(foreach d, $(INC), -I$d)
 
-MAIN_SOURCES=colors.cpp user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp number_of_equation_roots_str_enum.cpp errors.cpp
+MAIN_SOURCES=colors.cpp user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp number_of_equation_roots_str_enum.cpp errors.cpp signal_handlers.cpp
 MAIN_OBJECTS_WITHOUT_PREFIX=$(MAIN_SOURCES:.cpp=.o)
 MAIN_OBJECTS=$(addprefix $(BUILD_DIR)/, $(MAIN_OBJECTS_WITHOUT_PREFIX))
 

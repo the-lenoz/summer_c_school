@@ -10,7 +10,7 @@
 struct TestRunStructure
 {
     int (*test_function_ptr)(void);
-    char test_name[128];
+    char test_name[128]; // TODO
 };
 
 
@@ -19,7 +19,7 @@ struct LinearEquationSolverTestData
     double k;
     double b;
     double result;
-    char number_of_roots_str[NUMBER_OF_ROOTS_STRING_MAX_LEN];
+    char number_of_roots_str[NUMBER_OF_ROOTS_STRING_MAX_LEN]; // TODO
     NumberOfEquationRoots number_of_roots;
 };
 

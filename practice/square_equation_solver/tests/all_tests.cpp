@@ -12,7 +12,7 @@
 
 #include "all_tests.hpp"
 
-TestRunStructure test_runs[] = {
+const TestRunStructure test_runs[] = {
     {
         .test_function_ptr = &test_are_doubles_equal,
         .test_name = "are_doubles_equal"
@@ -27,14 +27,14 @@ TestRunStructure test_runs[] = {
     }
 };
 
-const int test_runs_number = sizeof(test_runs) / sizeof(TestRunStructure);
+const size_t test_runs_number = sizeof(test_runs) / sizeof(test_runs[0]);
 
 
 StatusData run_all_tests(const void* dummy_stub)
 {
     UNUSED(dummy_stub);
     printf_yellow("Starting tests...\n");
-    for (int i = 0; i < test_runs_number; ++i)
+    for (size_t i = 0; i < test_runs_number; ++i)
     {
         printf_yellow("Testing %s\n", test_runs[i].test_name);
         if (!(*test_runs[i].test_function_ptr)()) 
