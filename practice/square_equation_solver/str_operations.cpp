@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <assert.h>
+#include "my_assert.hpp"
 
 #include "str_operations.hpp"
 

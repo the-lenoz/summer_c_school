@@ -1,13 +1,13 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <assert.h>
+#include "my_assert.hpp"
 #include <fcntl.h>
 #include <time.h>
 #include <stdio.h>
 #include <execinfo.h>
 
-#include "errors.hpp"
+#include "status.hpp"
 #include "terminal_decorator.hpp"
 #include "str_operations.hpp"
 
@@ -72,12 +72,13 @@ int LOG_START(const char* filename, int log_targets_count, LogTarget* log_target
         }
     }
 
+    atexit(&LOG_STOP);
+
     logger_properties.filename = filename;
 
     logger_properties.logging_on = 1;
 
     LOG_MESSAGE("Логгер запущен\n", INFO);
-
     return 0;
 }
 
@@ -135,16 +136,16 @@ int LOG_ERROR(StatusData error_data)
 
     sprintf(line_number_string, "%d", error_data.line_number);
 
-    if (LOG_MESSAGE("ОШИБКА:", ERROR) == -1) return -1;
-    if (LOG_MESSAGE(error_description, ERROR) == -1) return -1;
-    if (LOG_MESSAGE("Произошла в файле:", ERROR) == -1) return -1;
-    if (LOG_MESSAGE(error_data.filename, ERROR) == -1) return -1;
-    if (LOG_MESSAGE(error_data.error_description, ERROR) == -1) return -1;
-    if (LOG_MESSAGE("В функции:", ERROR) == -1) return -1;
-    if (LOG_MESSAGE(error_data.func_name, ERROR) == -1) return -1;
-    if (LOG_MESSAGE("На строке номер:", ERROR) == -1) return -1;
-    if (LOG_MESSAGE(line_number_string, ERROR) == -1) return -1;
-    if (LOG_MESSAGE("ТРАССИРОВКА (последний вызов указан последним):", ERROR) == -1) return -1;
+    LOG_MESSAGE_AND_EXIT_ON_ERROR("ОШИБКА:");
+    LOG_MESSAGE_AND_EXIT_ON_ERROR(error_description);
+    LOG_MESSAGE_AND_EXIT_ON_ERROR("Произошла в файле:");
+    LOG_MESSAGE_AND_EXIT_ON_ERROR(error_data.filename);
+    LOG_MESSAGE_AND_EXIT_ON_ERROR(error_data.error_description);
+    LOG_MESSAGE_AND_EXIT_ON_ERROR("В функции:");
+    LOG_MESSAGE_AND_EXIT_ON_ERROR(error_data.func_name);
+    LOG_MESSAGE_AND_EXIT_ON_ERROR("На строке номер:");
+    LOG_MESSAGE_AND_EXIT_ON_ERROR(line_number_string);
+    LOG_MESSAGE_AND_EXIT_ON_ERROR("ТРАССИРОВКА (последний вызов указан последним):");
 
     int backtrace_size = 0;
     for (;backtrace_size <= BACKTRACE_BUFFER_SIZE && backtrace_buffer[backtrace_size] != NULL; ++backtrace_size)
@@ -154,7 +155,21 @@ int LOG_ERROR(StatusData error_data)
 
     for (int i = 0; i < logger_properties.log_targets_count; ++i)
     {
+        if (logger_properties.log_targets[i].type == HTML)
+        {
+            if (write(logger_properties.log_targets[i].file_descriptor, "<pre style=\"color:red\">\n", 23) == -1)
+            {
+                return -1;
+            }
+        }
         backtrace_symbols_fd(backtrace_buffer, backtrace_size, logger_properties.log_targets[i].file_descriptor);
+        if (logger_properties.log_targets[i].type == HTML)
+        {
+            if (write(logger_properties.log_targets[i].file_descriptor, "</pre>", 6) == -1)
+            {
+                return -1;
+            }
+        }
     }
 
     return 0;
@@ -174,6 +189,7 @@ void LOG_STOP(void)
             close(logger_properties.log_targets[i].file_descriptor);
         }
     }
+    //free((void *)logger_properties.log_targets);
     
 }
 
@@ -259,6 +275,32 @@ int log_to_html_file(int file_descriptor, const char* message, LogMessageType me
 
     size_t message_len = strlen(message);
 
+    const char* color = "black";
+
+    if (message_type == WARNING)
+    {
+        color = "yellow";
+    }
+    else if (message_type == ERROR)
+    {
+        color = "red";
+    }
+
+    if (write(file_descriptor, "<pre><div style=\"color:", 23) == -1)
+    {
+        return -1;
+    }
+
+    if (write(file_descriptor, color, strlen(color)) == -1)
+    {
+        return -1;
+    }
+
+    if (write(file_descriptor, "\">", 2) == -1)
+    {
+        return -1;
+    }
+
     if (write_log_annotation(message_type, file_descriptor) == -1)
     {
         return -1;
@@ -269,7 +311,7 @@ int log_to_html_file(int file_descriptor, const char* message, LogMessageType me
         return -1;
     }
 
-    if (write(file_descriptor, "\n", 1) == -1)
+    if (write(file_descriptor, "</div></pre><br>", 16) == -1)
     {
         return -1;
     }
@@ -281,7 +323,7 @@ int log_to_stdout(int file_descriptor, const char* message, LogMessageType messa
 {
     assert(message != NULL);
 
-    size_t message_len = strlen(message);
+    size_t message_len = strlen(message);    
 
     if (write_log_annotation(message_type, file_descriptor) == -1)
     {

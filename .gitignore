@@ -61,3 +61,5 @@ build/
 logs/*
 
 compile_commands.json
+
+headers.mk

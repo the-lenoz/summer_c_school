@@ -1,5 +1,5 @@
 #include <string.h>
-#include <assert.h>
+#include "my_assert.hpp"
 
 #include "square_equation_types.hpp"
 #include "number_of_equation_roots_str_enum.hpp"

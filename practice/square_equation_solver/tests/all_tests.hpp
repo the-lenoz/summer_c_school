@@ -1,7 +1,7 @@
 #ifndef ALL_TESTS_RUN_DECLARED
 #define ALL_TESTS_RUN_DECLARED
 
-#include "errors.hpp"
+#include "status.hpp"
 #include "cli_structures.hpp"
 
 //---------------------------------------------------------------

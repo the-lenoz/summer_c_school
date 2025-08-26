@@ -5,7 +5,9 @@
 #define MAX_LOGGER_TIMESTAMP_LEN    31
 #define MAX_LINE_NUMBER_STR_LEN     32
 
-#define BACKTRACE_BUFFER_SIZE 256
+#define LOG_MESSAGE_AND_EXIT_ON_ERROR(message) if (message != NULL && LOG_MESSAGE(message, ERROR) == -1) return -1;
+
+#include "status.hpp"
 
 enum LogMessageType
 {

@@ -6,6 +6,7 @@
 #include "square_equation_types.hpp"
 
 
+
 struct TestRunStructure
 {
     int (*test_function_ptr)(void);

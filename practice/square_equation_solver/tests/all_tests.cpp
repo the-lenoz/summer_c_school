@@ -8,7 +8,7 @@
 #include "terminal_decorator.hpp"
 #include "test_structures.hpp"
 
-#include "errors.hpp"
+#include "status.hpp"
 
 #include "cli_structures.hpp"
 
@@ -52,7 +52,7 @@ StatusData run_all_tests(int argc, const char** argv, const CLIFlagStructure fla
     }
     
     printf_green("All tests PASSED!\n");
-    return MAKE_SUCCESS_STRUCT();
+    return MAKE_SUCCESS_STRUCT(NULL);
 }
 
 

@@ -49,6 +49,13 @@ InputCharSignal wait_for_newline_or_exit(void);
 int read_input(SquareEquationForm* equation_form);
 
 //---------------------------------------------------------------
+//! const char* prompt_input_file_path()
+//! @brief Function to prompt user to enter file path
+//! @return dynamically allocated file path
+//---------------------------------------------------------------
+const char* prompt_input_file_path();
+
+//---------------------------------------------------------------
 //! void print_result(SolvedSquareEquation equation)
 //! @brief Function prints results or square equation solving.
 //!

@@ -1,5 +1,7 @@
+#include <cstddef>
 #include <stdio.h>
-#include <assert.h>
+#include "my_assert.hpp"
+#include <stdlib.h>
 
 #include "square_equation_types.hpp"
 
@@ -7,13 +9,17 @@
 
 #include "user_interface.hpp"
 
+
+const int start_max_file_path_len = 512;
+
+
 int run_user_loop(void)
 {
     int input_length = 0;
     InputCharSignal input_char_signal = CORRECT_INPUT;
-    SquareEquationForm equation_form = {0};
-    SquareEquationSolutionOutput result = {0};
-    SolvedSquareEquation equation = {0};
+    SquareEquationForm equation_form = {};
+    SquareEquationSolutionOutput result = {};
+    SolvedSquareEquation equation = {};
     
     send_greeting();
     do
@@ -84,6 +90,35 @@ int read_input(SquareEquationForm* equation_form)
     assert(equation_form != NULL);
 
     return scanf("%lg %lg %lg", &equation_form->a, &equation_form->b, &equation_form->c);
+}
+
+const char* prompt_input_file_path()
+{
+    char* entered_file_path = (char*)calloc(start_max_file_path_len, sizeof(char));
+    printf("Введите путь к файлу с коэффицентами:\n");
+    
+    int c = 0;
+    size_t index = 0;
+    size_t current_file_path_len = start_max_file_path_len;
+    do
+    {
+        if (entered_file_path == NULL)
+            return NULL;
+
+        c = getchar();
+        if (c != '\n' && c != EOF)
+        {
+            entered_file_path[index++] = (char)c;
+            if (index == current_file_path_len)
+            {
+                current_file_path_len = current_file_path_len << 1;
+                entered_file_path = (char*)realloc(entered_file_path, current_file_path_len * sizeof(char));
+
+            }
+        }
+                    
+    } while (c != '\n' && c != EOF);
+    return entered_file_path;
 }
 
 

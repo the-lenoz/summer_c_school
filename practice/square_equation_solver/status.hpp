@@ -2,14 +2,16 @@
 #define ERRORS_DECLARED
 
 
-#define MAKE_ERROR_STRUCT(status_code) {\
-            status_code,\
-            __FILE__,\
-            __func__,\
-            __LINE__\
+#define MAKE_ERROR_STRUCT(stat_code) {\
+            .status_code = stat_code,\
+            .filename = __FILE__,\
+            .func_name = __func__,\
+            .line_number = __LINE__\
         }
         
-#define MAKE_SUCCESS_STRUCT() {SUCCESS}
+#define MAKE_SUCCESS_STRUCT(data) {.status_code=SUCCESS, .success_data=data}
+
+#define BACKTRACE_BUFFER_SIZE 512
 
 
 enum StatusCode
@@ -21,7 +23,9 @@ enum StatusCode
     LOG_TARGET_EMPTY_ERROR,
     LOG_WRITE_ERROR,
     LOGGER_OFF_WRITE_ERROR,
-    LOG_START_ERROR
+    LOG_START_ERROR,
+    CANNOT_GET_LOG_TARGETS,
+    ASSERTION_FAILED
 };
 
 
@@ -32,6 +36,7 @@ struct StatusData
     const char* func_name;
     int line_number;
     const char* error_description;
+    void* success_data;
 };
 
 //------------------------------------------------------------------------
@@ -40,6 +45,8 @@ struct StatusData
 //! @param [in] error - ERRNO
 //------------------------------------------------------------------------
 void print_error(StatusData error);
+
+void print_back_trace(void);
 
 //------------------------------------------------------------------------
 //! @brief void print_error(StatusData error)

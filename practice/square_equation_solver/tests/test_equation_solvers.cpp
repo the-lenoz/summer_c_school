@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -27,8 +28,23 @@ int test_solve_linear_equation(void)
         return 1;
     }
 
-    while (fscanf(test_cases_file_pointer, "k: %lg b: %lg result: %lg, number_of_roots: %14s\n", 
-        &test_case.k, &test_case.b, &test_case.result, test_case.number_of_roots_str) == 4)
+    fseek(test_cases_file_pointer, 0L, SEEK_END);
+    size_t file_size = (size_t) ftell(test_cases_file_pointer); 
+    fseek(test_cases_file_pointer, 0L, SEEK_SET);
+
+    char* file_buffer = (char*)calloc(file_size, sizeof(char));
+    if (file_buffer == NULL)
+    {
+        return 1;
+    }
+
+    fread(file_buffer, file_size, 1, test_cases_file_pointer);
+    fclose(test_cases_file_pointer);
+
+    int n = 0, count = 0;
+
+    while (sscanf(&(file_buffer[count]), " k: %lg b: %lg result: %lg, number_of_roots: %14s %n", 
+        &test_case.k, &test_case.b, &test_case.result, test_case.number_of_roots_str, &n) == 4)
     {
         test_case.number_of_roots = get_equation_roots_number_enum_by_str(test_case.number_of_roots_str);
 
@@ -41,7 +57,6 @@ int test_solve_linear_equation(void)
             if (!are_doubles_equal(result, test_case.result))
             {
                 printf_red("TEST CASE FAILED! expexted result: %lg. got: %lg\n", result, test_case.result);
-                fclose(test_cases_file_pointer);
                 return 0;
             }
         }
@@ -49,11 +64,10 @@ int test_solve_linear_equation(void)
         if (test_case.number_of_roots != test_number_of_roots)
         {
             printf_red("TEST CASE FAILED! Wrong number of roots!\n");
-            fclose(test_cases_file_pointer);
             return 0;
         }
+        count += n;
     }
-    fclose(test_cases_file_pointer);
     return 1;
 }
 
@@ -69,9 +83,24 @@ int test_solve_square_equation(void)
         return 1;
     }
 
-    while (fscanf(test_cases_file_pointer, "a: %lg b: %lg c: %lg x1: %lg x2: %lg, number_of_roots: %14s\n",
+    fseek(test_cases_file_pointer, 0L, SEEK_END);
+    size_t file_size = (size_t) ftell(test_cases_file_pointer); 
+    fseek(test_cases_file_pointer, 0L, SEEK_SET);
+
+    char* file_buffer = (char*)calloc(file_size, sizeof(char));
+    if (file_buffer == NULL)
+    {
+        return 1;
+    }
+
+    fread(file_buffer, file_size, 1, test_cases_file_pointer);
+    fclose(test_cases_file_pointer);
+
+    int n = 0, count = 0;
+
+    while (sscanf(&(file_buffer[count]), " a: %lg b: %lg c: %lg x1: %lg x2: %lg, number_of_roots: %14s %n",
           &test_case.equation_form.a, &test_case.equation_form.b, &test_case.equation_form.c,
-          &test_case.x1, &test_case.x2, test_case.number_of_roots_str) == 6)
+          &test_case.x1, &test_case.x2, test_case.number_of_roots_str, &n) == 6)
     {
         test_case.number_of_roots = get_equation_roots_number_enum_by_str(test_case.number_of_roots_str);
 
@@ -85,23 +114,20 @@ int test_solve_square_equation(void)
             if (!are_doubles_equal(result.x1, test_case.x1))
             {
                 printf_red("TEST CASE FAILED! expexted: %lg. got: %lg\n", result.x1, test_case.x1);
-                fclose(test_cases_file_pointer);
                 return 0;
             }
             if (!are_doubles_equal(result.x2, test_case.x2))
             {
                 printf_red("TEST CASE FAILED! expexted: %lg. got: %lg\n", result.x2, test_case.x2);
-                fclose(test_cases_file_pointer);
                 return 0;
             }
         }
         if (result.number_of_roots != test_case.number_of_roots)
         {
             printf_red("TEST CASE FAILED! Wrong number of roots!\n");
-            fclose(test_cases_file_pointer);
             return 0;
         }
+        count += n;
     }
-    fclose(test_cases_file_pointer);
     return 1;
 }

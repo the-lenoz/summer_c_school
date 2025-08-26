@@ -1,8 +1,9 @@
 #define UNUSED(x) (void)(x)
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <assert.h>
+#include "my_assert.hpp"
 
 #include "square_equation_types.hpp"
 
@@ -11,12 +12,12 @@
 
 #include "cli_structures.hpp"
 
-#include "errors.hpp"
+#include "status.hpp"
+
+#include "logger.hpp"
+
 
 #include "cli.hpp"
-
-
-const int start_max_file_path_len = 512;
 
 
 StatusData print_help(int argc, const char** argv, const CLIFlagStructure flag)
@@ -34,7 +35,7 @@ StatusData print_help(int argc, const char** argv, const CLIFlagStructure flag)
     }
     printf("\t%-68s%s\n", "[a b c]", "3 вещественных числа - решить квадратное уравнение вида ax^2 + bx + c = 0");
     printf("\t%-68s%s\n","","Без аргументов - запустить в интерактивном режиме");
-    return MAKE_SUCCESS_STRUCT();
+    return MAKE_SUCCESS_STRUCT(NULL);
 }
 
 int get_flag_index(int argc, const char** argv, CLIFlagStructure flag)
@@ -55,38 +56,46 @@ int get_flag_index(int argc, const char** argv, CLIFlagStructure flag)
     return 0;
 }
 
-int is_flag_set(int argc, const char** argv, CLIFlagStructure flag)
+int is_str_flag(const char* str)
 {
-    return !!get_flag_index(argc, argv, flag);
+    assert(str != NULL);
+
+    for (size_t i = 0; i < global_flag_runs_number; ++i)
+    {
+        if (strcmp(str, global_flag_runs[i].long_flag) == 0 ||
+            strcmp(str, global_flag_runs[i].short_flag) == 0)
+            {
+                return 1;
+            }
+    }
+    return 0;
 }
 
-const char* get_flag_value(int argc, const char** argv, CLIFlagStructure flag)
+int get_next_flag_index(int argc, const char** argv, int flag_index)
 {
     assert(argv != NULL);
 
-    int flag_index = get_flag_index(argc, argv, flag);
-
-    if (!flag_index) 
+    if (flag_index >= argc - 1)
     {
-        return NULL;
+        return -1;
     }
-    else if (flag_index == argc - 1)
-    {
-        return NULL;
-    }
-    else 
-    {
-        assert(argv[flag_index + 1] != NULL);
 
-        if (*(argv[flag_index + 1]) == '-')
+    for (int i = flag_index + 1; i < argc; ++i)
+    {
+        assert(argv[i] != NULL);
+
+        if (is_str_flag(argv[i]))
         {
-            return NULL;
-        }
-        else
-        {
-            return argv[flag_index + 1];
+            return i;
         }
     }
+
+    return -1;
+}
+
+int is_flag_set(int argc, const char** argv, CLIFlagStructure flag)
+{
+    return !!get_flag_index(argc, argv, flag);
 }
 
 int run_cli_from_args(int argc, const char** argv)
@@ -136,7 +145,9 @@ StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure
     SquareEquationForm equation_form = {};
     SolvedSquareEquation equation = {};
     SquareEquationSolutionOutput result = {};
-    char* entered_file_path = (char*)calloc(start_max_file_path_len, sizeof(char));
+
+    size_t file_size = 0;
+    
 
     if (flag_index + 1 < argc)
     {
@@ -146,32 +157,18 @@ StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure
 
     if (file_path == NULL)
     {
-        printf("Введите путь к файлу с коэффицентами:\n");
-        
-        int c = 0;
-        size_t index = 0;
-        size_t current_file_path_len = start_max_file_path_len;
-        do
+        const char* entered_file_path = prompt_input_file_path();
+        if (entered_file_path == NULL) // allocation error in prompt_input_file_path
         {
-            if (entered_file_path == NULL)
-                return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
+            return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
+        }
 
-            c = getchar();
-            if (c != '\n' && c != EOF)
-                entered_file_path[index++] = (char)c;
-
-            if (index == current_file_path_len)
-            {
-                current_file_path_len = current_file_path_len << 1;
-                entered_file_path = (char*)realloc(entered_file_path, current_file_path_len * sizeof(char));
-
-            }
-        } while (c != '\n' && c != EOF);
-
-        file_ptr = fopen(entered_file_path, "r+");   
+        file_ptr = fopen(entered_file_path, "r+");  
+        free((void *) entered_file_path);
     }
     else
     {
+        printf("%s\n", file_path);
         file_ptr = fopen(file_path, "r+");
     }
 
@@ -179,7 +176,29 @@ StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure
     {
         return MAKE_ERROR_STRUCT(CANNOT_OPEN_FILE_ERROR);
     }
-    while (fscanf(file_ptr, "%lg %lg %lg\n", &equation_form.a, &equation_form.b, &equation_form.c) == 3)
+
+    fseek(file_ptr, 0L, SEEK_END);
+    file_size = (size_t) ftell(file_ptr); 
+    fseek(file_ptr, 0L, SEEK_SET);
+
+    if (file_size == 0)
+    {
+        return MAKE_ERROR_STRUCT(CANNOT_OPEN_FILE_ERROR);
+    }
+    
+    char* file_buffer = (char*)calloc(file_size, sizeof(char));
+    if (file_buffer == NULL)
+    {
+        return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
+    }
+
+    fread(file_buffer, file_size, 1, file_ptr);
+    fclose(file_ptr);
+
+    int count = 0;
+    int n;
+
+    while (sscanf(&(file_buffer[count]), " %lg %lg %lg %n", &equation_form.a, &equation_form.b, &equation_form.c, &n) == 3)
     {
         result = solve_square_equation(equation_form); 
         equation = {
@@ -188,10 +207,67 @@ StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure
         };
         print_result(equation); 
         printf("\n");
+        count += n;
     }
 
-    fclose(file_ptr);
-    return MAKE_SUCCESS_STRUCT();
+    return MAKE_SUCCESS_STRUCT(NULL);
 }
 
+
+StatusData setup_logger_cli(int argc, const char** argv, const CLIFlagStructure flag)
+{
+    assert(argv != NULL);
+
+    int flag_index = get_flag_index(argc, argv, flag);
+    int next_flag_index = get_next_flag_index(argc, argv, flag_index);
+
+    int log_targets_count = 0;
+
+    LogTarget* log_targets = NULL;
+
+
+    if (flag_index == 0 || flag_index == argc - 1)
+    {
+        return MAKE_ERROR_STRUCT(CANNOT_GET_LOG_TARGETS);
+    }
+
+    if (next_flag_index == -1)
+    {
+        log_targets_count = argc - 1 - flag_index;
+    }
+    else {
+        log_targets_count = next_flag_index - 1 - flag_index;
+    }
+
+    log_targets = (LogTarget*) calloc((size_t) log_targets_count, sizeof(LogTarget));
+
+    if (log_targets == NULL)
+    {
+        return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
+    }
+
+
+    for (int i = 0; i < log_targets_count; ++i)
+    {
+        assert(argv[i + flag_index + 1] != NULL);
+        if (strcmp("STDOUT", argv[i + flag_index + 1]) == 0)
+        {
+            log_targets[i] = 
+            {
+                NULL // STDOUT
+            };
+        }
+        else 
+        {
+            log_targets[i] = 
+            {
+                argv[i + flag_index + 1]
+            };
+        }
+    }
+
+    LOG_START(argv[0], log_targets_count, log_targets);
+
+    return MAKE_SUCCESS_STRUCT(NULL);
+}
 
