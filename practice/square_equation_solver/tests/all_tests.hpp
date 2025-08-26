@@ -4,11 +4,11 @@
 #include "errors.hpp"
 
 //---------------------------------------------------------------
-//! int run_all_tests(void)
+//! int StatusData run_all_tests(int argc, const char** argv, int flag_index)
 //! @brief Function runs all unit tests
 //! @param [in] dummy_stub - stub to unify function tuns
 //! @return status of execution
 //---------------------------------------------------------------
-StatusData run_all_tests(const void* dummy_stub);
+StatusData run_all_tests(int argc, const char** argv, int flag_index);
 
 #endif

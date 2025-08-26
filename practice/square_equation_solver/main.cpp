@@ -11,17 +11,33 @@
 #include "signal_handlers.hpp"
 
 #include "errors.hpp"
+#include "terminal_decorator.hpp"
 
 #include "logger.hpp"
 
 int main(int argc, const char** argv)
 {
+    printf_blinking("Мяу\n");
     signal(SIGWINCH, wc_detect);
+
 
     assert(argv != NULL);
     assert(argv[0] != NULL);
 
-    LOG_START(argv[0], NULL, 1);
+    LogTarget log_targets[] = {
+        {
+            .file_path = "log001.txt"
+        },
+        {
+            .file_path = "log001.html"
+        },
+        {
+            .file_path = NULL // STDOUT
+        }
+    };
+
+    LOG_START(argv[0], (int) (sizeof(log_targets) / sizeof(log_targets[0])), log_targets);
+    atexit(&LOG_STOP);
 
     StatusData function_call_status_data = {};
     
@@ -36,7 +52,7 @@ int main(int argc, const char** argv)
             if (is_flag_set(argc, argv, global_flag_runs[i]))
             {
                 function_call_status_data = 
-                    (*global_flag_runs[i].CLI_run_function_ptr)((const void*)(get_flag_value(argc, argv, global_flag_runs[i])));
+                    global_flag_runs[i].CLI_run_function_ptr((const void*)(get_flag_value(argc, argv, global_flag_runs[i])));
 
                 if (function_call_status_data.status_code != SUCCESS)
                 {

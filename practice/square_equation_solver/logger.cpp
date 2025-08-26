@@ -8,62 +8,70 @@
 #include <execinfo.h>
 
 #include "errors.hpp"
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
+#include "str_operations.hpp"
 
 #include "logger.hpp"
 
 
-
-
-struct LoggerProperties
-{
-    int log_file_descriptor;
-    int log_to_stdout;
-    int logging_on;
-    const char* filename;
-};
-
-
 static LoggerProperties logger_properties = 
 {
-    .log_file_descriptor = -1,
-    .log_to_stdout = 0,
+    .log_targets = NULL,
+    .log_targets_count = 0,
     .logging_on = 0,
     .filename = NULL
 };
 
 
-
-
-int LOG_START(const char* filename, const char* log_file_path, int log_to_stdout)
+int LOG_START(const char* filename, int log_targets_count, LogTarget* log_targets)
 {
     assert(filename != NULL);
-
-    void* bt_buf[1] = {0};
-    backtrace(bt_buf, 1); // MAKE SURE THAT LIBGCC IS LOADED
+    assert(log_targets != NULL);
 
     if (logger_properties.logging_on)
     {
         print_error(MAKE_ERROR_STRUCT(LOG_START_ERROR));
         return -1;
     }
-    if (log_file_path != NULL)
-    {
-        logger_properties.log_file_descriptor = open(log_file_path, O_CREAT | O_APPEND);
-
-        if (logger_properties.log_file_descriptor == -1)
-        {
-            print_error(MAKE_ERROR_STRUCT(CANNOT_OPEN_FILE_ERROR));
-            return -1;
-        }
-    }
-    else if (!log_to_stdout)
+    if (log_targets_count == 0)
     {
         print_error(MAKE_ERROR_STRUCT(LOG_TARGET_EMPTY_ERROR));
         return -1;
     }
 
-    logger_properties.log_to_stdout = log_to_stdout;
+    logger_properties.log_targets = log_targets;
+    logger_properties.log_targets_count = log_targets_count;
+
+    void* bt_buf[1] = {NULL};
+    backtrace(bt_buf, 1); // MAKE SURE THAT LIBGCC IS LOADED
+
+    for (int i = 0; i < log_targets_count; ++i)
+    {
+        if (logger_properties.log_targets[i].file_path == NULL) // STDOUT
+        {
+            logger_properties.log_targets[i].type = STDOUT;
+            logger_properties.log_targets[i].file_descriptor = STDOUT_FILENO;
+            continue;
+        }   
+
+        if (endswith(logger_properties.log_targets[i].file_path, ".html"))
+        {
+            logger_properties.log_targets[i].type = HTML;
+        }
+        else
+        {
+            logger_properties.log_targets[i].type = TEXT;
+        }
+
+        logger_properties.log_targets[i].file_descriptor = open(logger_properties.log_targets[i].file_path, O_WRONLY | O_CREAT | O_APPEND, 0640);
+
+        if (logger_properties.log_targets[i].file_descriptor == -1)
+        {
+            print_error(MAKE_ERROR_STRUCT(CANNOT_OPEN_FILE_ERROR));
+            return -1;
+        }
+    }
+
     logger_properties.filename = filename;
 
     logger_properties.logging_on = 1;
@@ -79,29 +87,40 @@ int LOG_MESSAGE(const char* message, LogMessageType message_type)
 
     int log_status_code = 0;
     
-    if (logger_properties.logging_on)
-    {
-        if (logger_properties.log_file_descriptor != -1)
-        {
-            if (log_to_file(message, message_type) == -1)
-            {
-                print_error(MAKE_ERROR_STRUCT(LOG_WRITE_ERROR));
-                log_status_code = -1;
-            }
-        }
-        if (logger_properties.log_to_stdout)
-        {
-            if (log_to_stdout(message, message_type) == -1)
-            {
-                print_error(MAKE_ERROR_STRUCT(LOG_WRITE_ERROR));
-                log_status_code = -1;
-            }
-        }
-    }
-    else 
+    if (!logger_properties.logging_on)
     {
         print_error(MAKE_ERROR_STRUCT(LOGGER_OFF_WRITE_ERROR));
-        log_status_code = -1;
+        return -1;
+    }
+
+    for (int i = 0; i < logger_properties.log_targets_count; ++i)
+    {
+        switch (logger_properties.log_targets[i].type)
+        {
+            case STDOUT:
+                if (log_to_stdout(logger_properties.log_targets[i].file_descriptor, message, message_type) == -1)
+                {
+                    print_error(MAKE_ERROR_STRUCT(LOG_WRITE_ERROR));
+                    log_status_code = -1;
+                }   
+                break;
+            case TEXT:
+                if (log_to_text_file(logger_properties.log_targets[i].file_descriptor, message, message_type) == -1)
+                {
+                    print_error(MAKE_ERROR_STRUCT(LOG_WRITE_ERROR));
+                    log_status_code = -1;
+                }
+                break;
+            case HTML:
+                if (log_to_html_file(logger_properties.log_targets[i].file_descriptor, message, message_type) == -1)
+                {
+                    print_error(MAKE_ERROR_STRUCT(LOG_WRITE_ERROR));
+                    log_status_code = -1;
+                }
+                break;
+            default:
+                break;
+        }
     }
     return log_status_code;    
 }
@@ -120,19 +139,22 @@ int LOG_ERROR(StatusData error_data)
     if (LOG_MESSAGE(error_description, ERROR) == -1) return -1;
     if (LOG_MESSAGE("Произошла в файле:", ERROR) == -1) return -1;
     if (LOG_MESSAGE(error_data.filename, ERROR) == -1) return -1;
+    if (LOG_MESSAGE(error_data.error_description, ERROR) == -1) return -1;
     if (LOG_MESSAGE("В функции:", ERROR) == -1) return -1;
     if (LOG_MESSAGE(error_data.func_name, ERROR) == -1) return -1;
     if (LOG_MESSAGE("На строке номер:", ERROR) == -1) return -1;
     if (LOG_MESSAGE(line_number_string, ERROR) == -1) return -1;
     if (LOG_MESSAGE("ТРАССИРОВКА (последний вызов указан последним):", ERROR) == -1) return -1;
 
-    if (logger_properties.log_to_stdout)
+    int backtrace_size = 0;
+    for (;backtrace_size <= BACKTRACE_BUFFER_SIZE && backtrace_buffer[backtrace_size] != NULL; ++backtrace_size)
     {
-        backtrace_symbols_fd(backtrace_buffer, BACKTRACE_BUFFER_SIZE, STDOUT_FILENO);
+        // do nothing
     }
-    if (logger_properties.log_file_descriptor != -1)
+
+    for (int i = 0; i < logger_properties.log_targets_count; ++i)
     {
-        backtrace_symbols_fd(backtrace_buffer, BACKTRACE_BUFFER_SIZE, logger_properties.log_file_descriptor);
+        backtrace_symbols_fd(backtrace_buffer, backtrace_size, logger_properties.log_targets[i].file_descriptor);
     }
 
     return 0;
@@ -140,15 +162,19 @@ int LOG_ERROR(StatusData error_data)
 
 void LOG_STOP(void)
 {
-    if (logger_properties.logging_on)
+    if (!logger_properties.logging_on) return;
+
+    LOG_MESSAGE("Завершение", INFO);
+    
+    for (int i = 0; i < logger_properties.log_targets_count; ++i)
     {
-        LOG_MESSAGE("Завершение", INFO);
-        if (logger_properties.log_file_descriptor != -1)
+        if (logger_properties.log_targets[i].type == HTML || logger_properties.log_targets[i].type == TEXT)
         {
-            fsync(logger_properties.log_file_descriptor);
-            close(logger_properties.log_file_descriptor);
+            fsync(logger_properties.log_targets[i].file_descriptor);
+            close(logger_properties.log_targets[i].file_descriptor);
         }
     }
+    
 }
 
 const char* get_log_message_type_str(LogMessageType message_type)
@@ -157,16 +183,12 @@ const char* get_log_message_type_str(LogMessageType message_type)
     {
         case INFO:
             return "INFO";
-            break;
         case WARNING:
             return "WARNING";
-            break;
         case ERROR:
             return "ERROR";
-            break;
         default:
             return "INFO";
-            break;
     }
 }
 
@@ -205,49 +227,78 @@ int write_log_annotation(LogMessageType message_type, int file_descriptor)
 }
 
 
-int log_to_file(const char* message, LogMessageType message_type)
+int log_to_text_file(int file_descriptor, const char* message, LogMessageType message_type)
 {
     assert(message != NULL);
-    assert(logger_properties.log_file_descriptor != -1);
+    assert(file_descriptor != -1);
 
     size_t message_len = strlen(message);
 
-    if (write_log_annotation(message_type, logger_properties.log_file_descriptor) == -1)
+    if (write_log_annotation(message_type, file_descriptor) == -1)
     {
         return -1;
     }
 
-    if (write(logger_properties.log_file_descriptor, message, message_len) == -1)
+    if (write(file_descriptor, message, message_len) == -1)
+    {
+        return -1;
+    }
+
+    if (write(file_descriptor, "\n", 1) == -1)
     {
         return -1;
     }
 
     return 0;
-
 }
 
-int log_to_stdout(const char* message, LogMessageType message_type)
+int log_to_html_file(int file_descriptor, const char* message, LogMessageType message_type)
+{
+    assert(message != NULL);
+    assert(file_descriptor != -1);
+
+    size_t message_len = strlen(message);
+
+    if (write_log_annotation(message_type, file_descriptor) == -1)
+    {
+        return -1;
+    }
+
+    if (write(file_descriptor, message, message_len) == -1)
+    {
+        return -1;
+    }
+
+    if (write(file_descriptor, "\n", 1) == -1)
+    {
+        return -1;
+    }
+
+    return 0;
+}
+
+int log_to_stdout(int file_descriptor, const char* message, LogMessageType message_type)
 {
     assert(message != NULL);
 
     size_t message_len = strlen(message);
 
-    if (write_log_annotation(message_type, STDOUT_FILENO) == -1)
+    if (write_log_annotation(message_type, file_descriptor) == -1)
     {
         return -1;
     }
 
-    if (write(STDOUT_FILENO, message, message_len) == -1)
+    if (write(file_descriptor, message, message_len) == -1)
     {
         return -1;
     }
 
-    if (write(STDOUT_FILENO, ANSI_COLOR_RESET, ANSI_COLOR_RESET_LEN) == -1)
+    if (write(file_descriptor, ANSI_COLOR_RESET, ANSI_COLOR_RESET_LEN) == -1)
     {
         return -1;
     }
 
-    if (write(STDOUT_FILENO, "\n", 1) == -1)
+    if (write(file_descriptor, "\n", 1) == -1)
     {
         return -1;
     }

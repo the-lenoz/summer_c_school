@@ -5,7 +5,7 @@
 #include "test_double_operations.hpp"
 #include "test_equation_solvers.hpp"
 
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
 #include "test_structures.hpp"
 
 #include "errors.hpp"
@@ -30,9 +30,12 @@ const TestRunStructure test_runs[] = {
 const size_t test_runs_number = sizeof(test_runs) / sizeof(test_runs[0]);
 
 
-StatusData run_all_tests(const void* dummy_stub)
+StatusData run_all_tests(int argc, const char** argv, int flag_index)
 {
-    UNUSED(dummy_stub);
+    UNUSED(argc);
+    UNUSED(argv);
+    UNUSED(flag_index);
+
     printf_yellow("Starting tests...\n");
     for (size_t i = 0; i < test_runs_number; ++i)
     {

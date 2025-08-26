@@ -16,7 +16,7 @@
 #include "cli.hpp"
 
 
-const int max_file_path_len = 512;
+const int start_max_file_path_len = 512;
 
 
 StatusData print_help(const void* dummy_stub)
@@ -130,15 +130,31 @@ StatusData run_cli_from_file(const void* file_path_input)
     SquareEquationForm equation_form = {};
     SolvedSquareEquation equation = {};
     SquareEquationSolutionOutput result = {};
-    char entered_file_path[max_file_path_len] = {0};
+    char* entered_file_path = (char*)calloc(start_max_file_path_len, sizeof(char));
 
     if (file_path == NULL)
     {
         printf("Введите путь к файлу с коэффицентами:\n");
         
-        fgets(entered_file_path, max_file_path_len - 1, stdin);
-        
-        entered_file_path[strcspn(entered_file_path, "\n")] = 0;
+        int c = 0;
+        size_t index = 0;
+        size_t current_file_path_len = start_max_file_path_len;
+        do
+        {
+            if (entered_file_path == NULL)
+                return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
+            
+            c = getchar();
+            if (c != '\n' && c != EOF)
+                entered_file_path[index++] = (char)c;
+
+            if (index == current_file_path_len)
+            {
+                current_file_path_len = current_file_path_len << 1;
+                entered_file_path = (char*)realloc(entered_file_path, current_file_path_len * sizeof(char));
+
+            }
+        } while (c != '\n' && c != EOF);
 
         file_ptr = fopen(entered_file_path, "r+");   
     }

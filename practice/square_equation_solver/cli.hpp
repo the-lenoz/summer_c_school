@@ -61,10 +61,16 @@ int run_cli_from_args(int argc, const char** argv);
 //! @brief Function runs calculation based on values from file in format `a b c`
 //! @param [in] run_cli_from_file_structure - RunCliFromFile structure containing file path
 //! @return status of execution
-//----------------------------------------  -----------------------
+//----------------------------------------  ---------------------
 StatusData run_cli_from_file(const void* run_cli_from_file_structure);
 
 const CLIFlagStructure global_flag_runs[] = {
+    {
+        .CLI_run_function_ptr = &print_help,
+        .short_flag = "-l",
+        .long_flag = "--log",
+        .description = "Лог-файлы (STDOUT для стандартного вывода): --log STDOUT file1 file2 ..."
+    },
     {
         .CLI_run_function_ptr = &print_help,
         .short_flag = "-h",
@@ -79,7 +85,7 @@ const CLIFlagStructure global_flag_runs[] = {
     },
 #ifdef TEST_MODE    
     {
-        .CLI_run_function_ptr = &run_all_tests,
+        .CLI_run_function_ptr = &run_all_tests, //TODO
         .short_flag = "-t",
         .long_flag = "--test",
         .description = "Запустить юнит-тесты"

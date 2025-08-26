@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "double_operations.hpp"
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
 
 #include "test_structures.hpp"
 

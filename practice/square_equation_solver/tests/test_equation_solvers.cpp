@@ -10,7 +10,7 @@
 
 #include "test_structures.hpp"
 
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
 
 #include "number_of_equation_roots_str_enum.hpp"
 
@@ -73,26 +73,7 @@ int test_solve_square_equation(void)
           &test_case.equation_form.a, &test_case.equation_form.b, &test_case.equation_form.c,
           &test_case.x1, &test_case.x2, test_case.number_of_roots_str) == 6)
     {
-        if (strcmp(test_case.number_of_roots_str, "ZERO_ROOTS") == 0)
-        {
-            test_case.number_of_roots = ZERO_ROOTS;
-        }
-        else if (strcmp(test_case.number_of_roots_str, "ONE_ROOT") == 0)
-        {
-            test_case.number_of_roots = ONE_ROOT;
-        }
-        else if (strcmp(test_case.number_of_roots_str, "TWO_ROOTS") == 0)
-        {
-            test_case.number_of_roots = TWO_ROOTS;
-        }
-        else if (strcmp(test_case.number_of_roots_str, "INFINITE_ROOTS") == 0)
-        {
-            test_case.number_of_roots = INFINITE_ROOTS;
-        }
-        else 
-        {
-            test_case.number_of_roots = ZERO_ROOTS;
-        }
+        test_case.number_of_roots = get_equation_roots_number_enum_by_str(test_case.number_of_roots_str);
 
         result = solve_square_equation(test_case.equation_form);
         printf_yellow("Tesing case a: %lg b: %lg c: %lg x1: %lg x2: %lg, number_of_roots: %s\n", 

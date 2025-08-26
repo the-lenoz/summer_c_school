@@ -4,9 +4,9 @@
 #include <string.h>
 #include <assert.h>
 
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
 
-int vprintf_color(const char* color, const char* format, va_list ap)
+int vprintf_escape(const char* color, const char* reset, const char* format, va_list ap)
 {
     assert(color != NULL);
     assert(format != NULL);
@@ -15,7 +15,7 @@ int vprintf_color(const char* color, const char* format, va_list ap)
 
     printf("%s", color);
     result = vprintf(format, ap);
-    printf("%s", ANSI_COLOR_RESET);
+    printf("%s", reset);
 
     return result;
 }
@@ -27,7 +27,7 @@ int printf_red(const char* format, ...)
 
     va_list ap;
     va_start(ap, format);
-    return vprintf_color(ANSI_COLOR_RED, format, ap);
+    return vprintf_escape(ANSI_COLOR_RED, ANSI_COLOR_RESET, format, ap);
 }
 
 
@@ -37,7 +37,7 @@ int printf_green(const char* format, ...)
 
     va_list ap;
     va_start(ap, format);
-    return vprintf_color(ANSI_COLOR_GREEN, format, ap);
+    return vprintf_escape(ANSI_COLOR_GREEN, ANSI_COLOR_RESET, format, ap);
 }
 
 
@@ -47,5 +47,14 @@ int printf_yellow(const char* format, ...)
 
     va_list ap;
     va_start(ap, format);
-    return vprintf_color(ANSI_COLOR_YELLOW, format, ap);
+    return vprintf_escape(ANSI_COLOR_YELLOW, ANSI_COLOR_RESET, format, ap);
+}
+
+int printf_blinking(const char* format, ...)
+{
+    assert(format != NULL);
+
+    va_list ap;
+    va_start(ap, format);
+    return vprintf_escape(TERMINAL_BLINK_START, TERMINAL_BLINK_RESET, format, ap);
 }

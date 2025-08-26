@@ -2,14 +2,14 @@
 
 #include "errors.hpp"
 
-#include "colors.hpp"
+#include "terminal_decorator.hpp"
 
 
 void print_error(StatusData error_data)
 {
     const char* error_code_string = get_error_description(error_data.status_code);
-    printf_red("Произошла ошибка: %s. Файл - %s, функция - %s, строка - %d\n",
-                error_code_string, error_data.filename, error_data.func_name, error_data.line_number);
+    printf_red("Произошла ошибка: %s %s. Файл - %s, функция - %s, строка - %d\n",
+                error_code_string, error_data.error_description, error_data.filename, error_data.func_name, error_data.line_number);
 }
 
 const char* get_error_description(StatusCode status_code)
@@ -19,6 +19,9 @@ const char* get_error_description(StatusCode status_code)
     {
         case CANNOT_OPEN_FILE_ERROR:
             error_code_string = "не могу открыть файл";
+            break;
+        case CANNOT_ALLOCATE_MEMORY_ERROR:
+            error_code_string = "не могу выделить память";
             break;
         case TEST_FAILED_ERROR:
             error_code_string = "тест провален";
