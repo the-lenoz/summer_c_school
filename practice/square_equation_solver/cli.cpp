@@ -19,9 +19,12 @@
 const int start_max_file_path_len = 512;
 
 
-StatusData print_help(const void* dummy_stub)
+StatusData print_help(int argc, const char** argv, const CLIFlagStructure flag)
 {
-    UNUSED(dummy_stub);
+    UNUSED(argc);
+    UNUSED(argv);
+    UNUSED(flag);
+
     printf("Решатель квадратных уравнений. Вызов:\n");
     printf("main [-флаги] [аргументы]\n");
     for (size_t i = 0; i < global_flag_runs_number; ++i)
@@ -103,7 +106,7 @@ int run_cli_from_args(int argc, const char** argv)
             !sscanf(argv[3], "%lg%c", &equation_form.c, &wrong) ||
             wrong)
         {
-            print_help(NULL);
+            print_help(argc, argv, {});
             return 1;
         }
 
@@ -117,20 +120,29 @@ int run_cli_from_args(int argc, const char** argv)
     }
     else 
     {
-        print_help(NULL);
+        print_help(argc, argv, {});
         return 1;
     }
     return 0;
 }
 
-StatusData run_cli_from_file(const void* file_path_input)
+StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure flag)
 {
-    const char* file_path = (const char*)file_path_input;
+    assert(argv != NULL);
+    int flag_index = get_flag_index(argc, argv, flag);
+    
+    const char* file_path = NULL;
     FILE* file_ptr = NULL;
     SquareEquationForm equation_form = {};
     SolvedSquareEquation equation = {};
     SquareEquationSolutionOutput result = {};
     char* entered_file_path = (char*)calloc(start_max_file_path_len, sizeof(char));
+
+    if (flag_index + 1 < argc)
+    {
+        assert(argv[flag_index + 1] != NULL);
+        file_path = argv[flag_index + 1];
+    }
 
     if (file_path == NULL)
     {
@@ -143,7 +155,7 @@ StatusData run_cli_from_file(const void* file_path_input)
         {
             if (entered_file_path == NULL)
                 return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);
-            
+
             c = getchar();
             if (c != '\n' && c != EOF)
                 entered_file_path[index++] = (char)c;

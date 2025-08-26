@@ -10,6 +10,8 @@
 
 #include "errors.hpp"
 
+#include "cli_structures.hpp"
+
 #include "all_tests.hpp"
 
 const TestRunStructure test_runs[] = {
@@ -30,11 +32,11 @@ const TestRunStructure test_runs[] = {
 const size_t test_runs_number = sizeof(test_runs) / sizeof(test_runs[0]);
 
 
-StatusData run_all_tests(int argc, const char** argv, int flag_index)
+StatusData run_all_tests(int argc, const char** argv, const CLIFlagStructure flag)
 {
     UNUSED(argc);
     UNUSED(argv);
-    UNUSED(flag_index);
+    UNUSED(flag);
 
     printf_yellow("Starting tests...\n");
     for (size_t i = 0; i < test_runs_number; ++i)

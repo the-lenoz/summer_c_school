@@ -6,12 +6,12 @@
 
 
 //---------------------------------------------------------------
-//! StatusData print_help(void)
+//! StatusData print_help(int argc, const char** argv, const CLIFlagStructure flag);
 //! @brief Function prints help to user. 
 //! @param [in] dummy_stub - stub parameter to unify functions input format
 //! @return status of execution
 //---------------------------------------------------------------
-StatusData print_help(const void* dummy_stub);
+StatusData print_help(int argc, const char** argv, const CLIFlagStructure flag);
 
 
 //---------------------------------------------------------------
@@ -57,12 +57,12 @@ const char* get_flag_value(int argc, const char** argv, CLIFlagStructure flag);
 int run_cli_from_args(int argc, const char** argv);
 
 //---------------------------------------------------------------
-//! StatusData run_cli_from_file(char* file_path)
+//! StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure flag)
 //! @brief Function runs calculation based on values from file in format `a b c`
 //! @param [in] run_cli_from_file_structure - RunCliFromFile structure containing file path
 //! @return status of execution
 //----------------------------------------  ---------------------
-StatusData run_cli_from_file(const void* run_cli_from_file_structure);
+StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure flag);
 
 const CLIFlagStructure global_flag_runs[] = {
     {

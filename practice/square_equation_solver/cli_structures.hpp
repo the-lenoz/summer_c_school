@@ -9,7 +9,7 @@
 
 struct CLIFlagStructure
 {
-    StatusData (*CLI_run_function_ptr)(int argc, const char* argv, int flag_index);
+    StatusData (*CLI_run_function_ptr)(int argc, const char** argv, const CLIFlagStructure flag);
     const char* short_flag;
     const char* long_flag;
     const char* description;

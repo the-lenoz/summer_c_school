@@ -52,7 +52,7 @@ int main(int argc, const char** argv)
             if (is_flag_set(argc, argv, global_flag_runs[i]))
             {
                 function_call_status_data = 
-                    global_flag_runs[i].CLI_run_function_ptr((const void*)(get_flag_value(argc, argv, global_flag_runs[i])));
+                    global_flag_runs[i].CLI_run_function_ptr(argc, argv, global_flag_runs[i]);
 
                 if (function_call_status_data.status_code != SUCCESS)
                 {
@@ -70,7 +70,7 @@ int main(int argc, const char** argv)
     else
     {
         // Неверный формат вызова
-        print_help(NULL); 
+        print_help(argc, argv, {}); 
         return 1;
     }
 }
