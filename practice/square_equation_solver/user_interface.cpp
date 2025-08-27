@@ -92,7 +92,7 @@ int read_input(SquareEquationForm* equation_form)
     return scanf("%lg %lg %lg", &equation_form->a, &equation_form->b, &equation_form->c);
 }
 
-const char* prompt_input_file_path()
+char* prompt_input_file_path()
 {
     char* entered_file_path = (char*)calloc(start_max_file_path_len, sizeof(char));
     printf("Введите путь к файлу с коэффицентами:\n");

@@ -31,8 +31,10 @@ int main(int argc, const char** argv)
     StatusData function_call_status_data = {};
 
     CLIFlagStructure cli_runs[global_flag_runs_number];
-    int current_cli_flag = 0;
+    int current_cli_run_flag = 0;
     
+    int all_cli_flags_count = 0;
+
     int logger_initialized = 0;
     int cool_mode = 0;
 
@@ -40,9 +42,10 @@ int main(int argc, const char** argv)
     {
         if (is_flag_set(argc, argv, global_flag_runs[i]))
         {
+            ++all_cli_flags_count;
             if (global_flag_runs[i].flag_type == RUN_FLAG)
             {
-                cli_runs[current_cli_flag++] = global_flag_runs[i];
+                cli_runs[current_cli_run_flag++] = global_flag_runs[i];
             }
             else // SETTING FLAG
             {
@@ -71,8 +74,6 @@ int main(int argc, const char** argv)
         LOG_START(argv[0], 1, log_targets);
     }
 
-    LOG_ERROR(MAKE_ERROR_STRUCT(ASSERTION_FAILED));
-
 
     if (cool_mode)
     {
@@ -81,9 +82,9 @@ int main(int argc, const char** argv)
     }
 
 
-    if (current_cli_flag == 0) // NO FLAGS SET
+    if (current_cli_run_flag == 0) // NO RUN FLAGS SET
     {
-        if (argc == 4)
+        if (argc - all_cli_flags_count == 4)
         {
             return run_cli_from_args(argc, argv); 
         }
@@ -93,7 +94,7 @@ int main(int argc, const char** argv)
         }
     }
 
-    for (int i = 0; i < current_cli_flag; ++i)
+    for (int i = 0; i < current_cli_run_flag; ++i)
     {
         function_call_status_data = cli_runs[i].CLI_run_function_ptr(argc, argv, cli_runs[i]);
         if (function_call_status_data.status_code == SUCCESS)
