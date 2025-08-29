@@ -7,7 +7,7 @@ CCFLAGS=-D _DEBUG -g -ggdb3 -std=c++17 -O0 -Wall -Wextra -Weffc++ -Waggressive-l
 -Wsuggest-final-methods -Wsuggest-final-types -Wsuggest-override -Wswitch-default -Wswitch-enum -Wsync-nand -Wundef \
 -Wunreachable-code -Wunused -Wuseless-cast -Wvariadic-macros -Wno-literal-suffix -Wno-missing-field-initializers \
 -Wno-narrowing -Wno-old-style-cast -Wno-varargs -Wstack-protector -fcheck-new -fsized-deallocation -fstack-protector \
--fstrict-overflow -fno-omit-frame-pointer -Wlarger-than=8192 -Wstack-usage=8192 -pie -fPIE -Werror=vla -MMD
+-fstrict-overflow -fno-omit-frame-pointer -Wlarger-than=8192 -Wstack-usage=8192 -pie -fPIE -Werror -MMD
 
 BUILD_DIR=build
 TEST_DIR=tests
@@ -16,7 +16,7 @@ TEST_DIR=tests
 INC=tests ./
 INC_PARAMS=$(foreach d, $(INC), -I$d)
 
-MAIN_SOURCES=str_operations.cpp terminal_decorator.cpp user_interface.cpp cli.cpp double_operations.cpp equation_solvers.cpp number_of_equation_roots_str_enum.cpp status.cpp signal_handlers.cpp logger.cpp
+MAIN_SOURCES=str_operations.cpp terminal_decorator.cpp user_interface.cpp cli.cpp mathematics.cpp equation_solvers.cpp number_of_equation_roots_str_enum.cpp status.cpp signal_handlers.cpp logger.cpp
 MAIN_OBJECTS_WITHOUT_PREFIX=$(MAIN_SOURCES:.cpp=.o)
 MAIN_OBJECTS=$(addprefix $(BUILD_DIR)/, $(MAIN_OBJECTS_WITHOUT_PREFIX))
 
@@ -24,7 +24,7 @@ MAIN_MAIN_SOURCES=main.cpp
 MAIN_MAIN_OBJECTS_WITHOUT_PREFIX=$(MAIN_MAIN_SOURCES:.cpp=.o)
 MAIN_MAIN_OBJECTS=$(addprefix $(BUILD_DIR)/, $(MAIN_MAIN_OBJECTS_WITHOUT_PREFIX))
 
-TEST_SOURCES=$(TEST_DIR)/all_tests.cpp $(TEST_DIR)/test_double_operations.cpp $(TEST_DIR)/test_equation_solvers.cpp
+TEST_SOURCES=$(TEST_DIR)/all_tests.cpp $(TEST_DIR)/test_double_perations.cpp $(TEST_DIR)/test_equation_solvers.cpp
 TEST_OBJECTS_WITHOUT_PREFIX=$(TEST_SOURCES:.cpp=.o)
 TEST_OBJECTS=$(addprefix $(BUILD_DIR)/, $(TEST_OBJECTS_WITHOUT_PREFIX))
 

@@ -2,7 +2,7 @@
 #include <assert.h>
 
 #include "square_equation_types.hpp"
-#include "double_operations.hpp"
+#include "mathematics.hpp"
 
 #include "equation_solvers.hpp"
 

@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-#include "test_double_operations.hpp"
+#include "test_double_perations.hpp"
 #include "test_equation_solvers.hpp"
 
 #include "terminal_decorator.hpp"

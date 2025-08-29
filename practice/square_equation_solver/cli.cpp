@@ -157,7 +157,7 @@ StatusData run_cli_from_file(int argc, const char** argv, const CLIFlagStructure
 
     if (file_path == NULL)
     {
-        const char* entered_file_path = prompt_input_file_path();
+        char* entered_file_path = prompt_input_file_path();
         if (entered_file_path == NULL) // allocation error in prompt_input_file_path
         {
             return MAKE_ERROR_STRUCT(CANNOT_ALLOCATE_MEMORY_ERROR);

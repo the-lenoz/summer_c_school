@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include "double_operations.hpp"
+#include "mathematics.hpp"
 #include "status.hpp"
 #include "terminal_decorator.hpp"
 

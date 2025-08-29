@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include "double_operations.hpp"
+#include "mathematics.hpp"
 #include "square_equation_types.hpp"
 
 #include "test_equation_solvers.hpp"

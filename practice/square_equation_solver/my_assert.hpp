@@ -1,7 +1,6 @@
 #include <stdlib.h>
 
 #include "status.hpp"
-#include "logger.hpp"
 
 #define assert(expr) if(!(expr)) \
     {\

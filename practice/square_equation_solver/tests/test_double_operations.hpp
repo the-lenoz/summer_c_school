@@ -1,5 +1,5 @@
-#ifndef DOUBLE_OPERATIONS_TEST_DECLARED
-#define DOUBLE_OPERATIONS_TEST_DECLARED
+#ifndef mathematics_TEST_DECLARED
+#define mathematics_TEST_DECLARED
 
 //---------------------------------------------------------------
 //! int test_are_doubles_equal(void);
